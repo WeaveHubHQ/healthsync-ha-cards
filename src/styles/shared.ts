@@ -5,6 +5,36 @@ export const cardStyles = css`
     display: block;
   }
 
+  .chip {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    border-radius: 999px;
+    background: var(
+      --ha-chip-background,
+      color-mix(in srgb, var(--card-background-color, #111) 70%, transparent)
+    );
+    color: var(--primary-text-color);
+    font-size: 0.9rem;
+  }
+
+  .mini-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: var(
+      --ha-card-section-background,
+      color-mix(
+        in srgb,
+        var(--card-background-color, var(--ha-card-background, #1e1e1e)) 70%,
+        var(--secondary-background-color, rgba(0, 0, 0, 0.04))
+      )
+    );
+  }
+
   ha-card {
     padding: var(--ha-card-padding, 16px);
     background: var(

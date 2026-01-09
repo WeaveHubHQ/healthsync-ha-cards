@@ -2,6 +2,15 @@ import "./cards/fitness-activity-summary-card";
 import "./cards/fitness-vitals-card";
 import "./cards/fitness-sleep-card";
 import "./cards/fitness-body-metrics-card";
+import "./cards/fitness-workouts-card";
+import "./cards/fitness-overview-card";
+
+import "./editors/fitness-activity-summary-card-editor";
+import "./editors/fitness-vitals-card-editor";
+import "./editors/fitness-sleep-card-editor";
+import "./editors/fitness-body-metrics-card-editor";
+import "./editors/fitness-workouts-card-editor";
+import "./editors/fitness-overview-card-editor";
 
 export * from "./utils/metric-catalog";
 
@@ -45,3 +54,7 @@ registerCard(
   "Fitness Body Metrics",
   "Shows body metrics with trend indicators."
 );
+
+registerCard("fitness-workouts-card", "Fitness Workouts", "Summarises workout energy/duration.");
+
+registerCard("fitness-overview-card", "Fitness Overview", "Highlights primary and secondary metrics.");

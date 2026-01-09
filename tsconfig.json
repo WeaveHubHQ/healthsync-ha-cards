@@ -16,6 +16,6 @@
     "isolatedModules": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "languages/**/*.json"],
   "exclude": ["dist", "node_modules", "vite.config.ts"]
 }

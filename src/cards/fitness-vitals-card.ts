@@ -2,12 +2,16 @@ import { LitElement, css, html, nothing } from "lit";
 import { customElement, property, state } from "lit/decorators.js";
 import { cardStyles } from "../styles/shared";
 import { FitnessCardBaseConfig, HomeAssistant, MetricConfig, RangeConfig } from "../types";
-import { evaluateRange, guessMetricName, metricDisplay } from "../utils/formatting";
+import { evaluateRange, formatTrend, guessMetricName, metricDisplay, parseNumber } from "../utils/formatting";
+import { computeLocalize } from "../localize";
+import { normalizeMetrics, getPeriod } from "../utils/metrics";
+import { computeTrend, previousFromEntity, TrendResult } from "../utils/history";
 
 @customElement("fitness-vitals-card")
 export class FitnessVitalsCard extends LitElement {
   @property({ attribute: false }) public hass?: HomeAssistant;
   @state() private config?: FitnessCardBaseConfig;
+  @state() private trends: Record<string, TrendResult> = {};
 
   static styles = [
     cardStyles,
@@ -21,15 +25,70 @@ export class FitnessVitalsCard extends LitElement {
     `
   ];
 
+  static async getConfigElement() {
+    return document.createElement("fitness-vitals-card-editor");
+  }
+
   public setConfig(config: FitnessCardBaseConfig): void {
     if (!config.metrics || !Array.isArray(config.metrics) || config.metrics.length === 0) {
       throw new Error("Add a metrics array with at least one entry");
     }
-    this.config = { ...config, metrics: [...config.metrics] };
+    this.config = { ...config, metrics: normalizeMetrics(config.metrics, config.preset) };
   }
 
   public getCardSize(): number {
     return 3;
+  }
+
+  protected updated(changed: Map<string, any>) {
+    if ((changed.has("hass") || changed.has("config")) && this.config) {
+      this.loadTrends();
+    }
+  }
+
+  private async loadTrends() {
+    if (!this.config || !this.hass) return;
+    const period = getPeriod(this.config.period);
+    const trendMap: Record<string, TrendResult> = { ...this.trends };
+    await Promise.all(
+      this.config.metrics.map(async (metric) => {
+        const entityId = metric.entity ?? "";
+        const entity = entityId ? this.hass?.states?.[entityId] : undefined;
+        if (period === "current") {
+          const current = entity ? parseNumber(entity.state) : null;
+          const previous = previousFromEntity(entity);
+          trendMap[entityId] = {
+            current,
+            previous,
+            diff: current !== null && previous !== null ? current - previous : null,
+            label: period
+          };
+          return;
+        }
+        if (!entityId) {
+          trendMap[entityId] = { current: null, previous: null, diff: null, label: period };
+          return;
+        }
+        const trend = await computeTrend(this.hass!, metric.trend_entity ?? entityId, period);
+        trendMap[entityId] = trend;
+      })
+    );
+    this.trends = trendMap;
+  }
+
+  private localize(key: string, vars?: Record<string, string | number>): string {
+    return computeLocalize(this.hass)(key, vars);
+  }
+
+  private renderTrend(metric: MetricConfig, unit?: string) {
+    if (this.config?.show_trends === false) return nothing;
+    const trend = this.trends[metric.entity ?? ""];
+    if (!trend || trend.diff === null) return nothing;
+    const period = getPeriod(this.config?.period);
+    return html`<div class="subtle">
+      ${this.localize("label.trend")} (${this.localize(`label.period.${period}`)}):
+      ${formatTrend(trend.diff, unit, metric.decimals)}
+    </div>`;
   }
 
   private defaultRanges(metric: MetricConfig, name: string): RangeConfig | undefined {
@@ -61,7 +120,13 @@ export class FitnessVitalsCard extends LitElement {
 
     const statusLabel =
       band?.label ??
-      (status === "low" ? "Low" : status === "high" ? "High" : status === "normal" ? "OK" : "");
+      (status === "low"
+        ? this.localize("label.low")
+        : status === "high"
+          ? this.localize("label.high")
+          : status === "normal"
+            ? this.localize("label.ok")
+            : "");
 
     return html`
       <div class="metric ${this.config?.compact ? "compact" : ""}">
@@ -73,6 +138,7 @@ export class FitnessVitalsCard extends LitElement {
             : nothing}
         </div>
         <div class="value status-${status ?? "normal"}">${text}</div>
+        ${this.renderTrend(metric, metric.unit_override ?? entity?.attributes?.unit_of_measurement)}
         ${band?.min !== undefined || band?.max !== undefined
           ? html`<div class="subtle">
               ${band.min !== undefined ? `≥ ${band.min}` : ""} ${band.max !== undefined
@@ -89,7 +155,8 @@ export class FitnessVitalsCard extends LitElement {
     return html`
       <ha-card>
         <div class="header">
-          <div class="title">${this.config.title ?? "Vitals"}</div>
+          <div class="title">${this.config.title ?? this.localize("card.vitals_title")}</div>
+          <div class="subtle">${this.localize(`label.period.${getPeriod(this.config.period)}`)}</div>
         </div>
         <div class="metric-grid">
           ${this.config.metrics.map((metric) => this.renderMetric(metric))}

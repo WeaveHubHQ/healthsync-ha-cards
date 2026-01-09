@@ -88,6 +88,14 @@ export function formatValue(
   return displayUnit ? `${rounded} ${displayUnit}` : rounded;
 }
 
+export function formatTrend(diff: number | null, unit?: string, decimals?: number): string {
+  if (diff === null || Number.isNaN(diff)) return "—";
+  const prefix = diff > 0 ? "+" : "";
+  const precision = decimals ?? defaultDecimals(unit);
+  const rounded = diff.toFixed(precision);
+  return unit ? `${prefix}${rounded} ${unit}` : `${prefix}${rounded}`;
+}
+
 export function goalValue(metric: MetricConfig, hass?: HomeAssistant): number | undefined {
   if (!hass) return typeof metric.goal === "number" ? metric.goal : undefined;
   if (typeof metric.goal === "number") return metric.goal;
@@ -161,7 +169,8 @@ export function metricDisplay(
   hass: HomeAssistant | undefined,
   metric: MetricConfig
 ): { value: number | null; unit?: string; text: string; entity?: HassEntity } {
-  const entity = hass?.states?.[metric.entity];
+  const entityId = metric.entity ?? "";
+  const entity = entityId ? hass?.states?.[entityId] : undefined;
   const unit = metric.unit_override ?? entity?.attributes?.unit_of_measurement;
   const value = extractValue(entity);
   const text = formatValue(value, unit, metric.decimals, metric.unit_override);

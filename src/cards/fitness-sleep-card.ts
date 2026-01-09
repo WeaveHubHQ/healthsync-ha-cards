@@ -3,6 +3,8 @@ import { customElement, property, state } from "lit/decorators.js";
 import { cardStyles } from "../styles/shared";
 import { FitnessCardBaseConfig, HomeAssistant, MetricConfig } from "../types";
 import { formatMinutes, guessMetricName, metricDisplay, parseNumber } from "../utils/formatting";
+import { computeLocalize } from "../localize";
+import { normalizeMetrics } from "../utils/metrics";
 
 type SleepStage = "asleep" | "in_bed" | "core" | "deep" | "rem" | "unknown";
 
@@ -58,11 +60,15 @@ export class FitnessSleepCard extends LitElement {
     `
   ];
 
+  static async getConfigElement() {
+    return document.createElement("fitness-sleep-card-editor");
+  }
+
   public setConfig(config: FitnessCardBaseConfig): void {
     if (!config.metrics || !Array.isArray(config.metrics) || config.metrics.length === 0) {
       throw new Error("Add a metrics array with sleep stages");
     }
-    this.config = { ...config, metrics: [...config.metrics] };
+    this.config = { ...config, metrics: normalizeMetrics(config.metrics, config.preset) };
   }
 
   public getCardSize(): number {
@@ -71,7 +77,7 @@ export class FitnessSleepCard extends LitElement {
 
   private stageFromMetric(metric: MetricConfig): SleepStage {
     if (metric.stage) return metric.stage;
-    const id = metric.entity.toLowerCase();
+    const id = (metric.entity ?? "").toLowerCase();
     if (id.includes("in_bed")) return "in_bed";
     if (id.includes("sleep_core")) return "core";
     if (id.includes("sleep_deep")) return "deep";
@@ -81,12 +87,17 @@ export class FitnessSleepCard extends LitElement {
     return "asleep";
   }
 
+  private localize(key: string, vars?: Record<string, string | number>): string {
+    return computeLocalize(this.hass)(key, vars);
+  }
+
   protected render() {
     if (!this.config) return nothing;
     const durations: Partial<Record<SleepStage, number>> = {};
 
     this.config.metrics.forEach((metric) => {
-      const entity = this.hass?.states?.[metric.entity];
+      const entityId = metric.entity ?? "";
+      const entity = entityId ? this.hass?.states?.[entityId] : undefined;
       const val = parseNumber(entity?.state);
       if (val === null) return;
       const stage = this.stageFromMetric(metric);
@@ -103,15 +114,20 @@ export class FitnessSleepCard extends LitElement {
     return html`
       <ha-card>
         <div class="header">
-          <div class="title">${this.config.title ?? "Sleep"}</div>
+          <div class="title">${this.config.title ?? this.localize("card.sleep_title")}</div>
+          ${this.config?.period
+            ? html`<div class="subtle">
+                ${this.localize(`label.period.${this.config.period}`) || this.config.period}
+              </div>`
+            : nothing}
         </div>
         <div class="summary">
           <div>
-            <div class="label">Asleep</div>
+            <div class="label">${this.localize("label.asleep")}</div>
             <div class="value">${asleepValue !== undefined ? formatMinutes(asleepValue) : "—"}</div>
           </div>
           <div>
-            <div class="label">In bed</div>
+            <div class="label">${this.localize("label.in_bed")}</div>
             <div class="value">${inBedValue !== undefined ? formatMinutes(inBedValue) : "—"}</div>
           </div>
         </div>
@@ -130,7 +146,7 @@ export class FitnessSleepCard extends LitElement {
         <div class="stage-legend">
           ${stageOrder.map((stage) => {
             const val = durations[stage];
-            const name = stage.toUpperCase();
+            const name = this.localize(`label.${stage}`) || stage.toUpperCase();
             return html`<div class="legend-item">
               <span class="swatch" style="background:${STAGE_COLORS[stage]}"></span>
               <div>

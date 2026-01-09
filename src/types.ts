@@ -9,6 +9,8 @@ export type MetricCategory =
   | "flights"
   | "other";
 
+export type Period = "current" | "today" | "7d" | "30d";
+
 export interface HassEntity {
   entity_id?: string;
   state: string;
@@ -25,6 +27,9 @@ export interface HassEntity {
 export interface HomeAssistant {
   states: Record<string, HassEntity>;
   formatEntityState?: (entity: HassEntity, style?: string) => string;
+  callApi?: (method: string, path: string, body?: any) => Promise<any>;
+  locale?: { language?: string };
+  language?: string;
 }
 
 export interface RangeBand {
@@ -42,7 +47,7 @@ export interface RangeConfig {
 }
 
 export interface MetricConfig {
-  entity: string;
+  entity?: string;
   name?: string;
   icon?: string;
   unit_override?: string;
@@ -51,6 +56,8 @@ export interface MetricConfig {
   goal_entity?: string;
   ranges?: RangeConfig | RangeBand[];
   stage?: "asleep" | "in_bed" | "core" | "deep" | "rem" | "unknown";
+  preset?: string;
+  trend_entity?: string;
 }
 
 export interface FitnessCardBaseConfig {
@@ -58,4 +65,36 @@ export interface FitnessCardBaseConfig {
   title?: string;
   metrics: MetricConfig[];
   compact?: boolean;
+  period?: Period;
+  show_trends?: boolean;
+  preset?: string;
+}
+
+export interface WorkoutMetricConfig {
+  name: string;
+  icon?: string;
+  duration_entity?: string;
+  energy_entity?: string;
+  distance_entity?: string;
+}
+
+export interface WorkoutsCardConfig {
+  type: string;
+  title?: string;
+  workouts: WorkoutMetricConfig[];
+  compact?: boolean;
+  period?: Period;
+  preset?: string;
+  show_trends?: boolean;
+}
+
+export interface OverviewCardConfig {
+  type: string;
+  title?: string;
+  primary_metrics: MetricConfig[];
+  secondary_metrics?: MetricConfig[];
+  compact?: boolean;
+  period?: Period;
+  preset?: string;
+  show_trends?: boolean;
 }

@@ -1,0 +1,12 @@
+{
+  "card.activity_title": "Actividad",
+  "card.vitals_title": "Signos vitales",
+  "card.sleep_title": "Sueño",
+  "card.body_title": "Métricas corporales",
+  "label.goal": "Meta",
+  "label.total": "Total",
+  "label.no_data": "Sin datos",
+  "label.low": "Bajo",
+  "label.high": "Alto",
+  "label.ok": "OK"
+}
