@@ -96,18 +96,31 @@ export function formatTrend(diff: number | null, unit?: string, decimals?: numbe
   return unit ? `${prefix}${rounded} ${unit}` : `${prefix}${rounded}`;
 }
 
-export function goalValue(metric: MetricConfig, hass?: HomeAssistant): number | undefined {
-  if (!hass) return typeof metric.goal === "number" ? metric.goal : undefined;
+export function goalValue(
+  metric: MetricConfig,
+  hass?: HomeAssistant,
+  goals?: Record<string, number | { entity: string }>
+): number | undefined {
   if (typeof metric.goal === "number") return metric.goal;
   if (metric.goal_entity) {
-    const goalState = hass.states?.[metric.goal_entity];
+    const goalState = hass?.states?.[metric.goal_entity];
     const parsed = parseNumber(goalState?.state);
     if (parsed !== null) return parsed;
   }
   if (metric.goal && typeof metric.goal === "object" && "entity" in metric.goal) {
-    const goalState = hass.states?.[metric.goal.entity];
+    const goalState = hass?.states?.[metric.goal.entity];
     const parsed = parseNumber(goalState?.state);
     if (parsed !== null) return parsed;
+  }
+  const key = metric.preset || metric.entity;
+  if (goals && key && goals[key] !== undefined) {
+    const cfg = goals[key];
+    if (typeof cfg === "number") return cfg;
+    if (cfg && typeof cfg === "object" && "entity" in cfg) {
+      const goalState = hass?.states?.[cfg.entity];
+      const parsed = parseNumber(goalState?.state);
+      if (parsed !== null) return parsed;
+    }
   }
   return undefined;
 }
@@ -139,7 +152,11 @@ export function evaluateRange(
         (band.min === undefined || value >= band.min) &&
         (band.max === undefined || value <= band.max)
     );
-    return hit ? { status: "band", band: hit } : {};
+    if (!hit) return {};
+    if (hit.severity === "low") return { status: "low", band: hit };
+    if (hit.severity === "high" || hit.severity === "error") return { status: "high", band: hit };
+    if (hit.severity === "normal" || hit.severity === "info") return { status: "normal", band: hit };
+    return { status: "band", band: hit };
   }
 
   const { low, normal, high } = normalized;

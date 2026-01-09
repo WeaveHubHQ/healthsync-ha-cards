@@ -9,7 +9,10 @@ interface HistoryEntry {
 type HistoryResponse = HistoryEntry[][];
 
 const cache = new Map<string, { ts: number; value: number | null }>();
+const seriesCache = new Map<string, { ts: number; value: number[] }>();
 const CACHE_MS = 30_000;
+const THROTTLE_MS = 2_000;
+const lastRequest: Record<string, number> = {};
 
 function buildKey(entityId: string, start: Date, end: Date) {
   return `${entityId}-${start.toISOString()}-${end.toISOString()}`;
@@ -24,12 +27,16 @@ async function fetchHistory(
   const key = buildKey(entityId, start, end);
   const now = Date.now();
   const cached = cache.get(key);
+  if (lastRequest[key] && now - lastRequest[key] < THROTTLE_MS) {
+    if (cached) return cached.value;
+  }
   if (cached && now - cached.ts < CACHE_MS) return cached.value;
 
   try {
     const path = `history/period/${start.toISOString()}?filter_entity_id=${entityId}&end_time=${end.toISOString()}&minimal_response`;
     // @ts-ignore hass.callApi is provided by HA
-    const response: HistoryResponse = await hass.callApi("GET", path);
+    lastRequest[key] = now;
+    const response: HistoryResponse = await hass.callApi?.("GET", path);
     const series = Array.isArray(response) ? response[0] : undefined;
     if (!series || !series.length) {
       cache.set(key, { ts: now, value: null });
@@ -109,4 +116,48 @@ export function previousFromEntity(entity?: HassEntity): number | null {
     if (parsed !== null) return parsed;
   }
   return null;
+}
+
+export async function fetchHistorySeries(
+  hass: HomeAssistant | undefined,
+  entityId: string | undefined,
+  start: Date,
+  end: Date,
+  points: number
+): Promise<number[]> {
+  if (!hass || !entityId) return [];
+  const key = `${entityId}-${start.toISOString()}-${end.toISOString()}-${points}`;
+  const now = Date.now();
+  const cached = seriesCache.get(key);
+  if (cached && now - cached.ts < CACHE_MS) return cached.value;
+
+  try {
+    lastRequest[key] = now;
+    const path = `history/period/${start.toISOString()}?filter_entity_id=${entityId}&end_time=${end.toISOString()}&minimal_response`;
+    // @ts-ignore
+    const response: HistoryResponse = await hass.callApi?.("GET", path);
+    const series = Array.isArray(response) ? response[0] : undefined;
+    if (!series || !series.length) {
+      seriesCache.set(key, { ts: now, value: [] });
+      return [];
+    }
+    const bucket: number[] = [];
+    const span = end.getTime() - start.getTime();
+    const interval = span / points;
+    for (let i = 0; i < points; i++) {
+      const bucketStart = start.getTime() + i * interval;
+      const bucketEnd = bucketStart + interval;
+      const slice = series.filter((item) => {
+        const ts = new Date(item.last_changed).getTime();
+        return ts >= bucketStart && ts < bucketEnd;
+      });
+      const latest = [...slice].reverse().find((item) => parseNumber(item.state) !== null);
+      bucket.push(latest ? (parseNumber(latest.state) as number) : NaN);
+    }
+    seriesCache.set(key, { ts: now, value: bucket });
+    return bucket;
+  } catch {
+    seriesCache.set(key, { ts: now, value: [] });
+    return [];
+  }
 }

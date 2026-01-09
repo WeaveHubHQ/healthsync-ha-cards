@@ -37,6 +37,7 @@ export interface RangeBand {
   min?: number;
   max?: number;
   color?: string;
+  severity?: "low" | "normal" | "high" | "info" | "warn" | "error";
 }
 
 export interface RangeConfig {
@@ -58,6 +59,7 @@ export interface MetricConfig {
   stage?: "asleep" | "in_bed" | "core" | "deep" | "rem" | "unknown";
   preset?: string;
   trend_entity?: string;
+  zones_disabled?: boolean;
 }
 
 export interface FitnessCardBaseConfig {
@@ -68,6 +70,11 @@ export interface FitnessCardBaseConfig {
   period?: Period;
   show_trends?: boolean;
   preset?: string;
+  history?: boolean;
+  history_window_days?: number;
+  history_points?: number;
+  goals?: Record<string, number | { entity: string }>;
+  zones?: Record<string, { bands: RangeBand[] }>;
 }
 
 export interface WorkoutMetricConfig {
@@ -86,6 +93,11 @@ export interface WorkoutsCardConfig {
   period?: Period;
   preset?: string;
   show_trends?: boolean;
+  history?: boolean;
+  history_window_days?: number;
+  history_points?: number;
+  goals?: Record<string, number | { entity: string }>;
+  zones?: Record<string, { bands: RangeBand[] }>;
 }
 
 export interface OverviewCardConfig {
@@ -97,4 +109,9 @@ export interface OverviewCardConfig {
   period?: Period;
   preset?: string;
   show_trends?: boolean;
+  history?: boolean;
+  history_window_days?: number;
+  history_points?: number;
+  goals?: Record<string, number | { entity: string }>;
+  zones?: Record<string, { bands: RangeBand[] }>;
 }

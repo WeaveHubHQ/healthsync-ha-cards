@@ -31,3 +31,9 @@ export const metricSchema = [
     ]
   }
 ];
+
+export const historyFields = [
+  { name: "history", selector: { boolean: {} } },
+  { name: "history_window_days", selector: { number: { min: 1, max: 60, mode: "box" } } },
+  { name: "history_points", selector: { number: { min: 4, max: 120, mode: "box" } } }
+];

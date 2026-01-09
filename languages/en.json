@@ -26,5 +26,12 @@
   "label.period.current": "Current",
   "label.period.today": "Today",
   "label.period.7d": "7 days",
-  "label.period.30d": "30 days"
+  "label.period.30d": "30 days",
+  "action.auto_detect": "Auto-detect metrics",
+  "action.apply_suggestions": "Apply suggestions",
+  "label.suggestions": "Suggestions",
+  "label.history": "History",
+  "label.history_window_days": "History window (days)",
+  "label.history_points": "History points",
+  "label.vs_previous": "vs previous {period}"
 }

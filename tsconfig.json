@@ -17,5 +17,5 @@
     "skipLibCheck": true
   },
   "include": ["src/**/*", "languages/**/*.json"],
-  "exclude": ["dist", "node_modules", "vite.config.ts"]
+  "exclude": ["dist", "node_modules", "vite.config.ts", "coverage", "tools/**/*.js"]
 }

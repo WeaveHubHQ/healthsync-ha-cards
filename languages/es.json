@@ -8,5 +8,8 @@
   "label.no_data": "Sin datos",
   "label.low": "Bajo",
   "label.high": "Alto",
-  "label.ok": "OK"
+  "label.ok": "OK",
+  "action.auto_detect": "Detectar métricas",
+  "action.apply_suggestions": "Aplicar sugerencias",
+  "label.history": "Historial"
 }

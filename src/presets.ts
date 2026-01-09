@@ -15,6 +15,7 @@ export const metricPresets: PresetGroup = {
   steps: { id: "steps", name: "Steps", icon: "mdi:shoe-print", unit: "count", decimals: 0 },
   active_energy: { id: "active_energy", name: "Active Energy", icon: "mdi:fire", unit: "kcal", decimals: 0 },
   distance_walk_run: { id: "distance_walk_run", name: "Walk/Run Distance", icon: "mdi:walk", unit: "mi", decimals: 2 },
+  distance_cycling: { id: "distance_cycling", name: "Cycling Distance", icon: "mdi:bike", unit: "mi", decimals: 2 },
   flights_climbed: { id: "flights_climbed", name: "Flights Climbed", icon: "mdi:stairs-up", unit: "count", decimals: 0 },
 
   heart_rate: { id: "heart_rate", name: "Heart Rate", icon: "mdi:heart-pulse", unit: "bpm", decimals: 0, ranges: { low: 50, normal: [55, 95], high: 120 } },
@@ -35,6 +36,7 @@ export const metricPresets: PresetGroup = {
   body_fat_percentage: { id: "body_fat_percentage", name: "Body Fat", icon: "mdi:percent", unit: "%", decimals: 1 },
   lean_body_mass: { id: "lean_body_mass", name: "Lean Mass", icon: "mdi:human", unit: "lb", decimals: 1 },
   vo2_max: { id: "vo2_max", name: "VO2 Max", icon: "mdi:run", unit: "mL/(kg*min)", decimals: 1 },
+  glucose: { id: "glucose", name: "Blood Glucose", icon: "mdi:diabetes", unit: "mg/dL", decimals: 0 },
 
   workout_cycling: { id: "workout_cycling", name: "Cycling", icon: "mdi:bike" },
   workout_walking: { id: "workout_walking", name: "Walking", icon: "mdi:walk" },

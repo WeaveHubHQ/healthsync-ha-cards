@@ -33,6 +33,35 @@ Formatting defaults by unit:
 ## Mapping your own entities
 Pick your sensors in HA Developer Tools → States, copy the entity IDs, and map them into the `metrics` array (or via the UI editor). If your units differ, set `unit_override`/`decimals`. Goals can be a number or `goal_entity`. Sleep stages auto-detect from the entity id or can be forced with `stage`.
 
+## Auto-detect (editor action)
+In the visual editor, click **Auto-detect metrics** to scan your HA entities. Suggestions are shown with checkboxes—accept what you like, then apply. The editor writes normal presets + entity mappings into your config (no runtime dependency).
+
+Example result applied to a card:
+```yaml
+- type: custom:fitness-vitals-card
+  metrics:
+    - preset: heart_rate
+      entity: sensor.health_heart_rate
+    - preset: spo2
+      entity: sensor.health_oxygen_saturation
+```
+
+## History & visuals (optional)
+- Config: `history` (bool), `history_window_days` (default 7), `history_points` (default 24)
+- Shows sparklines on overview/vitals/body (when history is on)
+- Activity card shows weekly bars when period is `7d` or `30d`
+- Trend labels show comparison vs the previous window (e.g., “vs previous 7 days”)
+
+## Goals & zones
+- Card-level `goals` map: `{ heart_rate: 90, steps: 8000 }` (per-metric overrides still work)
+- Card-level `zones` map: `{ heart_rate: { bands: [{label: "High", min: 110, severity:"high"}] } }`
+- Defaults included for heart_rate, resting_heart_rate, spo2, respiratory_rate, glucose, weight trend
+- Disable per metric with `zones_disabled: true`
+
+## Dashboard generator (optional)
+- `node tools/generate-view.js` prints a Lovelace view using preset mappings—edit the preset/entity lists in the script first.
+- Paste the JSON into your Lovelace raw config or convert to YAML as needed.
+
 ## Screenshots
 ![Activity + Vitals](example_cards.png)
 ![Sleep + Body](example%202.png)
@@ -46,6 +75,8 @@ The examples below use the provided catalog, replacing the prefix with `sensor.h
 - type: custom:fitness-activity-summary-card
   title: Activity Rings
   period: today
+  history: true
+  history_window_days: 7
   metrics:
     - entity: sensor.health_active_energy_burned_daily_total
       name: Active Energy
@@ -70,6 +101,8 @@ The examples below use the provided catalog, replacing the prefix with `sensor.h
 ```yaml
 - type: custom:fitness-activity-summary-card
   preset: activity
+  history: true
+  period: 7d
   metrics:
     - preset: active_energy
       entity: sensor.health_active_energy_burned_daily_total
@@ -90,6 +123,7 @@ The examples below use the provided catalog, replacing the prefix with `sensor.h
 ```yaml
 - type: custom:fitness-vitals-card
   title: Vitals
+  history: true
   metrics:
     - entity: sensor.health_heart_rate
       name: Heart Rate
@@ -180,6 +214,7 @@ The examples below use the provided catalog, replacing the prefix with `sensor.h
 ```yaml
 - type: custom:fitness-body-metrics-card
   title: Body Metrics
+  history: true
   metrics:
     - entity: sensor.health_weight
       name: Weight
@@ -247,6 +282,7 @@ The examples below use the provided catalog, replacing the prefix with `sensor.h
 - type: custom:fitness-overview-card
   title: Overview
   period: 7d
+  history: true
   primary_metrics:
     - preset: active_energy
       entity: sensor.health_active_energy_burned_daily_total

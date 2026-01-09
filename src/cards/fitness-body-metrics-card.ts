@@ -5,13 +5,15 @@ import { FitnessCardBaseConfig, HomeAssistant, MetricConfig } from "../types";
 import { formatTrend, guessMetricName, metricDisplay, parseNumber } from "../utils/formatting";
 import { computeLocalize } from "../localize";
 import { normalizeMetrics, getPeriod } from "../utils/metrics";
-import { computeTrend, previousFromEntity, TrendResult } from "../utils/history";
+import { computeTrend, previousFromEntity, TrendResult, fetchHistorySeries } from "../utils/history";
+import { sparkline } from "../components/sparkline";
 
 @customElement("fitness-body-metrics-card")
 export class FitnessBodyMetricsCard extends LitElement {
   @property({ attribute: false }) public hass?: HomeAssistant;
   @state() private config?: FitnessCardBaseConfig;
   @state() private trends: Record<string, TrendResult> = {};
+  @state() private historySeries: Record<string, number[]> = {};
 
   static styles = [
     cardStyles,
@@ -50,6 +52,7 @@ export class FitnessBodyMetricsCard extends LitElement {
   protected updated(changed: Map<string, any>) {
     if ((changed.has("hass") || changed.has("config")) && this.config) {
       this.loadTrends();
+      this.loadHistory();
     }
   }
 
@@ -81,6 +84,26 @@ export class FitnessBodyMetricsCard extends LitElement {
       })
     );
     this.trends = trendMap;
+  }
+
+  private async loadHistory() {
+    if (!this.config || !this.hass || !this.config.history) return;
+    const days = this.config.history_window_days ?? 7;
+    const points = this.config.history_points ?? 24;
+    const end = new Date();
+    const start = new Date();
+    start.setDate(end.getDate() - days);
+    const series: Record<string, number[]> = { ...this.historySeries };
+    await Promise.all(
+      this.config.metrics
+        .filter((m) => m.entity)
+        .map(async (metric) => {
+          const id = metric.entity!;
+          const values = await fetchHistorySeries(this.hass!, id, start, end, points);
+          series[id] = values;
+        })
+    );
+    this.historySeries = series;
   }
 
   private localize(key: string, vars?: Record<string, string | number>): string {
@@ -122,9 +145,16 @@ export class FitnessBodyMetricsCard extends LitElement {
             ? html`<span class="trend ${diff > 0 ? "up" : diff < 0 ? "down" : ""}">
                 <ha-icon .icon=${this.trendIcon(diff)}></ha-icon>
                 ${formatTrend(diff, metric.unit_override ?? entity?.attributes?.unit_of_measurement)}
+                (${this.localize("label.vs_previous", {
+                  period: this.localize(`label.period.${getPeriod(this.config?.period)}`) ||
+                    getPeriod(this.config?.period)
+                })})
               </span>`
             : html`<span class="trend">${this.localize("label.no_previous")}</span>`}
         </div>
+        ${this.config?.history && metric.entity && this.historySeries[metric.entity]
+          ? html`<div>${sparkline(this.historySeries[metric.entity])}</div>`
+          : nothing}
       </div>
     `;
   }

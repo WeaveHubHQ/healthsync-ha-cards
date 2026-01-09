@@ -5,13 +5,15 @@ import { HomeAssistant, MetricConfig, OverviewCardConfig } from "../types";
 import { formatTrend, goalValue, guessMetricName, metricDisplay, progressPercent } from "../utils/formatting";
 import { computeLocalize } from "../localize";
 import { normalizeMetrics, getPeriod } from "../utils/metrics";
-import { computeTrend, previousFromEntity, TrendResult } from "../utils/history";
+import { computeTrend, previousFromEntity, TrendResult, fetchHistorySeries } from "../utils/history";
+import { sparkline } from "../components/sparkline";
 
 @customElement("fitness-overview-card")
 export class FitnessOverviewCard extends LitElement {
   @property({ attribute: false }) public hass?: HomeAssistant;
   @state() private config?: OverviewCardConfig;
   @state() private trends: Record<string, TrendResult> = {};
+  @state() private historySeries: Record<string, number[]> = {};
 
   static styles = [
     cardStyles,
@@ -74,6 +76,7 @@ export class FitnessOverviewCard extends LitElement {
   protected updated(changed: Map<string, any>) {
     if ((changed.has("hass") || changed.has("config")) && this.config) {
       this.loadTrends();
+      this.loadHistory();
     }
   }
 
@@ -108,6 +111,27 @@ export class FitnessOverviewCard extends LitElement {
     this.trends = trendMap;
   }
 
+  private async loadHistory() {
+    if (!this.config || !this.hass || !this.config.history) return;
+    const days = this.config.history_window_days ?? 7;
+    const points = this.config.history_points ?? 24;
+    const end = new Date();
+    const start = new Date();
+    start.setDate(end.getDate() - days);
+    const series: Record<string, number[]> = { ...this.historySeries };
+    const metrics = [...this.config.primary_metrics, ...(this.config.secondary_metrics ?? [])];
+    await Promise.all(
+      metrics
+        .filter((m) => m.entity)
+        .map(async (metric) => {
+          const id = metric.entity!;
+          const values = await fetchHistorySeries(this.hass!, id, start, end, points);
+          series[id] = values;
+        })
+    );
+    this.historySeries = series;
+  }
+
   private localize(key: string, vars?: Record<string, string | number>): string {
     return computeLocalize(this.hass)(key, vars);
   }
@@ -117,9 +141,10 @@ export class FitnessOverviewCard extends LitElement {
     const trend = this.trends[metric.entity ?? ""];
     if (!trend || trend.diff === null) return nothing;
     const period = getPeriod(this.config?.period);
+    const periodLabel = this.localize(`label.period.${period}`) || period;
+    const compare = this.localize("label.vs_previous", { period: periodLabel });
     return html`<div class="subtle">
-      ${this.localize("label.trend")} (${this.localize(`label.period.${period}`)}):
-      ${formatTrend(trend.diff, unit, metric.decimals)}
+      ${this.localize("label.trend")} (${compare}): ${formatTrend(trend.diff, unit, metric.decimals)}
     </div>`;
   }
 
@@ -138,7 +163,7 @@ export class FitnessOverviewCard extends LitElement {
     const { value, text, entity } = metricDisplay(this.hass, metric);
     const name = guessMetricName(metric, entity);
     const icon = metric.icon ?? entity?.attributes?.icon;
-    const goal = goalValue(metric, this.hass);
+    const goal = goalValue(metric, this.hass, this.config?.goals);
     const progress = progressPercent(value, goal);
     const unit = metric.unit_override ?? entity?.attributes?.unit_of_measurement;
     return html`
@@ -156,6 +181,9 @@ export class FitnessOverviewCard extends LitElement {
             </div>`
           : nothing}
         ${this.renderTrend(metric, unit)}
+        ${this.config?.history && metric.entity && this.historySeries[metric.entity]
+          ? html`<div>${sparkline(this.historySeries[metric.entity], 140, 40)}</div>`
+          : nothing}
       </div>
     `;
   }
@@ -171,6 +199,9 @@ export class FitnessOverviewCard extends LitElement {
         <span>${name}</span>
         <span class="chip-value">${text}</span>
         ${trend}
+        ${this.config?.history && metric.entity && this.historySeries[metric.entity]
+          ? html`<div>${sparkline(this.historySeries[metric.entity], 80, 30)}</div>`
+          : nothing}
       </div>
     `;
   }
