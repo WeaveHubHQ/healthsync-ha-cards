@@ -1,0 +1,452 @@
+[
+  {
+    "entity_id": "sensor.jasons_iphone_health_oxygen_saturation",
+    "state": "97",
+    "unit_of_measurement": "%",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Oxygen Saturation",
+    "icon": "mdi:water-percent",
+    "category": "vitals"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_steps",
+    "state": "10",
+    "unit_of_measurement": "count",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Steps",
+    "icon": "mdi:shoe-print",
+    "category": "steps"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_resting_heart_rate",
+    "state": "75",
+    "unit_of_measurement": "bpm",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Resting Heart Rate",
+    "icon": "mdi:heart",
+    "category": "vitals"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_respiratory_rate",
+    "state": "17",
+    "unit_of_measurement": "breaths/min",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Respiratory Rate",
+    "icon": "mdi:lungs",
+    "category": "vitals"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_heart_rate_variability_sdnn",
+    "state": "19.0986089955471",
+    "unit_of_measurement": "ms",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Heart Rate Variability Sdnn",
+    "icon": "mdi:heart-flash",
+    "category": "vitals"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_flights_climbed",
+    "state": "1",
+    "unit_of_measurement": "count",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Flights Climbed",
+    "icon": "mdi:stairs-up",
+    "category": "flights"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_connectivity_test",
+    "state": "unavailable",
+    "unit_of_measurement": "count",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Connectivity Test",
+    "icon": null,
+    "category": "other"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_heart_rate",
+    "state": "84",
+    "unit_of_measurement": "bpm",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Heart Rate",
+    "icon": "mdi:heart-pulse",
+    "category": "vitals"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_distance_cycling",
+    "state": "0.0673205280488492",
+    "unit_of_measurement": "mi",
+    "device_class": "distance",
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Distance Cycling",
+    "icon": "mdi:bike",
+    "category": "distance"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_distance_walking_running",
+    "state": "0.00497096953789867",
+    "unit_of_measurement": "mi",
+    "device_class": "distance",
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Distance Walking Running",
+    "icon": "mdi:walk",
+    "category": "distance"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_active_energy_burned",
+    "state": "0.45",
+    "unit_of_measurement": "kcal",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Active Energy Burned",
+    "icon": "mdi:fire",
+    "category": "energy"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_environmental_sound_exposure",
+    "state": "71.6872025924761",
+    "unit_of_measurement": "dB",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Environmental Sound Exposure",
+    "icon": "mdi:volume-high",
+    "category": "other"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_basal_energy_burned",
+    "state": "26.309",
+    "unit_of_measurement": "kcal",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Basal Energy Burned",
+    "icon": "mdi:fire-circle",
+    "category": "energy"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_weight",
+    "state": "359.022793968073",
+    "unit_of_measurement": "lb",
+    "device_class": "weight",
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Weight",
+    "icon": "mdi:scale-bathroom",
+    "category": "body"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_vo2_max",
+    "state": "24.81",
+    "unit_of_measurement": "mL/(kg*min)",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Vo2 Max",
+    "icon": "mdi:run",
+    "category": "body"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_body_fat_percentage",
+    "state": "49.2",
+    "unit_of_measurement": "%",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Body Fat Percentage",
+    "icon": "mdi:percent",
+    "category": "body"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_blood_glucose",
+    "state": "113",
+    "unit_of_measurement": "mg/dL",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Blood Glucose",
+    "icon": "mdi:diabetes",
+    "category": "vitals"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_bmi",
+    "state": "44.6",
+    "unit_of_measurement": "count",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Bmi",
+    "icon": "mdi:human-male-height",
+    "category": "body"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_lean_body_mass",
+    "state": "182.190013469583",
+    "unit_of_measurement": "lb",
+    "device_class": "weight",
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Lean Body Mass",
+    "icon": "mdi:human",
+    "category": "body"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_hydration",
+    "state": "29.9254100911311",
+    "unit_of_measurement": "fl oz US",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Hydration",
+    "icon": "mdi:cup-water",
+    "category": "other"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_walking",
+    "state": "unavailable",
+    "unit_of_measurement": "s",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Duration Walking",
+    "icon": null,
+    "category": "workout"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_walking",
+    "state": "unavailable",
+    "unit_of_measurement": "kcal",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Energy Walking",
+    "icon": null,
+    "category": "energy"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_distance_walking",
+    "state": "unavailable",
+    "unit_of_measurement": "mi",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Distance Walking",
+    "icon": null,
+    "category": "distance"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_workout_44",
+    "state": "unavailable",
+    "unit_of_measurement": "s",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Duration Workout 44",
+    "icon": null,
+    "category": "workout"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_workout_44",
+    "state": "unavailable",
+    "unit_of_measurement": "kcal",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Energy Workout 44",
+    "icon": null,
+    "category": "energy"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_cycling",
+    "state": "unavailable",
+    "unit_of_measurement": "s",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Duration Cycling",
+    "icon": null,
+    "category": "workout"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_cycling",
+    "state": "unavailable",
+    "unit_of_measurement": "kcal",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Energy Cycling",
+    "icon": null,
+    "category": "energy"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_distance_cycling",
+    "state": "unavailable",
+    "unit_of_measurement": "mi",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Distance Cycling",
+    "icon": null,
+    "category": "distance"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_hiit",
+    "state": "unavailable",
+    "unit_of_measurement": "s",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Duration Hiit",
+    "icon": null,
+    "category": "workout"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_hiit",
+    "state": "unavailable",
+    "unit_of_measurement": "kcal",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Energy Hiit",
+    "icon": null,
+    "category": "energy"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_in_bed",
+    "state": "398.612829041481",
+    "unit_of_measurement": "min",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Sleep In Bed",
+    "icon": null,
+    "category": "sleep"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_functional_strength",
+    "state": "unavailable",
+    "unit_of_measurement": "s",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Duration Functional Strength",
+    "icon": null,
+    "category": "workout"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_functional_strength",
+    "state": "unavailable",
+    "unit_of_measurement": "kcal",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Energy Functional Strength",
+    "icon": null,
+    "category": "energy"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_core",
+    "state": "unavailable",
+    "unit_of_measurement": "min",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Sleep Core",
+    "icon": null,
+    "category": "sleep"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_deep",
+    "state": "unavailable",
+    "unit_of_measurement": "min",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Sleep Deep",
+    "icon": null,
+    "category": "sleep"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_rem",
+    "state": "unavailable",
+    "unit_of_measurement": "min",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Sleep Rem",
+    "icon": null,
+    "category": "sleep"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_unknown",
+    "state": "unavailable",
+    "unit_of_measurement": "min",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Sleep Unknown",
+    "icon": null,
+    "category": "sleep"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_asleep",
+    "state": "14.0041869501273",
+    "unit_of_measurement": "min",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Sleep Asleep",
+    "icon": null,
+    "category": "sleep"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_steps_daily_total",
+    "state": "493",
+    "unit_of_measurement": "count",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Steps Daily Total",
+    "icon": null,
+    "category": "steps"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_active_energy_burned_daily_total",
+    "state": "485.150999999998",
+    "unit_of_measurement": "kcal",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Active Energy Burned Daily Total",
+    "icon": null,
+    "category": "energy"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_flights_climbed_daily_total",
+    "state": "3",
+    "unit_of_measurement": "count",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Flights Climbed Daily Total",
+    "icon": null,
+    "category": "flights"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_basal_energy_burned_daily_total",
+    "state": "1841.22300000003",
+    "unit_of_measurement": "kcal",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Basal Energy Burned Daily Total",
+    "icon": null,
+    "category": "energy"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_distance_walking_running_daily_total",
+    "state": "0.21617157233949",
+    "unit_of_measurement": "mi",
+    "device_class": null,
+    "state_class": null,
+    "friendly_name": "Jasons iPhone Health Distance Walking Running Daily Total",
+    "icon": null,
+    "category": "distance"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_strength_training",
+    "state": "1494.09190797806",
+    "unit_of_measurement": "s",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Duration Strength Training",
+    "icon": null,
+    "category": "workout"
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_strength_training",
+    "state": "283.444680942575",
+    "unit_of_measurement": "kcal",
+    "device_class": null,
+    "state_class": "measurement",
+    "friendly_name": "Jasons iPhone Health Workout Energy Strength Training",
+    "icon": null,
+    "category": "energy"
+  }
+]

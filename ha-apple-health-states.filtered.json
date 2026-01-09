@@ -1,0 +1,952 @@
+[
+  {
+    "entity_id": "sensor.jasons_iphone_health_oxygen_saturation",
+    "state": "97",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T19:14:09+00:00",
+      "source_device": "Apple Watch",
+      "min": 96.0,
+      "max": 97.0,
+      "avg": 96.1,
+      "unit_of_measurement": "%",
+      "icon": "mdi:water-percent",
+      "friendly_name": "Jasons iPhone Health Oxygen Saturation"
+    },
+    "last_changed": "2026-01-09T19:27:19.318581+00:00",
+    "last_reported": "2026-01-09T19:27:19.318581+00:00",
+    "last_updated": "2026-01-09T19:27:19.318581+00:00",
+    "context": {
+      "id": "01KEJ3MFRP7XHXXDKE7FAM6RRG",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_steps",
+    "state": "10",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T19:58:18+00:00",
+      "source_device": "iPhone",
+      "min": 10.0,
+      "max": 90.0,
+      "avg": 38.5,
+      "unit_of_measurement": "count",
+      "icon": "mdi:shoe-print",
+      "friendly_name": "Jasons iPhone Health Steps"
+    },
+    "last_changed": "2026-01-09T20:55:53.922318+00:00",
+    "last_reported": "2026-01-09T20:55:54.151513+00:00",
+    "last_updated": "2026-01-09T20:55:54.151513+00:00",
+    "context": {
+      "id": "01KEJ8PP17JE1EZ04415R9BDQ1",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_resting_heart_rate",
+    "state": "75",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T17:16:53+00:00",
+      "source_device": "iPhone",
+      "min": 75.0,
+      "max": 78.0,
+      "avg": 75.6,
+      "unit_of_measurement": "bpm",
+      "icon": "mdi:heart",
+      "friendly_name": "Jasons iPhone Health Resting Heart Rate"
+    },
+    "last_changed": "2026-01-09T17:59:57.936645+00:00",
+    "last_reported": "2026-01-09T18:28:46.645900+00:00",
+    "last_updated": "2026-01-09T18:28:46.645900+00:00",
+    "context": {
+      "id": "01KEJ099DNJACWFRN8HCJC6YGJ",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_respiratory_rate",
+    "state": "17",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2025-12-22T13:25:52+00:00",
+      "source_device": "Apple Watch",
+      "min": 17.0,
+      "max": 17.0,
+      "avg": 17.0,
+      "unit_of_measurement": "breaths/min",
+      "icon": "mdi:lungs",
+      "friendly_name": "Jasons iPhone Health Respiratory Rate"
+    },
+    "last_changed": "2026-01-09T02:16:57.046119+00:00",
+    "last_reported": "2026-01-09T02:22:50.931167+00:00",
+    "last_updated": "2026-01-09T02:16:57.046119+00:00",
+    "context": {
+      "id": "01KEG8NTEPT167AH0F5VRYSHX5",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_heart_rate_variability_sdnn",
+    "state": "19.0986089955471",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T19:30:04+00:00",
+      "source_device": "Apple Watch",
+      "min": 19.09860899554708,
+      "max": 37.24715342102894,
+      "avg": 34.71863445588165,
+      "unit_of_measurement": "ms",
+      "icon": "mdi:heart-flash",
+      "friendly_name": "Jasons iPhone Health Heart Rate Variability Sdnn"
+    },
+    "last_changed": "2026-01-09T19:37:18.373196+00:00",
+    "last_reported": "2026-01-09T19:37:18.373196+00:00",
+    "last_updated": "2026-01-09T19:37:18.373196+00:00",
+    "context": {
+      "id": "01KEJ46RS5XJW2J3WT4WADSP2Q",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_flights_climbed",
+    "state": "1",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T19:25:41+00:00",
+      "source_device": "Apple Watch",
+      "min": 1.0,
+      "max": 1.0,
+      "avg": 1.0,
+      "unit_of_measurement": "count",
+      "icon": "mdi:stairs-up",
+      "friendly_name": "Jasons iPhone Health Flights Climbed"
+    },
+    "last_changed": "2026-01-09T02:16:57.057523+00:00",
+    "last_reported": "2026-01-09T19:37:18.372859+00:00",
+    "last_updated": "2026-01-09T19:37:18.372859+00:00",
+    "context": {
+      "id": "01KEJ46RS4CFCGABR7WX1G10HY",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_connectivity_test",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "friendly_name": "Jasons iPhone Health Connectivity Test",
+      "supported_features": 0,
+      "unit_of_measurement": "count"
+    },
+    "last_changed": "2026-01-08T20:39:20.487143+00:00",
+    "last_reported": "2026-01-08T20:39:20.487143+00:00",
+    "last_updated": "2026-01-08T20:39:20.487143+00:00",
+    "context": {
+      "id": "01KEFNBMN7SBFTK955MAFX8NT4",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_heart_rate",
+    "state": "84",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T20:36:27+00:00",
+      "source_device": "Apple Watch",
+      "min": 84.0,
+      "max": 85.0,
+      "avg": 84.3,
+      "unit_of_measurement": "bpm",
+      "icon": "mdi:heart-pulse",
+      "friendly_name": "Jasons iPhone Health Heart Rate"
+    },
+    "last_changed": "2026-01-09T20:55:54.149838+00:00",
+    "last_reported": "2026-01-09T20:55:54.149838+00:00",
+    "last_updated": "2026-01-09T20:55:54.149838+00:00",
+    "context": {
+      "id": "01KEJ8PP15K455EKSRMS6NE9F6",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_distance_cycling",
+    "state": "0.0673205280488492",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2025-05-20T20:34:32+00:00",
+      "source_device": "Apple Watch",
+      "min": 0.06732052804884915,
+      "max": 0.06732052804884915,
+      "avg": 0.06732052804884915,
+      "unit_of_measurement": "mi",
+      "device_class": "distance",
+      "icon": "mdi:bike",
+      "friendly_name": "Jasons iPhone Health Distance Cycling"
+    },
+    "last_changed": "2026-01-09T02:16:57.048595+00:00",
+    "last_reported": "2026-01-09T02:22:50.931878+00:00",
+    "last_updated": "2026-01-09T02:16:57.048595+00:00",
+    "context": {
+      "id": "01KEG8NTER6182X8QA0C1KRZSQ",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_distance_walking_running",
+    "state": "0.00497096953789867",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T19:58:18+00:00",
+      "source_device": "iPhone",
+      "min": 0.004970969537898671,
+      "max": 0.04172979947831046,
+      "avg": 0.01782370213675371,
+      "unit_of_measurement": "mi",
+      "device_class": "distance",
+      "icon": "mdi:walk",
+      "friendly_name": "Jasons iPhone Health Distance Walking Running"
+    },
+    "last_changed": "2026-01-09T20:55:53.918766+00:00",
+    "last_reported": "2026-01-09T20:55:54.147163+00:00",
+    "last_updated": "2026-01-09T20:55:54.147163+00:00",
+    "context": {
+      "id": "01KEJ8PP13E9XQHBEWNQQHNE70",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_active_energy_burned",
+    "state": "0.45",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T20:22:22+00:00",
+      "source_device": "Apple Watch",
+      "min": 0.243,
+      "max": 7.779000000000002,
+      "avg": 2.2627,
+      "unit_of_measurement": "kcal",
+      "icon": "mdi:fire",
+      "friendly_name": "Jasons iPhone Health Active Energy Burned"
+    },
+    "last_changed": "2026-01-09T20:55:54.152408+00:00",
+    "last_reported": "2026-01-09T20:55:54.152408+00:00",
+    "last_updated": "2026-01-09T20:55:54.152408+00:00",
+    "context": {
+      "id": "01KEJ8PP18VX68ZW5JDM7KVW11",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_environmental_sound_exposure",
+    "state": "71.6872025924761",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T20:19:26+00:00",
+      "source_device": "Apple Watch",
+      "min": 66.05496540067533,
+      "max": 71.6872025924761,
+      "avg": 69.184377058699,
+      "unit_of_measurement": "dB",
+      "icon": "mdi:volume-high",
+      "friendly_name": "Jasons iPhone Health Environmental Sound Exposure"
+    },
+    "last_changed": "2026-01-09T20:55:54.152711+00:00",
+    "last_reported": "2026-01-09T20:55:54.152711+00:00",
+    "last_updated": "2026-01-09T20:55:54.152711+00:00",
+    "context": {
+      "id": "01KEJ8PP1883WEBFH5DC5J2169",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_basal_energy_burned",
+    "state": "26.309",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T20:14:31+00:00",
+      "source_device": "Apple Watch",
+      "min": 0.327,
+      "max": 36.385,
+      "avg": 24.834800000000005,
+      "unit_of_measurement": "kcal",
+      "icon": "mdi:fire-circle",
+      "friendly_name": "Jasons iPhone Health Basal Energy Burned"
+    },
+    "last_changed": "2026-01-09T20:55:54.150231+00:00",
+    "last_reported": "2026-01-09T20:55:54.150337+00:00",
+    "last_updated": "2026-01-09T20:55:54.150337+00:00",
+    "context": {
+      "id": "01KEJ8PP16Y738NVKQMJN91R8P",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_weight",
+    "state": "359.022793968073",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-07T13:17:15+00:00",
+      "source_device": "iPhone",
+      "min": 359.02279396807313,
+      "max": 359.02279396807313,
+      "avg": 359.02279396807313,
+      "unit_of_measurement": "lb",
+      "device_class": "weight",
+      "icon": "mdi:scale-bathroom",
+      "friendly_name": "Jasons iPhone Health Weight"
+    },
+    "last_changed": "2026-01-09T02:16:57.047430+00:00",
+    "last_reported": "2026-01-09T02:22:50.931316+00:00",
+    "last_updated": "2026-01-09T02:16:57.047430+00:00",
+    "context": {
+      "id": "01KEG8NTEQ5PX5YSAN5TRAX2ZV",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_vo2_max",
+    "state": "24.81",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2025-11-16T18:22:06+00:00",
+      "source_device": "iPhone",
+      "min": 24.81,
+      "max": 24.81,
+      "avg": 24.81,
+      "unit_of_measurement": "mL/(kg*min)",
+      "icon": "mdi:run",
+      "friendly_name": "Jasons iPhone Health Vo2 Max"
+    },
+    "last_changed": "2026-01-09T02:16:57.046617+00:00",
+    "last_reported": "2026-01-09T02:22:50.931246+00:00",
+    "last_updated": "2026-01-09T02:16:57.046617+00:00",
+    "context": {
+      "id": "01KEG8NTEP9Z2WHAX2Y86RH3S0",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_body_fat_percentage",
+    "state": "49.2",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-07T13:17:15+00:00",
+      "source_device": "iPhone",
+      "min": 49.2,
+      "max": 49.2,
+      "avg": 49.2,
+      "unit_of_measurement": "%",
+      "icon": "mdi:percent",
+      "friendly_name": "Jasons iPhone Health Body Fat Percentage"
+    },
+    "last_changed": "2026-01-09T02:16:57.050173+00:00",
+    "last_reported": "2026-01-09T04:05:08.036886+00:00",
+    "last_updated": "2026-01-09T04:05:07.199855+00:00",
+    "context": {
+      "id": "01KEGEVWFZF2VZ7GESVD7QRYDG",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_blood_glucose",
+    "state": "113",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2025-12-16T03:46:00+00:00",
+      "source_device": "iPhone",
+      "min": 113.0,
+      "max": 113.0,
+      "avg": 113.0,
+      "unit_of_measurement": "mg/dL",
+      "icon": "mdi:diabetes",
+      "friendly_name": "Jasons iPhone Health Blood Glucose"
+    },
+    "last_changed": "2026-01-09T02:16:57.048967+00:00",
+    "last_reported": "2026-01-09T02:22:50.931567+00:00",
+    "last_updated": "2026-01-09T02:16:57.048967+00:00",
+    "context": {
+      "id": "01KEG8NTERSJ8FS037DEYWV6R7",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_bmi",
+    "state": "44.6",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-07T13:17:15+00:00",
+      "source_device": "iPhone",
+      "min": 44.6,
+      "max": 44.6,
+      "avg": 44.6,
+      "unit_of_measurement": "count",
+      "icon": "mdi:human-male-height",
+      "friendly_name": "Jasons iPhone Health Bmi"
+    },
+    "last_changed": "2026-01-09T02:16:57.051230+00:00",
+    "last_reported": "2026-01-09T02:22:50.932059+00:00",
+    "last_updated": "2026-01-09T02:16:57.051230+00:00",
+    "context": {
+      "id": "01KEG8NTEVZC0W3DHGXMHJEKR3",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_lean_body_mass",
+    "state": "182.190013469583",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-07T13:17:15+00:00",
+      "source_device": "iPhone",
+      "min": 182.19001346958282,
+      "max": 182.19001346958282,
+      "avg": 182.19001346958282,
+      "unit_of_measurement": "lb",
+      "device_class": "weight",
+      "icon": "mdi:human",
+      "friendly_name": "Jasons iPhone Health Lean Body Mass"
+    },
+    "last_changed": "2026-01-09T02:16:57.049812+00:00",
+    "last_reported": "2026-01-09T04:05:08.037040+00:00",
+    "last_updated": "2026-01-09T04:05:08.037040+00:00",
+    "context": {
+      "id": "01KEGEVXA56C3XJWS0QC0TN78B",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_hydration",
+    "state": "29.9254100911311",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-06T03:29:40+00:00",
+      "source_device": "iPhone",
+      "min": 29.925410091131052,
+      "max": 29.925410091131052,
+      "avg": 29.92541009113105,
+      "unit_of_measurement": "fl oz US",
+      "icon": "mdi:cup-water",
+      "friendly_name": "Jasons iPhone Health Hydration"
+    },
+    "last_changed": "2026-01-09T12:30:33.993782+00:00",
+    "last_reported": "2026-01-09T14:24:04.148608+00:00",
+    "last_updated": "2026-01-09T14:24:04.148608+00:00",
+    "context": {
+      "id": "01KEHJ971MCMM7YXNYZY4PNQ3Q",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_walking",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Duration Walking",
+      "supported_features": 0,
+      "unit_of_measurement": "s"
+    },
+    "last_changed": "2026-01-08T20:39:20.488123+00:00",
+    "last_reported": "2026-01-08T20:39:20.488123+00:00",
+    "last_updated": "2026-01-08T20:39:20.488123+00:00",
+    "context": {
+      "id": "01KEFNBMN8K9S4YDEPGCGV6BHC",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_walking",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Energy Walking",
+      "supported_features": 0,
+      "unit_of_measurement": "kcal"
+    },
+    "last_changed": "2026-01-08T20:39:20.488184+00:00",
+    "last_reported": "2026-01-08T20:39:20.488184+00:00",
+    "last_updated": "2026-01-08T20:39:20.488184+00:00",
+    "context": {
+      "id": "01KEFNBMN8YYH0JN444X3MESXS",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_distance_walking",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Distance Walking",
+      "supported_features": 0,
+      "unit_of_measurement": "mi"
+    },
+    "last_changed": "2026-01-08T20:39:20.488227+00:00",
+    "last_reported": "2026-01-08T20:39:20.488227+00:00",
+    "last_updated": "2026-01-08T20:39:20.488227+00:00",
+    "context": {
+      "id": "01KEFNBMN8QX96HD89C8QVXYYS",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_workout_44",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Duration Workout 44",
+      "supported_features": 0,
+      "unit_of_measurement": "s"
+    },
+    "last_changed": "2026-01-08T20:39:20.488268+00:00",
+    "last_reported": "2026-01-08T20:39:20.488268+00:00",
+    "last_updated": "2026-01-08T20:39:20.488268+00:00",
+    "context": {
+      "id": "01KEFNBMN801XGJ7BYG2PSG2MN",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_workout_44",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Energy Workout 44",
+      "supported_features": 0,
+      "unit_of_measurement": "kcal"
+    },
+    "last_changed": "2026-01-08T20:39:20.488310+00:00",
+    "last_reported": "2026-01-08T20:39:20.488310+00:00",
+    "last_updated": "2026-01-08T20:39:20.488310+00:00",
+    "context": {
+      "id": "01KEFNBMN86CF1HHH1NC9NNGBP",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_cycling",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Duration Cycling",
+      "supported_features": 0,
+      "unit_of_measurement": "s"
+    },
+    "last_changed": "2026-01-08T20:39:20.488347+00:00",
+    "last_reported": "2026-01-08T20:39:20.488347+00:00",
+    "last_updated": "2026-01-08T20:39:20.488347+00:00",
+    "context": {
+      "id": "01KEFNBMN81HTFS61BH1REN3DN",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_cycling",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Energy Cycling",
+      "supported_features": 0,
+      "unit_of_measurement": "kcal"
+    },
+    "last_changed": "2026-01-08T20:39:20.488388+00:00",
+    "last_reported": "2026-01-08T20:39:20.488388+00:00",
+    "last_updated": "2026-01-08T20:39:20.488388+00:00",
+    "context": {
+      "id": "01KEFNBMN8JQX9VWHBNF3QWJ6N",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_distance_cycling",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Distance Cycling",
+      "supported_features": 0,
+      "unit_of_measurement": "mi"
+    },
+    "last_changed": "2026-01-08T20:39:20.488425+00:00",
+    "last_reported": "2026-01-08T20:39:20.488425+00:00",
+    "last_updated": "2026-01-08T20:39:20.488425+00:00",
+    "context": {
+      "id": "01KEFNBMN8VFKCXATD9DBYVPGH",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_hiit",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Duration Hiit",
+      "supported_features": 0,
+      "unit_of_measurement": "s"
+    },
+    "last_changed": "2026-01-08T20:39:20.488461+00:00",
+    "last_reported": "2026-01-08T20:39:20.488461+00:00",
+    "last_updated": "2026-01-08T20:39:20.488461+00:00",
+    "context": {
+      "id": "01KEFNBMN81XZC7WVG2H6YMN69",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_hiit",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Energy Hiit",
+      "supported_features": 0,
+      "unit_of_measurement": "kcal"
+    },
+    "last_changed": "2026-01-08T20:39:20.488501+00:00",
+    "last_reported": "2026-01-08T20:39:20.488501+00:00",
+    "last_updated": "2026-01-08T20:39:20.488501+00:00",
+    "context": {
+      "id": "01KEFNBMN8AHK0BG6BMRVFVSY5",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_in_bed",
+    "state": "398.612829041481",
+    "attributes": {
+      "last_updated": "2025-11-11T12:57:53+00:00",
+      "source_device": "iPhone",
+      "min": 155.9314348757267,
+      "max": 504.1387847006321,
+      "avg": 370.2216105447213,
+      "unit_of_measurement": "min",
+      "friendly_name": "Jasons iPhone Health Sleep In Bed"
+    },
+    "last_changed": "2026-01-09T18:30:47.087314+00:00",
+    "last_reported": "2026-01-09T18:30:47.087314+00:00",
+    "last_updated": "2026-01-09T18:30:47.087314+00:00",
+    "context": {
+      "id": "01KEJ0CZ1F6F674KHHCN5JZVX9",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_functional_strength",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Duration Functional Strength",
+      "supported_features": 0,
+      "unit_of_measurement": "s"
+    },
+    "last_changed": "2026-01-08T20:39:20.488572+00:00",
+    "last_reported": "2026-01-08T20:39:20.488572+00:00",
+    "last_updated": "2026-01-08T20:39:20.488572+00:00",
+    "context": {
+      "id": "01KEFNBMN8642DDN8ACPN7G9FX",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_functional_strength",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "state_class": "measurement",
+      "friendly_name": "Jasons iPhone Health Workout Energy Functional Strength",
+      "supported_features": 0,
+      "unit_of_measurement": "kcal"
+    },
+    "last_changed": "2026-01-08T20:39:20.488613+00:00",
+    "last_reported": "2026-01-08T20:39:20.488613+00:00",
+    "last_updated": "2026-01-08T20:39:20.488613+00:00",
+    "context": {
+      "id": "01KEFNBMN8Q7JTJC3VQ6295Y21",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_core",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "friendly_name": "Jasons iPhone Health Sleep Core",
+      "supported_features": 0,
+      "unit_of_measurement": "min"
+    },
+    "last_changed": "2026-01-08T20:39:20.488648+00:00",
+    "last_reported": "2026-01-08T20:39:20.488648+00:00",
+    "last_updated": "2026-01-08T20:39:20.488648+00:00",
+    "context": {
+      "id": "01KEFNBMN8ZP17WN5H4DVSCS5Y",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_deep",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "friendly_name": "Jasons iPhone Health Sleep Deep",
+      "supported_features": 0,
+      "unit_of_measurement": "min"
+    },
+    "last_changed": "2026-01-08T20:39:20.488682+00:00",
+    "last_reported": "2026-01-08T20:39:20.488682+00:00",
+    "last_updated": "2026-01-08T20:39:20.488682+00:00",
+    "context": {
+      "id": "01KEFNBMN80Y3ZVR701ANCVYYB",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_rem",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "friendly_name": "Jasons iPhone Health Sleep Rem",
+      "supported_features": 0,
+      "unit_of_measurement": "min"
+    },
+    "last_changed": "2026-01-08T20:39:20.488719+00:00",
+    "last_reported": "2026-01-08T20:39:20.488719+00:00",
+    "last_updated": "2026-01-08T20:39:20.488719+00:00",
+    "context": {
+      "id": "01KEFNBMN8RA171R8SCTKVPDX5",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_unknown",
+    "state": "unavailable",
+    "attributes": {
+      "restored": true,
+      "friendly_name": "Jasons iPhone Health Sleep Unknown",
+      "supported_features": 0,
+      "unit_of_measurement": "min"
+    },
+    "last_changed": "2026-01-08T20:39:20.488753+00:00",
+    "last_reported": "2026-01-08T20:39:20.488753+00:00",
+    "last_updated": "2026-01-08T20:39:20.488753+00:00",
+    "context": {
+      "id": "01KEFNBMN8P32BWW8ZCHTV7MC1",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_sleep_asleep",
+    "state": "14.0041869501273",
+    "attributes": {
+      "last_updated": "2025-11-11T12:57:53+00:00",
+      "source_device": "iPhone",
+      "min": 14.004186950127284,
+      "max": 89.51940343181292,
+      "avg": 46.512927706440294,
+      "unit_of_measurement": "min",
+      "friendly_name": "Jasons iPhone Health Sleep Asleep"
+    },
+    "last_changed": "2026-01-09T18:30:47.082101+00:00",
+    "last_reported": "2026-01-09T18:30:47.082101+00:00",
+    "last_updated": "2026-01-09T18:30:47.082101+00:00",
+    "context": {
+      "id": "01KEJ0CZ1AWVK2S6KGTWTGFC5E",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_steps_daily_total",
+    "state": "493",
+    "attributes": {
+      "last_updated": "2026-01-09T20:56:13+00:00",
+      "source_device": "iPhone",
+      "min": 483.0,
+      "max": 493.0,
+      "avg": 487.0,
+      "unit_of_measurement": "count",
+      "friendly_name": "Jasons iPhone Health Steps Daily Total"
+    },
+    "last_changed": "2026-01-09T20:55:53.922874+00:00",
+    "last_reported": "2026-01-09T20:56:13.637640+00:00",
+    "last_updated": "2026-01-09T20:56:13.637640+00:00",
+    "context": {
+      "id": "01KEJ8Q9256KNMS03M4ES790JY",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_active_energy_burned_daily_total",
+    "state": "485.150999999998",
+    "attributes": {
+      "last_updated": "2026-01-09T20:56:13+00:00",
+      "source_device": "iPhone",
+      "min": 463.76999999999833,
+      "max": 485.15099999999825,
+      "avg": 472.3223999999983,
+      "unit_of_measurement": "kcal",
+      "friendly_name": "Jasons iPhone Health Active Energy Burned Daily Total"
+    },
+    "last_changed": "2026-01-09T20:55:53.923361+00:00",
+    "last_reported": "2026-01-09T20:56:13.638065+00:00",
+    "last_updated": "2026-01-09T20:56:13.638065+00:00",
+    "context": {
+      "id": "01KEJ8Q926CT3FEAR71WW98M96",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_flights_climbed_daily_total",
+    "state": "3",
+    "attributes": {
+      "last_updated": "2026-01-09T20:56:13+00:00",
+      "source_device": "iPhone",
+      "min": 3.0,
+      "max": 3.0,
+      "avg": 3.0,
+      "unit_of_measurement": "count",
+      "friendly_name": "Jasons iPhone Health Flights Climbed Daily Total"
+    },
+    "last_changed": "2026-01-09T19:37:58.330352+00:00",
+    "last_reported": "2026-01-09T20:56:13.637792+00:00",
+    "last_updated": "2026-01-09T20:56:13.637792+00:00",
+    "context": {
+      "id": "01KEJ8Q925RE43AXQ30NHRHEPH",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_basal_energy_burned_daily_total",
+    "state": "1841.22300000003",
+    "attributes": {
+      "last_updated": "2026-01-09T20:56:13+00:00",
+      "source_device": "iPhone",
+      "min": 1743.3580000000293,
+      "max": 1841.2230000000293,
+      "avg": 1782.5040000000292,
+      "unit_of_measurement": "kcal",
+      "friendly_name": "Jasons iPhone Health Basal Energy Burned Daily Total"
+    },
+    "last_changed": "2026-01-09T20:55:53.922988+00:00",
+    "last_reported": "2026-01-09T20:56:13.637933+00:00",
+    "last_updated": "2026-01-09T20:56:13.637933+00:00",
+    "context": {
+      "id": "01KEJ8Q92527R61YJV3P5PCXQR",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_distance_walking_running_daily_total",
+    "state": "0.21617157233949",
+    "attributes": {
+      "last_updated": "2026-01-09T20:56:13+00:00",
+      "source_device": "iPhone",
+      "min": 0.21120060280159111,
+      "max": 0.2161715723394898,
+      "avg": 0.21318899061675062,
+      "unit_of_measurement": "mi",
+      "friendly_name": "Jasons iPhone Health Distance Walking Running Daily Total"
+    },
+    "last_changed": "2026-01-09T20:55:53.919461+00:00",
+    "last_reported": "2026-01-09T20:56:13.637375+00:00",
+    "last_updated": "2026-01-09T20:56:13.637375+00:00",
+    "context": {
+      "id": "01KEJ8Q925XCZVWASDJHMDTCMW",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_duration_strength_training",
+    "state": "1494.09190797806",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T18:20:09+00:00",
+      "source_device": "Apple Watch",
+      "min": 1494.0919079780579,
+      "max": 1494.0919079780579,
+      "avg": 1494.0919079780579,
+      "unit_of_measurement": "s",
+      "friendly_name": "Jasons iPhone Health Workout Duration Strength Training"
+    },
+    "last_changed": "2026-01-09T18:21:28.330247+00:00",
+    "last_reported": "2026-01-09T18:21:32.444197+00:00",
+    "last_updated": "2026-01-09T18:21:28.330247+00:00",
+    "context": {
+      "id": "01KEHZVXCAWTF6E5HQVYAQY0WS",
+      "parent_id": null,
+      "user_id": null
+    }
+  },
+  {
+    "entity_id": "sensor.jasons_iphone_health_workout_energy_strength_training",
+    "state": "283.444680942575",
+    "attributes": {
+      "state_class": "measurement",
+      "last_updated": "2026-01-09T18:20:09+00:00",
+      "source_device": "Apple Watch",
+      "min": 283.4446809425753,
+      "max": 283.4446809425753,
+      "avg": 283.4446809425753,
+      "unit_of_measurement": "kcal",
+      "friendly_name": "Jasons iPhone Health Workout Energy Strength Training"
+    },
+    "last_changed": "2026-01-09T18:21:28.334662+00:00",
+    "last_reported": "2026-01-09T18:21:33.287576+00:00",
+    "last_updated": "2026-01-09T18:21:28.334662+00:00",
+    "context": {
+      "id": "01KEHZVXCEMKKXEKH5QR6DA06N",
+      "parent_id": null,
+      "user_id": null
+    }
+  }
+]
