@@ -88,8 +88,7 @@ export class FitnessWorkoutsCard extends LitElement {
     return (
       item.name ??
       this.workoutMeta(item)?.name ??
-      this.localize("label.workout") ||
-      "Workout"
+      (this.localize("label.workout") ?? "Workout")
     );
   }
 
