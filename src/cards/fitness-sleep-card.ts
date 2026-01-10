@@ -9,12 +9,12 @@ import { normalizeMetrics } from "../utils/metrics";
 type SleepStage = "asleep" | "in_bed" | "core" | "deep" | "rem" | "unknown";
 
 const STAGE_COLORS: Record<SleepStage, string> = {
-  asleep: "var(--primary-color)",
-  in_bed: "var(--secondary-text-color)",
-  core: "var(--accent-color, #5c7cfa)",
-  deep: "var(--success-color, #4caf50)",
-  rem: "var(--warning-color, #f9a825)",
-  unknown: "var(--divider-color, #888)"
+  asleep: "var(--sleep-asleep-color, #4a90e2)",
+  in_bed: "var(--sleep-in-bed-color, #9ea3aa)",
+  core: "var(--sleep-core-color, #f5a623)",
+  deep: "var(--sleep-deep-color, #2e9b4f)",
+  rem: "var(--sleep-rem-color, #9b59b6)",
+  unknown: "var(--sleep-unknown-color, #bfc2c6)"
 };
 
 @customElement("fitness-sleep-card")
