@@ -24,7 +24,7 @@ const M = (e, ...t) => {
     throw Error("Value passed to 'css' function must be a 'css' function result: " + a + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
   })(r) + e[n + 1], e[0]);
   return new ot(s, e, Re);
-}, Fe = Ne ? (e) => e : (e) => e instanceof CSSStyleSheet ? ((t) => {
+}, Be = Ne ? (e) => e : (e) => e instanceof CSSStyleSheet ? ((t) => {
   let s = "";
   for (const i of t.cssRules) s += i.cssText;
   return ((i) => new ot(typeof i == "string" ? i : i + "", void 0, Re))(s);
@@ -56,9 +56,9 @@ const M = (e, ...t) => {
       }
   }
   return s;
-} }, Ue = (e, t) => !vt(e, t), qe = { attribute: !0, type: String, converter: xe, reflect: !1, useDefault: !1, hasChanged: Ue };
+} }, We = (e, t) => !vt(e, t), qe = { attribute: !0, type: String, converter: xe, reflect: !1, useDefault: !1, hasChanged: We };
 Symbol.metadata ??= /* @__PURE__ */ Symbol("metadata"), Pe.litPropertyMetadata ??= /* @__PURE__ */ new WeakMap();
-let B = class extends HTMLElement {
+let F = class extends HTMLElement {
   static addInitializer(e) {
     this._$Ei(), (this.l ??= []).push(e);
   }
@@ -112,8 +112,8 @@ let B = class extends HTMLElement {
     const t = [];
     if (Array.isArray(e)) {
       const s = new Set(e.flat(1 / 0).reverse());
-      for (const i of s) t.unshift(Fe(i));
-    } else e !== void 0 && t.push(Fe(e));
+      for (const i of s) t.unshift(Be(i));
+    } else e !== void 0 && t.push(Be(e));
     return t;
   }
   static _$Eu(e, t) {
@@ -177,7 +177,7 @@ let B = class extends HTMLElement {
   requestUpdate(e, t, s, i = !1, r) {
     if (e !== void 0) {
       const n = this.constructor;
-      if (i === !1 && (r = this[e]), s ??= n.getPropertyOptions(e), !((s.hasChanged ?? Ue)(r, t) || s.useDefault && s.reflect && r === this._$Ej?.get(e) && !this.hasAttribute(n._$Eu(e, s)))) return;
+      if (i === !1 && (r = this[e]), s ??= n.getPropertyOptions(e), !((s.hasChanged ?? We)(r, t) || s.useDefault && s.reflect && r === this._$Ej?.get(e) && !this.hasAttribute(n._$Eu(e, s)))) return;
       this.C(e, t, s);
     }
     this.isUpdatePending === !1 && (this._$ES = this._$EP());
@@ -245,8 +245,8 @@ let B = class extends HTMLElement {
   firstUpdated(e) {
   }
 };
-B.elementStyles = [], B.shadowRootOptions = { mode: "open" }, B[de("elementProperties")] = /* @__PURE__ */ new Map(), B[de("finalized")] = /* @__PURE__ */ new Map(), At?.({ ReactiveElement: B }), (Pe.reactiveElementVersions ??= []).push("2.1.2");
-const Je = globalThis, Ge = (e) => e, Se = Je.trustedTypes, Ke = Se ? Se.createPolicy("lit-html", { createHTML: (e) => e }) : void 0, lt = "$lit$", S = `lit$${Math.random().toFixed(9).slice(2)}$`, ct = "?" + S, Pt = `<${ct}>`, D = document, ue = () => D.createComment(""), pe = (e) => e === null || typeof e != "object" && typeof e != "function", Te = Array.isArray, Oe = `[ 	
+F.elementStyles = [], F.shadowRootOptions = { mode: "open" }, F[de("elementProperties")] = /* @__PURE__ */ new Map(), F[de("finalized")] = /* @__PURE__ */ new Map(), At?.({ ReactiveElement: F }), (Pe.reactiveElementVersions ??= []).push("2.1.2");
+const Ue = globalThis, Ge = (e) => e, Se = Ue.trustedTypes, Ke = Se ? Se.createPolicy("lit-html", { createHTML: (e) => e }) : void 0, lt = "$lit$", S = `lit$${Math.random().toFixed(9).slice(2)}$`, ct = "?" + S, Pt = `<${ct}>`, D = document, ue = () => D.createComment(""), pe = (e) => e === null || typeof e != "object" && typeof e != "function", Te = Array.isArray, Oe = `[ 	
 \f\r]`, Y = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, Ze = /-->/g, Xe = />/g, P = RegExp(`>|${Oe}(?:([^\\s"'>=/]+)(${Oe}*=${Oe}*(?:[^ 	
 \f\r"'\`<>=]|("|')|))|$)`, "g"), Ye = /'/g, Qe = /"/g, dt = /^(?:script|style|textarea|title)$/i, ht = (e) => (t, ...s) => ({ _$litType$: e, strings: t, values: s }), c = ht(1), et = ht(2), I = /* @__PURE__ */ Symbol.for("lit-noChange"), d = /* @__PURE__ */ Symbol.for("lit-nothing"), tt = /* @__PURE__ */ new WeakMap(), O = D.createTreeWalker(D, 129);
 function ut(e, t) {
@@ -279,7 +279,7 @@ class _e {
       if (r.nodeType === 1) {
         if (r.hasAttributes()) for (const h of r.getAttributeNames()) if (h.endsWith(lt)) {
           const m = u[a++], g = r.getAttribute(h).split(S), f = /([.?@])?(.*)/.exec(m);
-          l.push({ type: 1, index: n, name: f[2], strings: g, ctor: f[1] === "." ? Ht : f[1] === "?" ? zt : f[1] === "@" ? jt : Ee }), r.removeAttribute(h);
+          l.push({ type: 1, index: n, name: f[2], strings: g, ctor: f[1] === "." ? Ht : f[1] === "?" ? jt : f[1] === "@" ? zt : Ee }), r.removeAttribute(h);
         } else h.startsWith(S) && (l.push({ type: 6, index: n }), r.removeAttribute(h));
         if (dt.test(r.tagName)) {
           const h = r.textContent.split(S), m = h.length - 1;
@@ -302,11 +302,11 @@ class _e {
     return i.innerHTML = t, i;
   }
 }
-function F(e, t, s = e, i) {
+function B(e, t, s = e, i) {
   if (t === I) return t;
   let r = i !== void 0 ? s._$Co?.[i] : s._$Cl;
   const n = pe(t) ? void 0 : t._$litDirective$;
-  return r?.constructor !== n && (r?._$AO?.(!1), n === void 0 ? r = void 0 : (r = new n(e), r._$AT(e, s, i)), i !== void 0 ? (s._$Co ??= [])[i] = r : s._$Cl = r), r !== void 0 && (t = F(e, r._$AS(e, t.values), r, i)), t;
+  return r?.constructor !== n && (r?._$AO?.(!1), n === void 0 ? r = void 0 : (r = new n(e), r._$AT(e, s, i)), i !== void 0 ? (s._$Co ??= [])[i] = r : s._$Cl = r), r !== void 0 && (t = B(e, r._$AS(e, t.values), r, i)), t;
 }
 class Ct {
   constructor(t, s) {
@@ -355,7 +355,7 @@ class ye {
     return this._$AB;
   }
   _$AI(t, s = this) {
-    t = F(this, t, s), pe(t) ? t === d || t == null || t === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : t !== this._$AH && t !== I && this._(t) : t._$litType$ !== void 0 ? this.$(t) : t.nodeType !== void 0 ? this.T(t) : ((i) => Te(i) || typeof i?.[Symbol.iterator] == "function")(t) ? this.k(t) : this._(t);
+    t = B(this, t, s), pe(t) ? t === d || t == null || t === "" ? (this._$AH !== d && this._$AR(), this._$AH = d) : t !== this._$AH && t !== I && this._(t) : t._$litType$ !== void 0 ? this.$(t) : t.nodeType !== void 0 ? this.T(t) : ((i) => Te(i) || typeof i?.[Symbol.iterator] == "function")(t) ? this.k(t) : this._(t);
   }
   O(t) {
     return this._$AA.parentNode.insertBefore(t, this._$AB);
@@ -408,11 +408,11 @@ class Ee {
   _$AI(t, s = this, i, r) {
     const n = this.strings;
     let a = !1;
-    if (n === void 0) t = F(this, t, s, 0), a = !pe(t) || t !== this._$AH && t !== I, a && (this._$AH = t);
+    if (n === void 0) t = B(this, t, s, 0), a = !pe(t) || t !== this._$AH && t !== I, a && (this._$AH = t);
     else {
       const o = t;
       let l, p;
-      for (t = n[0], l = 0; l < n.length - 1; l++) p = F(this, o[i + l], s, l), p === I && (p = this._$AH[l]), a ||= !pe(p) || p !== this._$AH[l], p === d ? t = d : t !== d && (t += (p ?? "") + n[l + 1]), this._$AH[l] = p;
+      for (t = n[0], l = 0; l < n.length - 1; l++) p = B(this, o[i + l], s, l), p === I && (p = this._$AH[l]), a ||= !pe(p) || p !== this._$AH[l], p === d ? t = d : t !== d && (t += (p ?? "") + n[l + 1]), this._$AH[l] = p;
     }
     a && !r && this.j(t);
   }
@@ -428,7 +428,7 @@ class Ht extends Ee {
     this.element[this.name] = t === d ? void 0 : t;
   }
 }
-class zt extends Ee {
+class jt extends Ee {
   constructor() {
     super(...arguments), this.type = 4;
   }
@@ -436,12 +436,12 @@ class zt extends Ee {
     this.element.toggleAttribute(this.name, !!t && t !== d);
   }
 }
-class jt extends Ee {
+class zt extends Ee {
   constructor(t, s, i, r, n) {
     super(t, s, i, r, n), this.type = 5;
   }
   _$AI(t, s = this) {
-    if ((t = F(this, t, s, 0) ?? d) === I) return;
+    if ((t = B(this, t, s, 0) ?? d) === I) return;
     const i = this._$AH, r = t === d && i !== d || t.capture !== i.capture || t.once !== i.once || t.passive !== i.passive, n = t !== d && (i === d || r);
     r && this.element.removeEventListener(this.name, this, i), n && this.element.addEventListener(this.name, this, t), this._$AH = t;
   }
@@ -457,13 +457,13 @@ class Ot {
     return this._$AM._$AU;
   }
   _$AI(t) {
-    F(this, t);
+    B(this, t);
   }
 }
-const Dt = Je.litHtmlPolyfillSupport;
-Dt?.(_e, ye), (Je.litHtmlVersions ??= []).push("3.3.2");
-const We = globalThis;
-class y extends B {
+const Dt = Ue.litHtmlPolyfillSupport;
+Dt?.(_e, ye), (Ue.litHtmlVersions ??= []).push("3.3.2");
+const Je = globalThis;
+class y extends F {
   constructor() {
     super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
   }
@@ -493,14 +493,14 @@ class y extends B {
     return I;
   }
 }
-y._$litElement$ = !0, y.finalized = !0, We.litElementHydrateSupport?.({ LitElement: y });
-const Mt = We.litElementPolyfillSupport;
-Mt?.({ LitElement: y }), (We.litElementVersions ??= []).push("4.2.2");
+y._$litElement$ = !0, y.finalized = !0, Je.litElementHydrateSupport?.({ LitElement: y });
+const Mt = Je.litElementPolyfillSupport;
+Mt?.({ LitElement: y }), (Je.litElementVersions ??= []).push("4.2.2");
 const k = (e) => (t, s) => {
   s !== void 0 ? s.addInitializer(() => {
     customElements.define(e, t);
   }) : customElements.define(e, t);
-}, Tt = { attribute: !0, type: String, converter: xe, reflect: !1, hasChanged: Ue }, Nt = (e = Tt, t, s) => {
+}, Tt = { attribute: !0, type: String, converter: xe, reflect: !1, hasChanged: We }, Nt = (e = Tt, t, s) => {
   const { kind: i, metadata: r } = s;
   let n = globalThis.litPropertyMetadata.get(r);
   if (n === void 0 && globalThis.litPropertyMetadata.set(r, n = /* @__PURE__ */ new Map()), i === "setter" && ((e = Object.create(e)).wrapped = !0), n.set(s.name, e), i === "accessor") {
@@ -745,7 +745,7 @@ function mt(e, t, s) {
 function gt(e, t) {
   return e === null || t === void 0 || t === 0 ? null : Math.min(Math.round(e / t * 100), 999);
 }
-function Ut(e, t) {
+function Wt(e, t) {
   if (e === null || t === void 0) return {};
   const s = (function(a) {
     if (a) return Array.isArray(a) ? { bands: a } : a;
@@ -776,7 +776,7 @@ function ge(e, t) {
   return e.name || t?.attributes?.friendly_name || (e.entity ? e.entity.split(".").slice(1).join(".") : "Metric");
 }
 const ve = { en: { "card.activity_title": "Activity", "card.vitals_title": "Vitals", "card.sleep_title": "Sleep", "card.body_title": "Body Metrics", "card.workouts_title": "Workouts", "card.overview_title": "Overview", "label.goal": "Goal", "label.of_goal": "{percent}% of goal", "label.total": "Total", "label.duration": "Duration", "label.energy": "Energy", "label.distance": "Distance", "label.asleep": "Asleep", "label.in_bed": "In bed", "label.core": "Core", "label.deep": "Deep", "label.rem": "REM", "label.unknown": "Unknown", "label.no_data": "No data", "label.no_previous": "No previous reading", "label.low": "Low", "label.high": "High", "label.ok": "OK", "label.trend": "Trend", "label.period.current": "Current", "label.period.today": "Today", "label.period.7d": "7 days", "label.period.30d": "30 days", "action.auto_detect": "Auto-detect metrics", "action.apply_suggestions": "Apply suggestions", "label.suggestions": "Suggestions", "label.history": "History", "label.history_window_days": "History window (days)", "label.history_points": "History points", "label.vs_previous": "vs previous {period}" }, es: { "card.activity_title": "Actividad", "card.vitals_title": "Signos vitales", "card.sleep_title": "Sueño", "card.body_title": "Métricas corporales", "label.goal": "Meta", "label.total": "Total", "label.no_data": "Sin datos", "label.low": "Bajo", "label.high": "Alto", "label.ok": "OK", "action.auto_detect": "Detectar métricas", "action.apply_suggestions": "Aplicar sugerencias", "label.history": "Historial" } };
-function Jt(e, t, s) {
+function Ut(e, t, s) {
   const i = (function(n) {
     if (!n) return ve.en;
     const a = n.split("-")[0];
@@ -786,7 +786,7 @@ function Jt(e, t, s) {
 }
 function x(e) {
   const t = e?.locale?.language || e?.language;
-  return (s, i) => Jt(s, t, i);
+  return (s, i) => Ut(s, t, i);
 }
 const A = { steps: { id: "steps", name: "Steps", icon: "mdi:shoe-print", unit: "count", decimals: 0 }, active_energy: { id: "active_energy", name: "Active Energy", icon: "mdi:fire", unit: "kcal", decimals: 0 }, distance_walk_run: { id: "distance_walk_run", name: "Walk/Run Distance", icon: "mdi:walk", unit: "mi", decimals: 2 }, distance_cycling: { id: "distance_cycling", name: "Cycling Distance", icon: "mdi:bike", unit: "mi", decimals: 2 }, flights_climbed: { id: "flights_climbed", name: "Flights Climbed", icon: "mdi:stairs-up", unit: "count", decimals: 0 }, heart_rate: { id: "heart_rate", name: "Heart Rate", icon: "mdi:heart-pulse", unit: "bpm", decimals: 0, ranges: { low: 50, normal: [55, 95], high: 120 } }, resting_heart_rate: { id: "resting_heart_rate", name: "Resting HR", icon: "mdi:heart", unit: "bpm", decimals: 0, ranges: { low: 45, normal: [50, 90], high: 110 } }, hrv_sdnn: { id: "hrv_sdnn", name: "HRV (SDNN)", icon: "mdi:heart-flash", unit: "ms", decimals: 0, ranges: { low: 20 } }, spo2: { id: "spo2", name: "SpO2", icon: "mdi:water-percent", unit: "%", decimals: 1, ranges: { low: 92, normal: [95, 100] } }, respiratory_rate: { id: "respiratory_rate", name: "Respiratory Rate", icon: "mdi:lungs", unit: "breaths/min", decimals: 0, ranges: { low: 10, normal: [12, 20], high: 24 } }, asleep: { id: "asleep", name: "Asleep", icon: "mdi:sleep", unit: "min", decimals: 0 }, in_bed: { id: "in_bed", name: "In bed", icon: "mdi:bed", unit: "min", decimals: 0 }, sleep_core: { id: "sleep_core", name: "Core", icon: "mdi:alpha-c-circle", unit: "min", decimals: 0 }, sleep_deep: { id: "sleep_deep", name: "Deep", icon: "mdi:alpha-d-circle", unit: "min", decimals: 0 }, sleep_rem: { id: "sleep_rem", name: "REM", icon: "mdi:alpha-r-circle", unit: "min", decimals: 0 }, sleep_unknown: { id: "sleep_unknown", name: "Unknown", icon: "mdi:help-circle-outline", unit: "min", decimals: 0 }, weight: { id: "weight", name: "Weight", icon: "mdi:scale-bathroom", unit: "lb", decimals: 1 }, bmi: { id: "bmi", name: "BMI", icon: "mdi:human-male-height", unit: "count", decimals: 1 }, body_fat_percentage: { id: "body_fat_percentage", name: "Body Fat", icon: "mdi:percent", unit: "%", decimals: 1 }, lean_body_mass: { id: "lean_body_mass", name: "Lean Mass", icon: "mdi:human", unit: "lb", decimals: 1 }, vo2_max: { id: "vo2_max", name: "VO2 Max", icon: "mdi:run", unit: "mL/(kg*min)", decimals: 1 }, glucose: { id: "glucose", name: "Blood Glucose", icon: "mdi:diabetes", unit: "mg/dL", decimals: 0 }, workout_cycling: { id: "workout_cycling", name: "Cycling", icon: "mdi:bike" }, workout_walking: { id: "workout_walking", name: "Walking", icon: "mdi:walk" }, workout_strength_training: { id: "workout_strength_training", name: "Strength Training", icon: "mdi:weight-lifter" }, workout_functional_strength: { id: "workout_functional_strength", name: "Functional Strength", icon: "mdi:arm-flex" }, workout_hiit: { id: "workout_hiit", name: "HIIT", icon: "mdi:lightning-bolt" }, workout_generic: { id: "workout_generic", name: "Workout", icon: "mdi:arm-flex-outline" } }, st = { activity: [{ preset: "active_energy" }, { preset: "steps" }, { preset: "distance_walk_run" }, { preset: "flights_climbed" }], vitals: [{ preset: "heart_rate" }, { preset: "resting_heart_rate" }, { preset: "hrv_sdnn" }, { preset: "spo2" }, { preset: "respiratory_rate" }], sleep: [{ preset: "asleep", stage: "asleep" }, { preset: "in_bed", stage: "in_bed" }, { preset: "sleep_core", stage: "core" }, { preset: "sleep_deep", stage: "deep" }, { preset: "sleep_rem", stage: "rem" }, { preset: "sleep_unknown", stage: "unknown" }], body: [{ preset: "weight" }, { preset: "bmi" }, { preset: "body_fat_percentage" }, { preset: "lean_body_mass" }, { preset: "vo2_max" }], workouts: [], overview: [] };
 function V(e = [], t) {
@@ -849,7 +849,7 @@ function q(e) {
   }
   return null;
 }
-async function ze(e, t, s, i, r) {
+async function je(e, t, s, i, r) {
   if (!e || !t) return [];
   const n = `${t}-${s.toISOString()}-${i.toISOString()}-${r}`, a = Date.now(), o = $e.get(n);
   if (o && a - o.ts < 3e4) return o.value;
@@ -859,10 +859,10 @@ async function ze(e, t, s, i, r) {
     if (!u || !u.length) return $e.set(n, { ts: a, value: [] }), [];
     const h = [], m = (i.getTime() - s.getTime()) / r;
     for (let g = 0; g < r; g++) {
-      const f = s.getTime() + g * m, ft = f + m, Le = [...u.filter((je) => {
-        const Be = new Date(je.last_changed).getTime();
-        return Be >= f && Be < ft;
-      })].reverse().find((je) => b(je.state) !== null);
+      const f = s.getTime() + g * m, ft = f + m, Le = [...u.filter((ze) => {
+        const Fe = new Date(ze.last_changed).getTime();
+        return Fe >= f && Fe < ft;
+      })].reverse().find((ze) => b(ze.state) !== null);
       h.push(Le ? b(Le.state) : NaN);
     }
     return $e.set(n, { ts: a, value: h }), h;
@@ -870,9 +870,9 @@ async function ze(e, t, s, i, r) {
     return $e.set(n, { ts: a, value: [] }), [];
   }
 }
-var Wt = Object.defineProperty, Lt = Object.getOwnPropertyDescriptor, Q = (e, t, s, i) => {
+var Jt = Object.defineProperty, Lt = Object.getOwnPropertyDescriptor, Q = (e, t, s, i) => {
   for (var r, n = i > 1 ? void 0 : i ? Lt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && Wt(t, s, n), n;
+  return i && n && Jt(t, s, n), n;
 };
 let E = class extends y {
   constructor() {
@@ -911,7 +911,7 @@ let E = class extends y {
     i.setDate(s.getDate() - e);
     const r = { ...this.historySeries };
     await Promise.all(this.config.metrics.filter((n) => n.entity).map(async (n) => {
-      const a = n.entity, o = await ze(this.hass, a, i, s, t);
+      const a = n.entity, o = await je(this.hass, a, i, s, t);
       r[a] = o;
     })), this.historySeries = r;
   }
@@ -1032,9 +1032,9 @@ function Ae(e, t = 120, s = 40) {
     />
   </svg>`;
 }
-var Bt = Object.defineProperty, It = Object.getOwnPropertyDescriptor, ee = (e, t, s, i) => {
+var Ft = Object.defineProperty, It = Object.getOwnPropertyDescriptor, ee = (e, t, s, i) => {
   for (var r, n = i > 1 ? void 0 : i ? It(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && Bt(t, s, n), n;
+  return i && n && Ft(t, s, n), n;
 };
 let C = class extends y {
   constructor() {
@@ -1073,7 +1073,7 @@ let C = class extends y {
     i.setDate(s.getDate() - e);
     const r = { ...this.historySeries };
     await Promise.all(this.config.metrics.filter((n) => n.entity).map(async (n) => {
-      const a = n.entity, o = await ze(this.hass, a, i, s, t);
+      const a = n.entity, o = await je(this.hass, a, i, s, t);
       r[a] = o;
     })), this.historySeries = r;
   }
@@ -1100,7 +1100,7 @@ let C = class extends y {
         return g.preset || g.entity;
       })(u);
       return m ? u.ranges ? Array.isArray(u.ranges) ? { bands: u.ranges } : u.ranges : h && h[m] ? h[m] : u.preset && nt[u.preset] ? nt[u.preset] : void 0 : void 0;
-    })(e, this.config?.zones) ?? e.ranges ?? this.defaultRanges(e, r), { status: o, band: l } = Ut(t, a), p = l?.label ?? (o === "low" ? this.localize("label.low") : o === "high" ? this.localize("label.high") : o === "normal" ? this.localize("label.ok") : "");
+    })(e, this.config?.zones) ?? e.ranges ?? this.defaultRanges(e, r), { status: o, band: l } = Wt(t, a), p = l?.label ?? (o === "low" ? this.localize("label.low") : o === "high" ? this.localize("label.high") : o === "normal" ? this.localize("label.ok") : "");
     return c`
       <div class="metric ${this.config?.compact ? "compact" : ""}">
         <div class="label">
@@ -1139,9 +1139,9 @@ C.styles = [K, M`
         align-self: flex-start;
       }
     `], ee([w({ attribute: !1 })], C.prototype, "hass", 2), ee([_()], C.prototype, "config", 2), ee([_()], C.prototype, "trends", 2), ee([_()], C.prototype, "historySeries", 2), C = ee([k("fitness-vitals-card")], C);
-var Ft = Object.defineProperty, Vt = Object.getOwnPropertyDescriptor, De = (e, t, s, i) => {
+var Bt = Object.defineProperty, Vt = Object.getOwnPropertyDescriptor, De = (e, t, s, i) => {
   for (var r, n = i > 1 ? void 0 : i ? Vt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && Ft(t, s, n), n;
+  return i && n && Bt(t, s, n), n;
 };
 const rt = { asleep: "var(--sleep-asleep-color, #4a90e2)", in_bed: "var(--sleep-in-bed-color, #9ea3aa)", core: "var(--sleep-core-color, #f5a623)", deep: "var(--sleep-deep-color, #2e9b4f)", rem: "var(--sleep-rem-color, #9b59b6)", unknown: "var(--sleep-unknown-color, #bfc2c6)" };
 let te = class extends y {
@@ -1293,7 +1293,7 @@ let H = class extends y {
     i.setDate(s.getDate() - e);
     const r = { ...this.historySeries };
     await Promise.all(this.config.metrics.filter((n) => n.entity).map(async (n) => {
-      const a = n.entity, o = await ze(this.hass, a, i, s, t);
+      const a = n.entity, o = await je(this.hass, a, i, s, t);
       r[a] = o;
     })), this.historySeries = r;
   }
@@ -1476,7 +1476,7 @@ var Xt = Object.defineProperty, Yt = Object.getOwnPropertyDescriptor, ne = (e, t
   for (var r, n = i > 1 ? void 0 : i ? Yt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
   return i && n && Xt(t, s, n), n;
 };
-let z = class extends y {
+let j = class extends y {
   constructor() {
     super(...arguments), this.trends = {}, this.historySeries = {};
   }
@@ -1513,7 +1513,7 @@ let z = class extends y {
     i.setDate(s.getDate() - e);
     const r = { ...this.historySeries }, n = [...this.config.primary_metrics, ...this.config.secondary_metrics ?? []];
     await Promise.all(n.filter((a) => a.entity).map(async (a) => {
-      const o = a.entity, l = await ze(this.hass, o, i, s, t);
+      const o = a.entity, l = await je(this.hass, o, i, s, t);
       r[o] = l;
     })), this.historySeries = r;
   }
@@ -1589,7 +1589,7 @@ let z = class extends y {
 function $(e, t, s) {
   e.dispatchEvent(new CustomEvent(t, { detail: s, bubbles: !0, composed: !0 }));
 }
-z.styles = [K, M`
+j.styles = [K, M`
       .primary-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1623,7 +1623,7 @@ z.styles = [K, M`
         inset: 0;
         border-radius: 50%;
       }
-    `], ne([w({ attribute: !1 })], z.prototype, "hass", 2), ne([_()], z.prototype, "config", 2), ne([_()], z.prototype, "trends", 2), ne([_()], z.prototype, "historySeries", 2), z = ne([k("fitness-overview-card")], z);
+    `], ne([w({ attribute: !1 })], j.prototype, "hass", 2), ne([_()], j.prototype, "config", 2), ne([_()], j.prototype, "trends", 2), ne([_()], j.prototype, "historySeries", 2), j = ne([k("fitness-overview-card")], j);
 const Z = [{ value: "current", label: "Current" }, { value: "today", label: "Today" }, { value: "7d", label: "7 days" }, { value: "30d", label: "30 days" }], G = [{ name: "entity", selector: { entity: {} } }, { name: "preset", selector: { select: { options: Object.values(A).map((e) => ({ value: e.id, label: e.name })) } } }, { name: "name", selector: { text: {} } }, { name: "icon", selector: { icon: {} } }, { name: "unit_override", selector: { text: {} } }, { name: "decimals", selector: { number: { min: 0, max: 4, mode: "box" } } }, { name: "goal", selector: { number: { min: 0, mode: "box" } } }, { name: "goal_entity", selector: { entity: {} } }, { name: "trend_entity", selector: { entity: {} } }, { name: "ranges", schema: [{ name: "low", selector: { number: { mode: "box" } } }, { name: "normal", selector: { text: {} } }, { name: "high", selector: { number: { mode: "box" } } }] }], fe = [{ name: "history", selector: { boolean: {} } }, { name: "history_window_days", selector: { number: { min: 1, max: 60, mode: "box" } } }, { name: "history_points", selector: { number: { min: 4, max: 120, mode: "box" } } }], at = { steps: "steps", heart_rate_variability: "hrv_sdnn", hrv: "hrv_sdnn", heart_rate: "heart_rate", resting_heart_rate: "resting_heart_rate", oxygen_saturation: "spo2", respiratory_rate: "respiratory_rate", sleep_asleep: "asleep", sleep_in_bed: "in_bed", sleep_core: "sleep_core", sleep_deep: "sleep_deep", sleep_rem: "sleep_rem", sleep_unknown: "sleep_unknown", weight: "weight", bmi: "bmi", body_fat: "body_fat_percentage", vo2: "vo2_max", hydration: "hydration", distance_walking_running: "distance_walk_run", distance_cycling: "distance_cycling", active_energy: "active_energy", basal_energy: "basal_energy", flights_climbed: "flights_climbed", workout_duration: "workout_generic", workout_energy: "workout_generic", workout_duration_walking: "workout_walking", workout_energy_walking: "workout_walking", workout_distance_walking: "workout_walking", workout_duration_cycling: "workout_cycling", workout_energy_cycling: "workout_cycling", workout_distance_cycling: "workout_cycling", workout_duration_strength_training: "workout_strength_training", workout_energy_strength_training: "workout_strength_training", workout_duration_functional_strength: "workout_functional_strength", workout_energy_functional_strength: "workout_functional_strength", workout_duration_hiit: "workout_hiit", workout_energy_hiit: "workout_hiit" };
 function X(e) {
   if (!e?.states) return [];
@@ -1826,7 +1826,7 @@ var rs = Object.defineProperty, as = Object.getOwnPropertyDescriptor, le = (e, t
   for (var r, n = i > 1 ? void 0 : i ? as(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
   return i && n && rs(t, s, n), n;
 };
-let U = class extends y {
+let W = class extends y {
   constructor() {
     super(...arguments), this._suggestions = [], this._selected = {};
   }
@@ -1882,28 +1882,46 @@ let U = class extends y {
     `;
   }
 };
-le([w({ attribute: !1 })], U.prototype, "hass", 2), le([_()], U.prototype, "_config", 2), le([_()], U.prototype, "_suggestions", 2), le([_()], U.prototype, "_selected", 2), U = le([k("fitness-body-metrics-card-editor")], U);
-var os = Object.defineProperty, ls = Object.getOwnPropertyDescriptor, J = (e, t, s, i) => {
+le([w({ attribute: !1 })], W.prototype, "hass", 2), le([_()], W.prototype, "_config", 2), le([_()], W.prototype, "_suggestions", 2), le([_()], W.prototype, "_selected", 2), W = le([k("fitness-body-metrics-card-editor")], W);
+var os = Object.defineProperty, ls = Object.getOwnPropertyDescriptor, U = (e, t, s, i) => {
   for (var r, n = i > 1 ? void 0 : i ? ls(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
   return i && n && os(t, s, n), n;
 };
 const cs = [{ name: "name", selector: { text: {} } }, { name: "icon", selector: { icon: {} } }, { name: "enabled", selector: { boolean: {} } }, { name: "duration_entity", selector: { entity: {} } }, { name: "energy_entity", selector: { entity: {} } }, { name: "distance_entity", selector: { entity: {} } }];
-let j = class extends y {
+let z = class extends y {
   constructor() {
     super(...arguments), this._suggestions = [], this._selected = {}, this._presetSelection = {};
   }
   setConfig(e) {
     this._config = { ...e }, this._syncPresetSelection(e);
   }
+  workoutPresets() {
+    return Object.values(A).filter((e) => e.id.startsWith("workout_"));
+  }
+  guessPresetForWorkout(e) {
+    if (e?.preset) return e.preset;
+    const t = (e?.name || "").toString().toLowerCase().trim(), s = e?.icon;
+    for (const i of this.workoutPresets()) {
+      const r = i.name.toLowerCase(), n = i.id.replace("workout_", "").replace(/_/g, " ");
+      if (t && (t === r || t === n) || s && i.icon && s === i.icon) return i.id;
+    }
+  }
+  findWorkoutIndexForPreset(e, t) {
+    return t.findIndex((s) => this.guessPresetForWorkout(s) === e);
+  }
   _syncPresetSelection(e) {
     const t = {};
     (e.workouts || []).forEach((s) => {
-      const i = s.preset;
+      const i = this.guessPresetForWorkout(s);
       i && (t[i] = s.enabled !== !1);
     }), this._presetSelection = t;
   }
   localize(e) {
     return x(this.hass)(e);
+  }
+  label(e, t) {
+    const s = this.localize(e);
+    return !s || s.startsWith("label.") ? t : s;
   }
   _valueChanged(e) {
     const t = e.detail.value;
@@ -1923,21 +1941,21 @@ let j = class extends y {
   }
   _togglePreset(e, t) {
     if (!this._config) return;
-    const s = A[e], i = [...this._config.workouts || []], r = i.findIndex((a) => a.preset === e);
-    r === -1 && t ? i.push(this._upsertPresetWorkout(e, {}, s)) : r >= 0 && (i[r] = { ...i[r], enabled: t });
+    const s = A[e], i = [...this._config.workouts || []], r = this.findWorkoutIndexForPreset(e, i);
+    r === -1 && t ? i.push(this._upsertPresetWorkout(e, {}, s)) : r >= 0 && (i[r] = { ...i[r], enabled: t, preset: e, icon: i[r].icon ?? s?.icon, name: i[r].name ?? s?.name });
     const n = { ...this._config, workouts: i };
     this._config = n, this._presetSelection = { ...this._presetSelection, [e]: t }, $(this, "config-changed", { config: n });
   }
   _presetEntry(e) {
-    return (this._config?.workouts || []).find((t) => t.preset === e);
+    return (this._config?.workouts || []).find((t) => this.guessPresetForWorkout(t) === e);
   }
   _upsertPresetWorkout(e, t, s = A[e]) {
     return { preset: e, name: t.name ?? s?.name ?? e, icon: t.icon ?? s?.icon, enabled: t.enabled ?? !0, duration_entity: t.duration_entity, energy_entity: t.energy_entity, distance_entity: t.distance_entity };
   }
   _updatePresetField(e, t, s) {
     if (!this._config) return;
-    const i = [...this._config.workouts || []], r = i.findIndex((a) => a.preset === e);
-    r === -1 ? i.push(this._upsertPresetWorkout(e, { [t]: s || void 0 })) : i[r] = { ...i[r], [t]: s || void 0 };
+    const i = [...this._config.workouts || []], r = this.findWorkoutIndexForPreset(e, i);
+    r === -1 ? i.push(this._upsertPresetWorkout(e, { [t]: s || void 0 })) : i[r] = { ...i[r], [t]: s || void 0, preset: e };
     const n = { ...this._config, workouts: i };
     this._config = n, $(this, "config-changed", { config: n });
   }
@@ -1963,42 +1981,42 @@ let j = class extends y {
           </div>` : ""}
       <div style="margin: 12px 0;">
         <div style="font-weight:600; margin-bottom:6px;">
-          ${this.localize("label.workouts") || "Workouts"}
+          ${this.label("label.workouts", "Workouts")}
         </div>
-        ${Object.values(A).filter((s) => s.id.startsWith("workout_")).map((s) => {
+        ${this.workoutPresets().map((s) => {
       const i = this._presetEntry(s.id), r = this._presetSelection[s.id] ?? !1;
       return c`<div style="margin-bottom:8px;">
-                <label style="display:flex; align-items:center; gap:8px;">
-                  <input
-                    type="checkbox"
-                    .checked=${r}
-                    @change=${(n) => this._togglePreset(s.id, n.target.checked)}
-                  />
-                  ${s.name}
-                </label>
+            <label style="display:flex; align-items:center; gap:8px;">
+              <input
+                type="checkbox"
+                .checked=${r}
+                @change=${(n) => this._togglePreset(s.id, n.target.checked)}
+              />
+              ${s.name}
+            </label>
                 ${r ? c`<div
                       style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:6px; padding-left:18px; margin-top:6px;"
                     >
                       <ha-entity-picker
                         .hass=${this.hass}
                         .value=${i?.duration_entity || ""}
-                        .label=${this.localize("label.duration") || "Duration entity"}
+                        .label=${this.label("label.duration", "Duration entity")}
                         @value-changed=${(n) => this._updatePresetField(s.id, "duration_entity", n.detail?.value)}
                       ></ha-entity-picker>
                       <ha-entity-picker
                         .hass=${this.hass}
                         .value=${i?.energy_entity || ""}
-                        .label=${this.localize("label.energy") || "Energy entity"}
+                        .label=${this.label("label.energy", "Energy entity")}
                         @value-changed=${(n) => this._updatePresetField(s.id, "energy_entity", n.detail?.value)}
                       ></ha-entity-picker>
                       <ha-entity-picker
                         .hass=${this.hass}
                         .value=${i?.distance_entity || ""}
-                        .label=${this.localize("label.distance") || "Distance entity"}
+                        .label=${this.label("label.distance", "Distance entity")}
                         @value-changed=${(n) => this._updatePresetField(s.id, "distance_entity", n.detail?.value)}
                       ></ha-entity-picker>
                     </div>` : ""}
-              </div>`;
+          </div>`;
     })}
         <div style="color: var(--secondary-text-color); font-size: 0.9em; margin-top:4px;">
           Toggle workouts to add/remove entries; edit entities below.
@@ -2014,12 +2032,12 @@ let j = class extends y {
     `;
   }
 };
-J([w({ attribute: !1 })], j.prototype, "hass", 2), J([_()], j.prototype, "_config", 2), J([_()], j.prototype, "_suggestions", 2), J([_()], j.prototype, "_selected", 2), J([_()], j.prototype, "_presetSelection", 2), j = J([k("fitness-workouts-card-editor")], j);
+U([w({ attribute: !1 })], z.prototype, "hass", 2), U([_()], z.prototype, "_config", 2), U([_()], z.prototype, "_suggestions", 2), U([_()], z.prototype, "_selected", 2), U([_()], z.prototype, "_presetSelection", 2), z = U([k("fitness-workouts-card-editor")], z);
 var ds = Object.defineProperty, hs = Object.getOwnPropertyDescriptor, ce = (e, t, s, i) => {
   for (var r, n = i > 1 ? void 0 : i ? hs(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
   return i && n && ds(t, s, n), n;
 };
-let W = class extends y {
+let J = class extends y {
   constructor() {
     super(...arguments), this._suggestions = [], this._selected = {};
   }
@@ -2075,7 +2093,7 @@ let W = class extends y {
     `;
   }
 };
-ce([w({ attribute: !1 })], W.prototype, "hass", 2), ce([_()], W.prototype, "_config", 2), ce([_()], W.prototype, "_suggestions", 2), ce([_()], W.prototype, "_selected", 2), W = ce([k("fitness-overview-card-editor")], W);
+ce([w({ attribute: !1 })], J.prototype, "hass", 2), ce([_()], J.prototype, "_config", 2), ce([_()], J.prototype, "_suggestions", 2), ce([_()], J.prototype, "_selected", 2), J = ce([k("fitness-overview-card-editor")], J);
 const yt = JSON.parse('[{"entity_id":"sensor.jasons_iphone_health_oxygen_saturation","state":"97","unit_of_measurement":"%","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Oxygen Saturation","icon":"mdi:water-percent","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_steps","state":"10","unit_of_measurement":"count","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Steps","icon":"mdi:shoe-print","category":"steps"},{"entity_id":"sensor.jasons_iphone_health_resting_heart_rate","state":"75","unit_of_measurement":"bpm","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Resting Heart Rate","icon":"mdi:heart","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_respiratory_rate","state":"17","unit_of_measurement":"breaths/min","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Respiratory Rate","icon":"mdi:lungs","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_heart_rate_variability_sdnn","state":"19.0986089955471","unit_of_measurement":"ms","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Heart Rate Variability Sdnn","icon":"mdi:heart-flash","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_flights_climbed","state":"1","unit_of_measurement":"count","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Flights Climbed","icon":"mdi:stairs-up","category":"flights"},{"entity_id":"sensor.jasons_iphone_health_connectivity_test","state":"unavailable","unit_of_measurement":"count","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Connectivity Test","icon":null,"category":"other"},{"entity_id":"sensor.jasons_iphone_health_heart_rate","state":"84","unit_of_measurement":"bpm","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Heart Rate","icon":"mdi:heart-pulse","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_distance_cycling","state":"0.0673205280488492","unit_of_measurement":"mi","device_class":"distance","state_class":"measurement","friendly_name":"Jasons iPhone Health Distance Cycling","icon":"mdi:bike","category":"distance"},{"entity_id":"sensor.jasons_iphone_health_distance_walking_running","state":"0.00497096953789867","unit_of_measurement":"mi","device_class":"distance","state_class":"measurement","friendly_name":"Jasons iPhone Health Distance Walking Running","icon":"mdi:walk","category":"distance"},{"entity_id":"sensor.jasons_iphone_health_active_energy_burned","state":"0.45","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Active Energy Burned","icon":"mdi:fire","category":"energy"},{"entity_id":"sensor.jasons_iphone_health_environmental_sound_exposure","state":"71.6872025924761","unit_of_measurement":"dB","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Environmental Sound Exposure","icon":"mdi:volume-high","category":"other"},{"entity_id":"sensor.jasons_iphone_health_basal_energy_burned","state":"26.309","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Basal Energy Burned","icon":"mdi:fire-circle","category":"energy"},{"entity_id":"sensor.jasons_iphone_health_weight","state":"359.022793968073","unit_of_measurement":"lb","device_class":"weight","state_class":"measurement","friendly_name":"Jasons iPhone Health Weight","icon":"mdi:scale-bathroom","category":"body"},{"entity_id":"sensor.jasons_iphone_health_vo2_max","state":"24.81","unit_of_measurement":"mL/(kg*min)","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Vo2 Max","icon":"mdi:run","category":"body"},{"entity_id":"sensor.jasons_iphone_health_body_fat_percentage","state":"49.2","unit_of_measurement":"%","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Body Fat Percentage","icon":"mdi:percent","category":"body"},{"entity_id":"sensor.jasons_iphone_health_blood_glucose","state":"113","unit_of_measurement":"mg/dL","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Blood Glucose","icon":"mdi:diabetes","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_bmi","state":"44.6","unit_of_measurement":"count","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Bmi","icon":"mdi:human-male-height","category":"body"},{"entity_id":"sensor.jasons_iphone_health_lean_body_mass","state":"182.190013469583","unit_of_measurement":"lb","device_class":"weight","state_class":"measurement","friendly_name":"Jasons iPhone Health Lean Body Mass","icon":"mdi:human","category":"body"},{"entity_id":"sensor.jasons_iphone_health_hydration","state":"29.9254100911311","unit_of_measurement":"fl oz US","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Hydration","icon":"mdi:cup-water","category":"other"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_walking","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Walking","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_walking","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Walking","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_workout_distance_walking","state":"unavailable","unit_of_measurement":"mi","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Distance Walking","icon":null,"category":"distance"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_workout_44","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Workout 44","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_workout_44","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Workout 44","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_cycling","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Cycling","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_cycling","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Cycling","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_workout_distance_cycling","state":"unavailable","unit_of_measurement":"mi","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Distance Cycling","icon":null,"category":"distance"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_hiit","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Hiit","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_hiit","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Hiit","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_sleep_in_bed","state":"398.612829041481","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep In Bed","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_functional_strength","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Functional Strength","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_functional_strength","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Functional Strength","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_sleep_core","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Core","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_deep","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Deep","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_rem","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Rem","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_unknown","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Unknown","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_asleep","state":"14.0041869501273","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Asleep","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_steps_daily_total","state":"493","unit_of_measurement":"count","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Steps Daily Total","icon":null,"category":"steps"},{"entity_id":"sensor.jasons_iphone_health_active_energy_burned_daily_total","state":"485.150999999998","unit_of_measurement":"kcal","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Active Energy Burned Daily Total","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_flights_climbed_daily_total","state":"3","unit_of_measurement":"count","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Flights Climbed Daily Total","icon":null,"category":"flights"},{"entity_id":"sensor.jasons_iphone_health_basal_energy_burned_daily_total","state":"1841.22300000003","unit_of_measurement":"kcal","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Basal Energy Burned Daily Total","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_distance_walking_running_daily_total","state":"0.21617157233949","unit_of_measurement":"mi","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Distance Walking Running Daily Total","icon":null,"category":"distance"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_strength_training","state":"1494.09190797806","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Strength Training","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_strength_training","state":"283.444680942575","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Strength Training","icon":null,"category":"energy"}]').map((e) => ({ ...e, category: e.category ?? "other" }));
 function us(e) {
   return yt.filter((t) => t.category === e);
