@@ -31,7 +31,19 @@ const keywordMap: Record<string, string> = {
   basal_energy: "basal_energy",
   flights_climbed: "flights_climbed",
   workout_duration: "workout_generic",
-  workout_energy: "workout_generic"
+  workout_energy: "workout_generic",
+  workout_duration_walking: "workout_walking",
+  workout_energy_walking: "workout_walking",
+  workout_distance_walking: "workout_walking",
+  workout_duration_cycling: "workout_cycling",
+  workout_energy_cycling: "workout_cycling",
+  workout_distance_cycling: "workout_cycling",
+  workout_duration_strength_training: "workout_strength_training",
+  workout_energy_strength_training: "workout_strength_training",
+  workout_duration_functional_strength: "workout_functional_strength",
+  workout_energy_functional_strength: "workout_functional_strength",
+  workout_duration_hiit: "workout_hiit",
+  workout_energy_hiit: "workout_hiit"
 };
 
 export function autoDetectMetrics(hass: any): MetricConfig[] {

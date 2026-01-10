@@ -5,10 +5,12 @@ import { fireEvent } from "../utils/events";
 import { periodOptions } from "./schemas";
 import { autoDetectMetrics } from "../utils/autodetect";
 import { computeLocalize } from "../localize";
+import { metricPresets } from "../presets";
 
 const workoutSchema = [
   { name: "name", selector: { text: {} } },
   { name: "icon", selector: { icon: {} } },
+  { name: "enabled", selector: { boolean: {} } },
   { name: "duration_entity", selector: { entity: {} } },
   { name: "energy_entity", selector: { entity: {} } },
   { name: "distance_entity", selector: { entity: {} } }
@@ -20,9 +22,22 @@ export class FitnessWorkoutsCardEditor extends LitElement {
   @state() private _config?: WorkoutsCardConfig;
   @state() private _suggestions: any[] = [];
   @state() private _selected: Record<string, boolean> = {};
+  @state() private _presetSelection: Record<string, boolean> = {};
 
   setConfig(config: WorkoutsCardConfig) {
     this._config = { ...config };
+    this._syncPresetSelection(config);
+  }
+
+  private _syncPresetSelection(config: WorkoutsCardConfig) {
+    const selected: Record<string, boolean> = {};
+    (config.workouts || []).forEach((w) => {
+      const presetId = (w as any).preset;
+      if (presetId) {
+        selected[presetId] = w.enabled !== false;
+      }
+    });
+    this._presetSelection = selected;
   }
 
   private localize(key: string) {
@@ -32,6 +47,7 @@ export class FitnessWorkoutsCardEditor extends LitElement {
   private _valueChanged(ev: CustomEvent) {
     const config = ev.detail.value as WorkoutsCardConfig;
     this._config = config;
+    this._syncPresetSelection(config);
     fireEvent(this, "config-changed", { config });
   }
 
@@ -51,10 +67,64 @@ export class FitnessWorkoutsCardEditor extends LitElement {
     const accepted = this._suggestions.filter((s) => s.key && this._selected[s.key]);
     if (!accepted.length) return;
     const workouts = accepted.map((s) => ({
+      preset: s.preset,
       name: s.name || s.preset,
-      duration_entity: s.entity
+      icon: metricPresets[s.preset]?.icon,
+      duration_entity: s.entity,
+      enabled: true
     }));
     const config = { ...this._config, workouts: [...workouts, ...(this._config.workouts || [])] };
+    this._config = config;
+    this._syncPresetSelection(config);
+    fireEvent(this, "config-changed", { config });
+  }
+
+  private _togglePreset(presetId: string, checked: boolean) {
+    if (!this._config) return;
+    const preset = metricPresets[presetId];
+    const workouts = [...(this._config.workouts || [])];
+    const idx = workouts.findIndex((w) => (w as any).preset === presetId);
+    if (idx === -1 && checked) {
+      workouts.push(this._upsertPresetWorkout(presetId, {}, preset));
+    } else if (idx >= 0) {
+      workouts[idx] = { ...workouts[idx], enabled: checked };
+    }
+    const config = { ...this._config, workouts };
+    this._config = config;
+    this._presetSelection = { ...this._presetSelection, [presetId]: checked };
+    fireEvent(this, "config-changed", { config });
+  }
+
+  private _presetEntry(presetId: string) {
+    return (this._config?.workouts || []).find((w) => (w as any).preset === presetId);
+  }
+
+  private _upsertPresetWorkout(
+    presetId: string,
+    updates: Partial<WorkoutsCardConfig["workouts"][number]>,
+    preset = metricPresets[presetId]
+  ) {
+    return {
+      preset: presetId,
+      name: updates.name ?? preset?.name ?? presetId,
+      icon: updates.icon ?? preset?.icon,
+      enabled: updates.enabled ?? true,
+      duration_entity: updates.duration_entity,
+      energy_entity: updates.energy_entity,
+      distance_entity: updates.distance_entity
+    };
+  }
+
+  private _updatePresetField(presetId: string, field: "duration_entity" | "energy_entity" | "distance_entity", value: string | null) {
+    if (!this._config) return;
+    const workouts = [...(this._config.workouts || [])];
+    const idx = workouts.findIndex((w) => (w as any).preset === presetId);
+    if (idx === -1) {
+      workouts.push(this._upsertPresetWorkout(presetId, { [field]: value || undefined }));
+    } else {
+      workouts[idx] = { ...workouts[idx], [field]: value || undefined };
+    }
+    const config = { ...this._config, workouts };
     this._config = config;
     fireEvent(this, "config-changed", { config });
   }
@@ -93,6 +163,59 @@ export class FitnessWorkoutsCardEditor extends LitElement {
             )}
           </div>`
         : ""}
+      <div style="margin: 12px 0;">
+        <div style="font-weight:600; margin-bottom:6px;">
+          ${this.localize("label.workouts") || "Workouts"}
+        </div>
+        ${Object.values(metricPresets)
+          .filter((p) => p.id.startsWith("workout_"))
+          .map(
+            (p) => {
+              const entry = this._presetEntry(p.id);
+              const enabled = this._presetSelection[p.id] ?? false;
+              return html`<div style="margin-bottom:8px;">
+                <label style="display:flex; align-items:center; gap:8px;">
+                  <input
+                    type="checkbox"
+                    .checked=${enabled}
+                    @change=${(e: any) => this._togglePreset(p.id, e.target.checked)}
+                  />
+                  ${p.name}
+                </label>
+                ${enabled
+                  ? html`<div
+                      style="display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:6px; padding-left:18px; margin-top:6px;"
+                    >
+                      <ha-entity-picker
+                        .hass=${this.hass}
+                        .value=${entry?.duration_entity || ""}
+                        .label=${this.localize("label.duration") || "Duration entity"}
+                        @value-changed=${(e: any) =>
+                          this._updatePresetField(p.id, "duration_entity", e.detail?.value)}
+                      ></ha-entity-picker>
+                      <ha-entity-picker
+                        .hass=${this.hass}
+                        .value=${entry?.energy_entity || ""}
+                        .label=${this.localize("label.energy") || "Energy entity"}
+                        @value-changed=${(e: any) =>
+                          this._updatePresetField(p.id, "energy_entity", e.detail?.value)}
+                      ></ha-entity-picker>
+                      <ha-entity-picker
+                        .hass=${this.hass}
+                        .value=${entry?.distance_entity || ""}
+                        .label=${this.localize("label.distance") || "Distance entity"}
+                        @value-changed=${(e: any) =>
+                          this._updatePresetField(p.id, "distance_entity", e.detail?.value)}
+                      ></ha-entity-picker>
+                    </div>`
+                  : ""}
+              </div>`;
+            }
+          )}
+        <div style="color: var(--secondary-text-color); font-size: 0.9em; margin-top:4px;">
+          Toggle workouts to add/remove entries; edit entities below.
+        </div>
+      </div>
       <ha-form
         .hass=${this.hass}
         .data=${data}

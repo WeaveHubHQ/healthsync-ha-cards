@@ -83,6 +83,8 @@ export interface WorkoutMetricConfig {
   duration_entity?: string;
   energy_entity?: string;
   distance_entity?: string;
+   preset?: string;
+   enabled?: boolean;
 }
 
 export interface WorkoutsCardConfig {

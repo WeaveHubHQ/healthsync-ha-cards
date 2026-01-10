@@ -5,6 +5,7 @@ import { HomeAssistant, WorkoutsCardConfig, WorkoutMetricConfig, Period } from "
 import { computeLocalize } from "../localize";
 import { formatMinutes, formatValue, parseNumber } from "../utils/formatting";
 import { getPeriod } from "../utils/metrics";
+import { metricPresets } from "../presets";
 
 interface WorkoutValues {
   duration: number | null;
@@ -52,7 +53,7 @@ export class FitnessWorkoutsCard extends LitElement {
   }
 
   public setConfig(config: WorkoutsCardConfig): void {
-    if (!config.workouts || !Array.isArray(config.workouts) || config.workouts.length === 0) {
+    if (!config.workouts || !Array.isArray(config.workouts)) {
       throw new Error("Add a workouts array");
     }
     this.config = { ...config, workouts: [...config.workouts] };
@@ -78,10 +79,34 @@ export class FitnessWorkoutsCard extends LitElement {
     return formatValue(value, unit);
   }
 
+  private workoutMeta(item: WorkoutMetricConfig) {
+    const presetId = (item as any).preset as string | undefined;
+    return presetId ? metricPresets[presetId] : undefined;
+  }
+
+  private workoutName(item: WorkoutMetricConfig) {
+    return (
+      item.name ??
+      this.workoutMeta(item)?.name ??
+      this.localize("label.workout") ||
+      "Workout"
+    );
+  }
+
+  private workoutIcon(item: WorkoutMetricConfig) {
+    return item.icon ?? this.workoutMeta(item)?.icon;
+  }
+
+  private activeWorkouts(): WorkoutMetricConfig[] {
+    return (this.config?.workouts ?? []).filter((w) => w.enabled !== false);
+  }
+
   private totalRow() {
     if (!this.config) return nothing;
+    const workouts = this.activeWorkouts();
+    if (!workouts.length) return nothing;
     const totals: WorkoutValues = { duration: 0, energy: 0, distance: 0 };
-    this.config.workouts.forEach((w) => {
+    workouts.forEach((w) => {
       const vals = this.workoutValues(w);
       totals.duration = vals.duration !== null ? (totals.duration ?? 0) + vals.duration : totals.duration;
       totals.energy = vals.energy !== null ? (totals.energy ?? 0) + vals.energy : totals.energy;
@@ -92,7 +117,7 @@ export class FitnessWorkoutsCard extends LitElement {
         <div>${this.localize("label.total")}</div>
         <div class="value">${this.renderValue(totals.duration, "min")}</div>
         <div class="value">${this.renderValue(totals.energy, "kcal")}</div>
-        ${this.config.workouts.some((w) => w.distance_entity)
+        ${workouts.some((w) => w.distance_entity)
           ? html`<div class="value">${this.renderValue(totals.distance, "mi")}</div>`
           : nothing}
       </div>
@@ -102,11 +127,12 @@ export class FitnessWorkoutsCard extends LitElement {
   private renderRow(item: WorkoutMetricConfig) {
     const { duration, energy, distance } = this.workoutValues(item);
     const showDistance = Boolean(item.distance_entity);
+    const icon = this.workoutIcon(item);
     return html`
       <div class="row">
         <div class="label">
-          ${item.icon ? html`<ha-icon .icon=${item.icon}></ha-icon>` : nothing}
-          <span>${item.name}</span>
+          ${icon ? html`<ha-icon .icon=${icon}></ha-icon>` : nothing}
+          <span>${this.workoutName(item)}</span>
         </div>
         <div class="value">${this.renderValue(duration, "min")}</div>
         <div class="value">${this.renderValue(energy, "kcal")}</div>
@@ -117,6 +143,7 @@ export class FitnessWorkoutsCard extends LitElement {
 
   protected render() {
     if (!this.config) return nothing;
+    const workouts = this.activeWorkouts();
     return html`
       <ha-card class=${this.config.compact ? "compact" : ""}>
         <div class="header">
@@ -128,12 +155,12 @@ export class FitnessWorkoutsCard extends LitElement {
             <div></div>
             <div class="value">${this.localize("label.duration")}</div>
             <div class="value">${this.localize("label.energy")}</div>
-            ${this.config.workouts.some((w) => w.distance_entity)
+            ${workouts.some((w) => w.distance_entity)
               ? html`<div class="value">${this.localize("label.distance")}</div>`
               : nothing}
           </div>
           ${this.totalRow()}
-          ${this.config.workouts.map((w) => this.renderRow(w))}
+          ${workouts.map((w) => this.renderRow(w))}
         </div>
       </ha-card>
     `;
