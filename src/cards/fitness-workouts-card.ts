@@ -74,6 +74,13 @@ export class FitnessWorkoutsCard extends LitElement {
     return { duration, energy, distance };
   }
 
+  /** The distance entity's own unit; miles only when it reports none. */
+  private distanceUnit(item?: WorkoutMetricConfig): string {
+    const entityId = item?.distance_entity
+      ?? this.activeWorkouts().find((w) => w.distance_entity)?.distance_entity;
+    return this.hass?.states?.[entityId ?? ""]?.attributes?.unit_of_measurement ?? "mi";
+  }
+
   private renderValue(value: number | null, unit?: string): string {
     if (unit === "min" && value !== null) return formatMinutes(value);
     return formatValue(value, unit);
@@ -117,7 +124,7 @@ export class FitnessWorkoutsCard extends LitElement {
         <div class="value">${this.renderValue(totals.duration, "min")}</div>
         <div class="value">${this.renderValue(totals.energy, "kcal")}</div>
         ${workouts.some((w) => w.distance_entity)
-          ? html`<div class="value">${this.renderValue(totals.distance, "mi")}</div>`
+          ? html`<div class="value">${this.renderValue(totals.distance, this.distanceUnit())}</div>`
           : nothing}
       </div>
     `;
@@ -135,7 +142,7 @@ export class FitnessWorkoutsCard extends LitElement {
         </div>
         <div class="value">${this.renderValue(duration, "min")}</div>
         <div class="value">${this.renderValue(energy, "kcal")}</div>
-        ${showDistance ? html`<div class="value">${this.renderValue(distance, "mi")}</div>` : nothing}
+        ${showDistance ? html`<div class="value">${this.renderValue(distance, this.distanceUnit(item))}</div>` : nothing}
       </div>
     `;
   }

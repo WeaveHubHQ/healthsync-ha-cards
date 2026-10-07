@@ -1,15 +1,15 @@
-const we = globalThis, Ne = we.ShadowRoot && (we.ShadyCSS === void 0 || we.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, Re = /* @__PURE__ */ Symbol(), Ie = /* @__PURE__ */ new WeakMap();
-let ot = class {
+const we = globalThis, Re = we.ShadowRoot && (we.ShadyCSS === void 0 || we.ShadyCSS.nativeShadow) && "adoptedStyleSheets" in Document.prototype && "replace" in CSSStyleSheet.prototype, We = /* @__PURE__ */ Symbol(), Ve = /* @__PURE__ */ new WeakMap();
+let ct = class {
   constructor(e, t, s) {
-    if (this._$cssResult$ = !0, s !== Re) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
+    if (this._$cssResult$ = !0, s !== We) throw Error("CSSResult is not constructable. Use `unsafeCSS` or `css` instead.");
     this.cssText = e, this.t = t;
   }
   get styleSheet() {
     let e = this.o;
     const t = this.t;
-    if (Ne && e === void 0) {
+    if (Re && e === void 0) {
       const s = t !== void 0 && t.length === 1;
-      s && (e = Ie.get(t)), e === void 0 && ((this.o = e = new CSSStyleSheet()).replaceSync(this.cssText), s && Ie.set(t, e));
+      s && (e = Ve.get(t)), e === void 0 && ((this.o = e = new CSSStyleSheet()).replaceSync(this.cssText), s && Ve.set(t, e));
     }
     return e;
   }
@@ -23,15 +23,15 @@ const M = (e, ...t) => {
     if (typeof a == "number") return a;
     throw Error("Value passed to 'css' function must be a 'css' function result: " + a + ". Use 'unsafeCSS' to pass non-literal values, but take care to ensure page security.");
   })(r) + e[n + 1], e[0]);
-  return new ot(s, e, Re);
-}, Be = Ne ? (e) => e : (e) => e instanceof CSSStyleSheet ? ((t) => {
+  return new ct(s, e, We);
+}, Ke = Re ? (e) => e : (e) => e instanceof CSSStyleSheet ? ((t) => {
   let s = "";
   for (const i of t.cssRules) s += i.cssText;
-  return ((i) => new ot(typeof i == "string" ? i : i + "", void 0, Re))(s);
-})(e) : e, { is: vt, defineProperty: bt, getOwnPropertyDescriptor: $t, getOwnPropertyNames: wt, getOwnPropertySymbols: kt, getPrototypeOf: xt } = Object, Pe = globalThis, Ve = Pe.trustedTypes, St = Ve ? Ve.emptyScript : "", At = Pe.reactiveElementPolyfillSupport, de = (e, t) => e, xe = { toAttribute(e, t) {
+  return ((i) => new ct(typeof i == "string" ? i : i + "", void 0, We))(s);
+})(e) : e, { is: $t, defineProperty: wt, getOwnPropertyDescriptor: kt, getOwnPropertyNames: xt, getOwnPropertySymbols: St, getPrototypeOf: At } = Object, Pe = globalThis, qe = Pe.trustedTypes, Pt = qe ? qe.emptyScript : "", Et = Pe.reactiveElementPolyfillSupport, de = (e, t) => e, xe = { toAttribute(e, t) {
   switch (t) {
     case Boolean:
-      e = e ? St : null;
+      e = e ? Pt : null;
       break;
     case Object:
     case Array:
@@ -56,23 +56,23 @@ const M = (e, ...t) => {
       }
   }
   return s;
-} }, We = (e, t) => !vt(e, t), qe = { attribute: !0, type: String, converter: xe, reflect: !1, useDefault: !1, hasChanged: We };
+} }, Ue = (e, t) => !$t(e, t), Ge = { attribute: !0, type: String, converter: xe, reflect: !1, useDefault: !1, hasChanged: Ue };
 Symbol.metadata ??= /* @__PURE__ */ Symbol("metadata"), Pe.litPropertyMetadata ??= /* @__PURE__ */ new WeakMap();
-let F = class extends HTMLElement {
+let L = class extends HTMLElement {
   static addInitializer(e) {
     this._$Ei(), (this.l ??= []).push(e);
   }
   static get observedAttributes() {
     return this.finalize(), this._$Eh && [...this._$Eh.keys()];
   }
-  static createProperty(e, t = qe) {
+  static createProperty(e, t = Ge) {
     if (t.state && (t.attribute = !1), this._$Ei(), this.prototype.hasOwnProperty(e) && ((t = Object.create(t)).wrapped = !0), this.elementProperties.set(e, t), !t.noAccessor) {
       const s = /* @__PURE__ */ Symbol(), i = this.getPropertyDescriptor(e, s, t);
-      i !== void 0 && bt(this.prototype, e, i);
+      i !== void 0 && wt(this.prototype, e, i);
     }
   }
   static getPropertyDescriptor(e, t, s) {
-    const { get: i, set: r } = $t(this.prototype, e) ?? { get() {
+    const { get: i, set: r } = kt(this.prototype, e) ?? { get() {
       return this[t];
     }, set(n) {
       this[t] = n;
@@ -83,17 +83,17 @@ let F = class extends HTMLElement {
     }, configurable: !0, enumerable: !0 };
   }
   static getPropertyOptions(e) {
-    return this.elementProperties.get(e) ?? qe;
+    return this.elementProperties.get(e) ?? Ge;
   }
   static _$Ei() {
     if (this.hasOwnProperty(de("elementProperties"))) return;
-    const e = xt(this);
+    const e = At(this);
     e.finalize(), e.l !== void 0 && (this.l = [...e.l]), this.elementProperties = new Map(e.elementProperties);
   }
   static finalize() {
     if (this.hasOwnProperty(de("finalized"))) return;
     if (this.finalized = !0, this._$Ei(), this.hasOwnProperty(de("properties"))) {
-      const t = this.properties, s = [...wt(t), ...kt(t)];
+      const t = this.properties, s = [...xt(t), ...St(t)];
       for (const i of s) this.createProperty(i, t[i]);
     }
     const e = this[Symbol.metadata];
@@ -112,8 +112,8 @@ let F = class extends HTMLElement {
     const t = [];
     if (Array.isArray(e)) {
       const s = new Set(e.flat(1 / 0).reverse());
-      for (const i of s) t.unshift(Be(i));
-    } else e !== void 0 && t.push(Be(e));
+      for (const i of s) t.unshift(Ke(i));
+    } else e !== void 0 && t.push(Ke(e));
     return t;
   }
   static _$Eu(e, t) {
@@ -140,7 +140,7 @@ let F = class extends HTMLElement {
   createRenderRoot() {
     const e = this.shadowRoot ?? this.attachShadow(this.constructor.shadowRootOptions);
     return ((t, s) => {
-      if (Ne) t.adoptedStyleSheets = s.map((i) => i instanceof CSSStyleSheet ? i : i.styleSheet);
+      if (Re) t.adoptedStyleSheets = s.map((i) => i instanceof CSSStyleSheet ? i : i.styleSheet);
       else for (const i of s) {
         const r = document.createElement("style"), n = we.litNonce;
         n !== void 0 && r.setAttribute("nonce", n), r.textContent = i.cssText, t.appendChild(r);
@@ -177,7 +177,7 @@ let F = class extends HTMLElement {
   requestUpdate(e, t, s, i = !1, r) {
     if (e !== void 0) {
       const n = this.constructor;
-      if (i === !1 && (r = this[e]), s ??= n.getPropertyOptions(e), !((s.hasChanged ?? We)(r, t) || s.useDefault && s.reflect && r === this._$Ej?.get(e) && !this.hasAttribute(n._$Eu(e, s)))) return;
+      if (i === !1 && (r = this[e]), s ??= n.getPropertyOptions(e), !((s.hasChanged ?? Ue)(r, t) || s.useDefault && s.reflect && r === this._$Ej?.get(e) && !this.hasAttribute(n._$Eu(e, s)))) return;
       this.C(e, t, s);
     }
     this.isUpdatePending === !1 && (this._$ES = this._$EP());
@@ -245,51 +245,51 @@ let F = class extends HTMLElement {
   firstUpdated(e) {
   }
 };
-F.elementStyles = [], F.shadowRootOptions = { mode: "open" }, F[de("elementProperties")] = /* @__PURE__ */ new Map(), F[de("finalized")] = /* @__PURE__ */ new Map(), At?.({ ReactiveElement: F }), (Pe.reactiveElementVersions ??= []).push("2.1.2");
-const Ue = globalThis, Ge = (e) => e, Se = Ue.trustedTypes, Ke = Se ? Se.createPolicy("lit-html", { createHTML: (e) => e }) : void 0, lt = "$lit$", S = `lit$${Math.random().toFixed(9).slice(2)}$`, ct = "?" + S, Pt = `<${ct}>`, D = document, ue = () => D.createComment(""), pe = (e) => e === null || typeof e != "object" && typeof e != "function", Te = Array.isArray, Oe = `[ 	
-\f\r]`, Y = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, Ze = /-->/g, Xe = />/g, P = RegExp(`>|${Oe}(?:([^\\s"'>=/]+)(${Oe}*=${Oe}*(?:[^ 	
-\f\r"'\`<>=]|("|')|))|$)`, "g"), Ye = /'/g, Qe = /"/g, dt = /^(?:script|style|textarea|title)$/i, ht = (e) => (t, ...s) => ({ _$litType$: e, strings: t, values: s }), c = ht(1), et = ht(2), I = /* @__PURE__ */ Symbol.for("lit-noChange"), d = /* @__PURE__ */ Symbol.for("lit-nothing"), tt = /* @__PURE__ */ new WeakMap(), O = D.createTreeWalker(D, 129);
-function ut(e, t) {
+L.elementStyles = [], L.shadowRootOptions = { mode: "open" }, L[de("elementProperties")] = /* @__PURE__ */ new Map(), L[de("finalized")] = /* @__PURE__ */ new Map(), Et?.({ ReactiveElement: L }), (Pe.reactiveElementVersions ??= []).push("2.1.2");
+const Je = globalThis, Ze = (e) => e, Se = Je.trustedTypes, Xe = Se ? Se.createPolicy("lit-html", { createHTML: (e) => e }) : void 0, dt = "$lit$", S = `lit$${Math.random().toFixed(9).slice(2)}$`, ht = "?" + S, Ct = `<${ht}>`, O = document, ue = () => O.createComment(""), pe = (e) => e === null || typeof e != "object" && typeof e != "function", Te = Array.isArray, De = `[ 	
+\f\r]`, Y = /<(?:(!--|\/[^a-zA-Z])|(\/?[a-zA-Z][^>\s]*)|(\/?$))/g, Ye = /-->/g, Qe = />/g, P = RegExp(`>|${De}(?:([^\\s"'>=/]+)(${De}*=${De}*(?:[^ 	
+\f\r"'\`<>=]|("|')|))|$)`, "g"), et = /'/g, tt = /"/g, ut = /^(?:script|style|textarea|title)$/i, pt = (e) => (t, ...s) => ({ _$litType$: e, strings: t, values: s }), c = pt(1), st = pt(2), I = /* @__PURE__ */ Symbol.for("lit-noChange"), d = /* @__PURE__ */ Symbol.for("lit-nothing"), it = /* @__PURE__ */ new WeakMap(), D = O.createTreeWalker(O, 129);
+function _t(e, t) {
   if (!Te(e) || !e.hasOwnProperty("raw")) throw Error("invalid template strings array");
-  return Ke !== void 0 ? Ke.createHTML(t) : t;
+  return Xe !== void 0 ? Xe.createHTML(t) : t;
 }
-const Et = (e, t) => {
+const Ht = (e, t) => {
   const s = e.length - 1, i = [];
   let r, n = t === 2 ? "<svg>" : t === 3 ? "<math>" : "", a = Y;
   for (let o = 0; o < s; o++) {
     const l = e[o];
-    let p, u, h = -1, m = 0;
-    for (; m < l.length && (a.lastIndex = m, u = a.exec(l), u !== null); ) m = a.lastIndex, a === Y ? u[1] === "!--" ? a = Ze : u[1] !== void 0 ? a = Xe : u[2] !== void 0 ? (dt.test(u[2]) && (r = RegExp("</" + u[2], "g")), a = P) : u[3] !== void 0 && (a = P) : a === P ? u[0] === ">" ? (a = r ?? Y, h = -1) : u[1] === void 0 ? h = -2 : (h = a.lastIndex - u[2].length, p = u[1], a = u[3] === void 0 ? P : u[3] === '"' ? Qe : Ye) : a === Qe || a === Ye ? a = P : a === Ze || a === Xe ? a = Y : (a = P, r = void 0);
-    const g = a === P && e[o + 1].startsWith("/>") ? " " : "";
-    n += a === Y ? l + Pt : h >= 0 ? (i.push(p), l.slice(0, h) + lt + l.slice(h) + S + g) : l + S + (h === -2 ? o : g);
+    let p, u, h = -1, g = 0;
+    for (; g < l.length && (a.lastIndex = g, u = a.exec(l), u !== null); ) g = a.lastIndex, a === Y ? u[1] === "!--" ? a = Ye : u[1] !== void 0 ? a = Qe : u[2] !== void 0 ? (ut.test(u[2]) && (r = RegExp("</" + u[2], "g")), a = P) : u[3] !== void 0 && (a = P) : a === P ? u[0] === ">" ? (a = r ?? Y, h = -1) : u[1] === void 0 ? h = -2 : (h = a.lastIndex - u[2].length, p = u[1], a = u[3] === void 0 ? P : u[3] === '"' ? tt : et) : a === tt || a === et ? a = P : a === Ye || a === Qe ? a = Y : (a = P, r = void 0);
+    const m = a === P && e[o + 1].startsWith("/>") ? " " : "";
+    n += a === Y ? l + Ct : h >= 0 ? (i.push(p), l.slice(0, h) + dt + l.slice(h) + S + m) : l + S + (h === -2 ? o : m);
   }
-  return [ut(e, n + (e[s] || "<?>") + (t === 2 ? "</svg>" : t === 3 ? "</math>" : "")), i];
+  return [_t(e, n + (e[s] || "<?>") + (t === 2 ? "</svg>" : t === 3 ? "</math>" : "")), i];
 };
 class _e {
   constructor({ strings: t, _$litType$: s }, i) {
     let r;
     this.parts = [];
     let n = 0, a = 0;
-    const o = t.length - 1, l = this.parts, [p, u] = Et(t, s);
-    if (this.el = _e.createElement(p, i), O.currentNode = this.el.content, s === 2 || s === 3) {
+    const o = t.length - 1, l = this.parts, [p, u] = Ht(t, s);
+    if (this.el = _e.createElement(p, i), D.currentNode = this.el.content, s === 2 || s === 3) {
       const h = this.el.content.firstChild;
       h.replaceWith(...h.childNodes);
     }
-    for (; (r = O.nextNode()) !== null && l.length < o; ) {
+    for (; (r = D.nextNode()) !== null && l.length < o; ) {
       if (r.nodeType === 1) {
-        if (r.hasAttributes()) for (const h of r.getAttributeNames()) if (h.endsWith(lt)) {
-          const m = u[a++], g = r.getAttribute(h).split(S), f = /([.?@])?(.*)/.exec(m);
-          l.push({ type: 1, index: n, name: f[2], strings: g, ctor: f[1] === "." ? Ht : f[1] === "?" ? jt : f[1] === "@" ? zt : Ee }), r.removeAttribute(h);
+        if (r.hasAttributes()) for (const h of r.getAttributeNames()) if (h.endsWith(dt)) {
+          const g = u[a++], m = r.getAttribute(h).split(S), f = /([.?@])?(.*)/.exec(g);
+          l.push({ type: 1, index: n, name: f[2], strings: m, ctor: f[1] === "." ? jt : f[1] === "?" ? Dt : f[1] === "@" ? Ot : Ee }), r.removeAttribute(h);
         } else h.startsWith(S) && (l.push({ type: 6, index: n }), r.removeAttribute(h));
-        if (dt.test(r.tagName)) {
-          const h = r.textContent.split(S), m = h.length - 1;
-          if (m > 0) {
+        if (ut.test(r.tagName)) {
+          const h = r.textContent.split(S), g = h.length - 1;
+          if (g > 0) {
             r.textContent = Se ? Se.emptyScript : "";
-            for (let g = 0; g < m; g++) r.append(h[g], ue()), O.nextNode(), l.push({ type: 2, index: ++n });
-            r.append(h[m], ue());
+            for (let m = 0; m < g; m++) r.append(h[m], ue()), D.nextNode(), l.push({ type: 2, index: ++n });
+            r.append(h[g], ue());
           }
         }
-      } else if (r.nodeType === 8) if (r.data === ct) l.push({ type: 2, index: n });
+      } else if (r.nodeType === 8) if (r.data === ht) l.push({ type: 2, index: n });
       else {
         let h = -1;
         for (; (h = r.data.indexOf(S, h + 1)) !== -1; ) l.push({ type: 7, index: n }), h += S.length - 1;
@@ -298,7 +298,7 @@ class _e {
     }
   }
   static createElement(t, s) {
-    const i = D.createElement("template");
+    const i = O.createElement("template");
     return i.innerHTML = t, i;
   }
 }
@@ -308,7 +308,7 @@ function B(e, t, s = e, i) {
   const n = pe(t) ? void 0 : t._$litDirective$;
   return r?.constructor !== n && (r?._$AO?.(!1), n === void 0 ? r = void 0 : (r = new n(e), r._$AT(e, s, i)), i !== void 0 ? (s._$Co ??= [])[i] = r : s._$Cl = r), r !== void 0 && (t = B(e, r._$AS(e, t.values), r, i)), t;
 }
-class Ct {
+class zt {
   constructor(t, s) {
     this._$AV = [], this._$AN = void 0, this._$AD = t, this._$AM = s;
   }
@@ -319,17 +319,17 @@ class Ct {
     return this._$AM._$AU;
   }
   u(t) {
-    const { el: { content: s }, parts: i } = this._$AD, r = (t?.creationScope ?? D).importNode(s, !0);
-    O.currentNode = r;
-    let n = O.nextNode(), a = 0, o = 0, l = i[0];
+    const { el: { content: s }, parts: i } = this._$AD, r = (t?.creationScope ?? O).importNode(s, !0);
+    D.currentNode = r;
+    let n = D.nextNode(), a = 0, o = 0, l = i[0];
     for (; l !== void 0; ) {
       if (a === l.index) {
         let p;
-        l.type === 2 ? p = new ye(n, n.nextSibling, this, t) : l.type === 1 ? p = new l.ctor(n, l.name, l.strings, this, t) : l.type === 6 && (p = new Ot(n, this, t)), this._$AV.push(p), l = i[++o];
+        l.type === 2 ? p = new ye(n, n.nextSibling, this, t) : l.type === 1 ? p = new l.ctor(n, l.name, l.strings, this, t) : l.type === 6 && (p = new Mt(n, this, t)), this._$AV.push(p), l = i[++o];
       }
-      a !== l?.index && (n = O.nextNode(), a++);
+      a !== l?.index && (n = D.nextNode(), a++);
     }
-    return O.currentNode = D, r;
+    return D.currentNode = O, r;
   }
   p(t) {
     let s = 0;
@@ -364,19 +364,19 @@ class ye {
     this._$AH !== t && (this._$AR(), this._$AH = this.O(t));
   }
   _(t) {
-    this._$AH !== d && pe(this._$AH) ? this._$AA.nextSibling.data = t : this.T(D.createTextNode(t)), this._$AH = t;
+    this._$AH !== d && pe(this._$AH) ? this._$AA.nextSibling.data = t : this.T(O.createTextNode(t)), this._$AH = t;
   }
   $(t) {
-    const { values: s, _$litType$: i } = t, r = typeof i == "number" ? this._$AC(t) : (i.el === void 0 && (i.el = _e.createElement(ut(i.h, i.h[0]), this.options)), i);
+    const { values: s, _$litType$: i } = t, r = typeof i == "number" ? this._$AC(t) : (i.el === void 0 && (i.el = _e.createElement(_t(i.h, i.h[0]), this.options)), i);
     if (this._$AH?._$AD === r) this._$AH.p(s);
     else {
-      const n = new Ct(r, this), a = n.u(this.options);
+      const n = new zt(r, this), a = n.u(this.options);
       n.p(s), this.T(a), this._$AH = n;
     }
   }
   _$AC(t) {
-    let s = tt.get(t.strings);
-    return s === void 0 && tt.set(t.strings, s = new _e(t)), s;
+    let s = it.get(t.strings);
+    return s === void 0 && it.set(t.strings, s = new _e(t)), s;
   }
   k(t) {
     Te(this._$AH) || (this._$AH = [], this._$AR());
@@ -387,8 +387,8 @@ class ye {
   }
   _$AR(t = this._$AA.nextSibling, s) {
     for (this._$AP?.(!1, !0, s); t !== this._$AB; ) {
-      const i = Ge(t).nextSibling;
-      Ge(t).remove(), t = i;
+      const i = Ze(t).nextSibling;
+      Ze(t).remove(), t = i;
     }
   }
   setConnected(t) {
@@ -420,7 +420,7 @@ class Ee {
     t === d ? this.element.removeAttribute(this.name) : this.element.setAttribute(this.name, t ?? "");
   }
 }
-class Ht extends Ee {
+class jt extends Ee {
   constructor() {
     super(...arguments), this.type = 3;
   }
@@ -428,7 +428,7 @@ class Ht extends Ee {
     this.element[this.name] = t === d ? void 0 : t;
   }
 }
-class jt extends Ee {
+class Dt extends Ee {
   constructor() {
     super(...arguments), this.type = 4;
   }
@@ -436,7 +436,7 @@ class jt extends Ee {
     this.element.toggleAttribute(this.name, !!t && t !== d);
   }
 }
-class zt extends Ee {
+class Ot extends Ee {
   constructor(t, s, i, r, n) {
     super(t, s, i, r, n), this.type = 5;
   }
@@ -449,7 +449,7 @@ class zt extends Ee {
     typeof this._$AH == "function" ? this._$AH.call(this.options?.host ?? this.element, t) : this._$AH.handleEvent(t);
   }
 }
-class Ot {
+class Mt {
   constructor(t, s, i) {
     this.element = t, this.type = 6, this._$AN = void 0, this._$AM = s, this.options = i;
   }
@@ -460,10 +460,10 @@ class Ot {
     B(this, t);
   }
 }
-const Dt = Ue.litHtmlPolyfillSupport;
-Dt?.(_e, ye), (Ue.litHtmlVersions ??= []).push("3.3.2");
-const Je = globalThis;
-class y extends F {
+const Tt = Je.litHtmlPolyfillSupport;
+Tt?.(_e, ye), (Je.litHtmlVersions ??= []).push("3.3.2");
+const Fe = globalThis;
+class y extends L {
   constructor() {
     super(...arguments), this.renderOptions = { host: this }, this._$Do = void 0;
   }
@@ -493,14 +493,14 @@ class y extends F {
     return I;
   }
 }
-y._$litElement$ = !0, y.finalized = !0, Je.litElementHydrateSupport?.({ LitElement: y });
-const Mt = Je.litElementPolyfillSupport;
-Mt?.({ LitElement: y }), (Je.litElementVersions ??= []).push("4.2.2");
+y._$litElement$ = !0, y.finalized = !0, Fe.litElementHydrateSupport?.({ LitElement: y });
+const Nt = Fe.litElementPolyfillSupport;
+Nt?.({ LitElement: y }), (Fe.litElementVersions ??= []).push("4.2.2");
 const k = (e) => (t, s) => {
   s !== void 0 ? s.addInitializer(() => {
     customElements.define(e, t);
   }) : customElements.define(e, t);
-}, Tt = { attribute: !0, type: String, converter: xe, reflect: !1, hasChanged: We }, Nt = (e = Tt, t, s) => {
+}, Rt = { attribute: !0, type: String, converter: xe, reflect: !1, hasChanged: Ue }, Wt = (e = Rt, t, s) => {
   const { kind: i, metadata: r } = s;
   let n = globalThis.litPropertyMetadata.get(r);
   if (n === void 0 && globalThis.litPropertyMetadata.set(r, n = /* @__PURE__ */ new Map()), i === "setter" && ((e = Object.create(e)).wrapped = !0), n.set(s.name, e), i === "accessor") {
@@ -522,7 +522,7 @@ const k = (e) => (t, s) => {
   throw Error("Unsupported decorator location: " + i);
 };
 function w(e) {
-  return (t, s) => typeof s == "object" ? Nt(e, t, s) : ((i, r, n) => {
+  return (t, s) => typeof s == "object" ? Wt(e, t, s) : ((i, r, n) => {
     const a = r.hasOwnProperty(n);
     return r.constructor.createProperty(n, i), a ? Object.getOwnPropertyDescriptor(r, n) : void 0;
   })(e, t, s);
@@ -530,7 +530,7 @@ function w(e) {
 function _(e) {
   return w({ ...e, state: !0, attribute: !1 });
 }
-const K = M`
+const G = M`
   :host {
     display: block;
   }
@@ -673,15 +673,24 @@ const K = M`
     font-size: 0.75rem;
     font-weight: 600;
   }
-`, Rt = /* @__PURE__ */ new Set(["unknown", "unavailable", "none", "null", "nan", ""]);
+`, Ut = /* @__PURE__ */ new Set(["unknown", "unavailable", "none", "null", "nan", ""]);
+let Ne;
+function Le(e, t) {
+  if (!Ne) return e.toFixed(t);
+  try {
+    return new Intl.NumberFormat(Ne, { minimumFractionDigits: t, maximumFractionDigits: t }).format(e);
+  } catch {
+    return e.toFixed(t);
+  }
+}
 function b(e) {
   if (e == null) return null;
   const t = String(e).trim();
-  if (Rt.has(t)) return null;
+  if (Ut.has(t)) return null;
   const s = Number(t);
   return Number.isFinite(s) ? s : null;
 }
-function pt(e) {
+function gt(e) {
   switch (e) {
     case "bpm":
     case "breaths/min":
@@ -702,27 +711,24 @@ function pt(e) {
   }
 }
 function he(e) {
-  if (e >= 90)
-    return `${Math.floor(e / 60)}h ${Math.round(e % 60)}m`;
-  const t = e >= 10 ? 0 : 1;
-  return `${e.toFixed(t)} min`;
+  return e >= 90 ? `${Math.floor(e / 60)}h ${Math.round(e % 60)}m` : `${Le(e, e >= 10 ? 0 : 1)} min`;
 }
-function _t(e, t, s, i) {
+function mt(e, t, s, i) {
   if (e == null || Number.isNaN(e)) return "—";
   const r = i ?? t;
   if (t === "min") return he(e);
-  if (t === "s") return (function(o) {
-    return o >= 3600 ? `${Math.floor(o / 3600)}h ${Math.floor(o % 3600 / 60)}m` : o >= 90 ? `${Math.floor(o / 60)}m ${Math.round(o % 60)}s` : `${Math.round(o)}s`;
+  if (t === "s") return (function(a) {
+    return a >= 3600 ? `${Math.floor(a / 3600)}h ${Math.floor(a % 3600 / 60)}m` : a >= 90 ? `${Math.floor(a / 60)}m ${Math.round(a % 60)}s` : `${Math.round(a)}s`;
   })(e);
-  const n = s ?? pt(t), a = e.toFixed(n);
-  return r ? `${a} ${r}` : a;
+  const n = Le(e, s ?? gt(t));
+  return r ? `${n} ${r}` : n;
 }
 function Ce(e, t, s) {
   if (e === null || Number.isNaN(e)) return "—";
-  const i = e > 0 ? "+" : "", r = s ?? pt(t), n = e.toFixed(r);
-  return t ? `${i}${n} ${t}` : `${i}${n}`;
+  const i = e > 0 ? "+" : "", r = Le(e, s ?? gt(t));
+  return t ? `${i}${r} ${t}` : `${i}${r}`;
 }
-function mt(e, t, s) {
+function yt(e, t, s) {
   if (typeof e.goal == "number") return e.goal;
   if (e.goal_entity) {
     const r = t?.states?.[e.goal_entity], n = b(r?.state);
@@ -742,10 +748,10 @@ function mt(e, t, s) {
     }
   }
 }
-function gt(e, t) {
+function ft(e, t) {
   return e === null || t === void 0 || t === 0 ? null : Math.min(Math.round(e / t * 100), 999);
 }
-function Wt(e, t) {
+function Jt(e, t) {
   if (e === null || t === void 0) return {};
   const s = (function(a) {
     if (a) return Array.isArray(a) ? { bands: a } : a;
@@ -766,17 +772,17 @@ function Wt(e, t) {
   }
   return {};
 }
-function me(e, t) {
+function ge(e, t) {
   const s = t.entity ?? "", i = s ? e?.states?.[s] : void 0, r = t.unit_override ?? i?.attributes?.unit_of_measurement, n = (function(a) {
     return a ? b(a.state) : null;
   })(i);
-  return { value: n, unit: r, text: _t(n, r, t.decimals, t.unit_override), entity: i };
+  return { value: n, unit: r, text: mt(n, r, t.decimals, t.unit_override), entity: i };
 }
-function ge(e, t) {
+function me(e, t) {
   return e.name || t?.attributes?.friendly_name || (e.entity ? e.entity.split(".").slice(1).join(".") : "Metric");
 }
-const ve = { en: { "card.activity_title": "Activity", "card.vitals_title": "Vitals", "card.sleep_title": "Sleep", "card.body_title": "Body Metrics", "card.workouts_title": "Workouts", "card.overview_title": "Overview", "label.goal": "Goal", "label.of_goal": "{percent}% of goal", "label.total": "Total", "label.duration": "Duration", "label.energy": "Energy", "label.distance": "Distance", "label.asleep": "Asleep", "label.in_bed": "In bed", "label.core": "Core", "label.deep": "Deep", "label.rem": "REM", "label.unknown": "Unknown", "label.no_data": "No data", "label.no_previous": "No previous reading", "label.low": "Low", "label.high": "High", "label.ok": "OK", "label.trend": "Trend", "label.period.current": "Current", "label.period.today": "Today", "label.period.7d": "7 days", "label.period.30d": "30 days", "action.auto_detect": "Auto-detect metrics", "action.apply_suggestions": "Apply suggestions", "label.suggestions": "Suggestions", "label.history": "History", "label.history_window_days": "History window (days)", "label.history_points": "History points", "label.vs_previous": "vs previous {period}" }, es: { "card.activity_title": "Actividad", "card.vitals_title": "Signos vitales", "card.sleep_title": "Sueño", "card.body_title": "Métricas corporales", "label.goal": "Meta", "label.total": "Total", "label.no_data": "Sin datos", "label.low": "Bajo", "label.high": "Alto", "label.ok": "OK", "action.auto_detect": "Detectar métricas", "action.apply_suggestions": "Aplicar sugerencias", "label.history": "Historial" } };
-function Ut(e, t, s) {
+const ve = { en: { "card.activity_title": "Activity", "card.vitals_title": "Vitals", "card.sleep_title": "Sleep", "card.body_title": "Body Metrics", "card.workouts_title": "Workouts", "card.overview_title": "Overview", "label.goal": "Goal", "label.of_goal": "{percent}% of goal", "label.total": "Total", "label.duration": "Duration", "label.energy": "Energy", "label.distance": "Distance", "label.asleep": "Asleep", "label.in_bed": "In bed", "label.core": "Core", "label.deep": "Deep", "label.rem": "REM", "label.unknown": "Unknown", "label.no_data": "No data", "label.no_previous": "No previous reading", "label.low": "Low", "label.high": "High", "label.ok": "OK", "label.trend": "Trend", "label.period.current": "Current", "label.period.today": "Today", "label.period.7d": "7 days", "label.period.30d": "30 days", "action.auto_detect": "Auto-detect metrics", "action.apply_suggestions": "Apply suggestions", "label.suggestions": "Suggestions", "label.history": "History", "label.history_window_days": "History window (days)", "label.history_points": "History points", "label.vs_previous": "vs previous {period}", "label.workout": "Workout", "label.workouts": "Workouts" }, es: { "card.activity_title": "Actividad", "card.vitals_title": "Signos vitales", "card.sleep_title": "Sueño", "card.body_title": "Métricas corporales", "label.goal": "Meta", "label.total": "Total", "label.no_data": "Sin datos", "label.low": "Bajo", "label.high": "Alto", "label.ok": "OK", "action.auto_detect": "Detectar métricas", "action.apply_suggestions": "Aplicar sugerencias", "label.history": "Historial", "label.workout": "Entrenamiento", "label.workouts": "Entrenamientos" }, de: { "card.activity_title": "Aktivität", "card.vitals_title": "Vitalwerte", "card.sleep_title": "Schlaf", "card.body_title": "Körperwerte", "card.workouts_title": "Trainings", "card.overview_title": "Übersicht", "label.goal": "Ziel", "label.of_goal": "{percent} % vom Ziel", "label.total": "Gesamt", "label.duration": "Dauer", "label.energy": "Energie", "label.distance": "Distanz", "label.asleep": "Geschlafen", "label.in_bed": "Im Bett", "label.core": "Kernschlaf", "label.deep": "Tiefschlaf", "label.rem": "REM", "label.unknown": "Unbekannt", "label.no_data": "Keine Daten", "label.no_previous": "Kein Vergleichswert", "label.low": "Niedrig", "label.high": "Hoch", "label.ok": "OK", "label.trend": "Trend", "label.period.current": "Aktuell", "label.period.today": "Heute", "label.period.7d": "7 Tage", "label.period.30d": "30 Tage", "action.auto_detect": "Messwerte automatisch erkennen", "action.apply_suggestions": "Vorschläge übernehmen", "label.suggestions": "Vorschläge", "label.history": "Verlauf", "label.history_window_days": "Verlaufszeitraum (Tage)", "label.history_points": "Verlaufspunkte", "label.vs_previous": "ggü. vorherigem Zeitraum: {period}", "label.workout": "Training", "label.workouts": "Trainings" } };
+function Ft(e, t, s) {
   const i = (function(n) {
     if (!n) return ve.en;
     const a = n.split("-")[0];
@@ -786,11 +792,11 @@ function Ut(e, t, s) {
 }
 function x(e) {
   const t = e?.locale?.language || e?.language;
-  return (s, i) => Ut(s, t, i);
+  return Ne = t || void 0, (s, i) => Ft(s, t, i);
 }
-const A = { steps: { id: "steps", name: "Steps", icon: "mdi:shoe-print", unit: "count", decimals: 0 }, active_energy: { id: "active_energy", name: "Active Energy", icon: "mdi:fire", unit: "kcal", decimals: 0 }, distance_walk_run: { id: "distance_walk_run", name: "Walk/Run Distance", icon: "mdi:walk", unit: "mi", decimals: 2 }, distance_cycling: { id: "distance_cycling", name: "Cycling Distance", icon: "mdi:bike", unit: "mi", decimals: 2 }, flights_climbed: { id: "flights_climbed", name: "Flights Climbed", icon: "mdi:stairs-up", unit: "count", decimals: 0 }, heart_rate: { id: "heart_rate", name: "Heart Rate", icon: "mdi:heart-pulse", unit: "bpm", decimals: 0, ranges: { low: 50, normal: [55, 95], high: 120 } }, resting_heart_rate: { id: "resting_heart_rate", name: "Resting HR", icon: "mdi:heart", unit: "bpm", decimals: 0, ranges: { low: 45, normal: [50, 90], high: 110 } }, hrv_sdnn: { id: "hrv_sdnn", name: "HRV (SDNN)", icon: "mdi:heart-flash", unit: "ms", decimals: 0, ranges: { low: 20 } }, spo2: { id: "spo2", name: "SpO2", icon: "mdi:water-percent", unit: "%", decimals: 1, ranges: { low: 92, normal: [95, 100] } }, respiratory_rate: { id: "respiratory_rate", name: "Respiratory Rate", icon: "mdi:lungs", unit: "breaths/min", decimals: 0, ranges: { low: 10, normal: [12, 20], high: 24 } }, asleep: { id: "asleep", name: "Asleep", icon: "mdi:sleep", unit: "min", decimals: 0 }, in_bed: { id: "in_bed", name: "In bed", icon: "mdi:bed", unit: "min", decimals: 0 }, sleep_core: { id: "sleep_core", name: "Core", icon: "mdi:alpha-c-circle", unit: "min", decimals: 0 }, sleep_deep: { id: "sleep_deep", name: "Deep", icon: "mdi:alpha-d-circle", unit: "min", decimals: 0 }, sleep_rem: { id: "sleep_rem", name: "REM", icon: "mdi:alpha-r-circle", unit: "min", decimals: 0 }, sleep_unknown: { id: "sleep_unknown", name: "Unknown", icon: "mdi:help-circle-outline", unit: "min", decimals: 0 }, weight: { id: "weight", name: "Weight", icon: "mdi:scale-bathroom", unit: "lb", decimals: 1 }, bmi: { id: "bmi", name: "BMI", icon: "mdi:human-male-height", unit: "count", decimals: 1 }, body_fat_percentage: { id: "body_fat_percentage", name: "Body Fat", icon: "mdi:percent", unit: "%", decimals: 1 }, lean_body_mass: { id: "lean_body_mass", name: "Lean Mass", icon: "mdi:human", unit: "lb", decimals: 1 }, vo2_max: { id: "vo2_max", name: "VO2 Max", icon: "mdi:run", unit: "mL/(kg*min)", decimals: 1 }, glucose: { id: "glucose", name: "Blood Glucose", icon: "mdi:diabetes", unit: "mg/dL", decimals: 0 }, workout_cycling: { id: "workout_cycling", name: "Cycling", icon: "mdi:bike" }, workout_walking: { id: "workout_walking", name: "Walking", icon: "mdi:walk" }, workout_strength_training: { id: "workout_strength_training", name: "Strength Training", icon: "mdi:weight-lifter" }, workout_functional_strength: { id: "workout_functional_strength", name: "Functional Strength", icon: "mdi:arm-flex" }, workout_hiit: { id: "workout_hiit", name: "HIIT", icon: "mdi:lightning-bolt" }, workout_generic: { id: "workout_generic", name: "Workout", icon: "mdi:arm-flex-outline" } }, st = { activity: [{ preset: "active_energy" }, { preset: "steps" }, { preset: "distance_walk_run" }, { preset: "flights_climbed" }], vitals: [{ preset: "heart_rate" }, { preset: "resting_heart_rate" }, { preset: "hrv_sdnn" }, { preset: "spo2" }, { preset: "respiratory_rate" }], sleep: [{ preset: "asleep", stage: "asleep" }, { preset: "in_bed", stage: "in_bed" }, { preset: "sleep_core", stage: "core" }, { preset: "sleep_deep", stage: "deep" }, { preset: "sleep_rem", stage: "rem" }, { preset: "sleep_unknown", stage: "unknown" }], body: [{ preset: "weight" }, { preset: "bmi" }, { preset: "body_fat_percentage" }, { preset: "lean_body_mass" }, { preset: "vo2_max" }], workouts: [], overview: [] };
+const A = { steps: { id: "steps", name: "Steps", icon: "mdi:shoe-print", unit: "count", decimals: 0 }, active_energy: { id: "active_energy", name: "Active Energy", icon: "mdi:fire", unit: "kcal", decimals: 0 }, distance_walk_run: { id: "distance_walk_run", name: "Walk/Run Distance", icon: "mdi:walk", unit: "mi", decimals: 2 }, distance_cycling: { id: "distance_cycling", name: "Cycling Distance", icon: "mdi:bike", unit: "mi", decimals: 2 }, flights_climbed: { id: "flights_climbed", name: "Flights Climbed", icon: "mdi:stairs-up", unit: "count", decimals: 0 }, heart_rate: { id: "heart_rate", name: "Heart Rate", icon: "mdi:heart-pulse", unit: "bpm", decimals: 0, ranges: { low: 50, normal: [55, 95], high: 120 } }, resting_heart_rate: { id: "resting_heart_rate", name: "Resting HR", icon: "mdi:heart", unit: "bpm", decimals: 0, ranges: { low: 45, normal: [50, 90], high: 110 } }, hrv_sdnn: { id: "hrv_sdnn", name: "HRV (SDNN)", icon: "mdi:heart-flash", unit: "ms", decimals: 0, ranges: { low: 20 } }, spo2: { id: "spo2", name: "SpO2", icon: "mdi:water-percent", unit: "%", decimals: 1, ranges: { low: 92, normal: [95, 100] } }, respiratory_rate: { id: "respiratory_rate", name: "Respiratory Rate", icon: "mdi:lungs", unit: "breaths/min", decimals: 0, ranges: { low: 10, normal: [12, 20], high: 24 } }, asleep: { id: "asleep", name: "Asleep", icon: "mdi:sleep", unit: "min", decimals: 0 }, in_bed: { id: "in_bed", name: "In bed", icon: "mdi:bed", unit: "min", decimals: 0 }, sleep_core: { id: "sleep_core", name: "Core", icon: "mdi:alpha-c-circle", unit: "min", decimals: 0 }, sleep_deep: { id: "sleep_deep", name: "Deep", icon: "mdi:alpha-d-circle", unit: "min", decimals: 0 }, sleep_rem: { id: "sleep_rem", name: "REM", icon: "mdi:alpha-r-circle", unit: "min", decimals: 0 }, sleep_unknown: { id: "sleep_unknown", name: "Unknown", icon: "mdi:help-circle-outline", unit: "min", decimals: 0 }, weight: { id: "weight", name: "Weight", icon: "mdi:scale-bathroom", unit: "lb", decimals: 1 }, bmi: { id: "bmi", name: "BMI", icon: "mdi:human-male-height", unit: "count", decimals: 1 }, body_fat_percentage: { id: "body_fat_percentage", name: "Body Fat", icon: "mdi:percent", unit: "%", decimals: 1 }, lean_body_mass: { id: "lean_body_mass", name: "Lean Mass", icon: "mdi:human", unit: "lb", decimals: 1 }, vo2_max: { id: "vo2_max", name: "VO2 Max", icon: "mdi:run", unit: "mL/(kg*min)", decimals: 1 }, glucose: { id: "glucose", name: "Blood Glucose", icon: "mdi:diabetes", unit: "mg/dL", decimals: 0 }, workout_cycling: { id: "workout_cycling", name: "Cycling", icon: "mdi:bike" }, workout_walking: { id: "workout_walking", name: "Walking", icon: "mdi:walk" }, workout_strength_training: { id: "workout_strength_training", name: "Strength Training", icon: "mdi:weight-lifter" }, workout_functional_strength: { id: "workout_functional_strength", name: "Functional Strength", icon: "mdi:arm-flex" }, workout_hiit: { id: "workout_hiit", name: "HIIT", icon: "mdi:lightning-bolt" }, workout_generic: { id: "workout_generic", name: "Workout", icon: "mdi:arm-flex-outline" } }, nt = { activity: [{ preset: "active_energy" }, { preset: "steps" }, { preset: "distance_walk_run" }, { preset: "flights_climbed" }], vitals: [{ preset: "heart_rate" }, { preset: "resting_heart_rate" }, { preset: "hrv_sdnn" }, { preset: "spo2" }, { preset: "respiratory_rate" }], sleep: [{ preset: "asleep", stage: "asleep" }, { preset: "in_bed", stage: "in_bed" }, { preset: "sleep_core", stage: "core" }, { preset: "sleep_deep", stage: "deep" }, { preset: "sleep_rem", stage: "rem" }, { preset: "sleep_unknown", stage: "unknown" }], body: [{ preset: "weight" }, { preset: "bmi" }, { preset: "body_fat_percentage" }, { preset: "lean_body_mass" }, { preset: "vo2_max" }], workouts: [], overview: [] };
 function V(e = [], t) {
-  return e.length === 0 && t && st[t] && (e = st[t].map((s) => ({ ...s }))), e.map((s) => (function(i) {
+  return e.length === 0 && t && nt[t] && (e = nt[t].map((s) => ({ ...s }))), e.map((s) => (function(i) {
     if (!i.preset) return i;
     const r = A[i.preset];
     return r ? { ...r, ...i, name: i.name ?? r.name, icon: i.icon ?? r.icon, unit_override: i.unit_override ?? r.unit, decimals: i.decimals ?? r.decimals, ranges: i.ranges ?? r.ranges } : i;
@@ -800,7 +806,7 @@ function v(e) {
   return e ?? "current";
 }
 const be = /* @__PURE__ */ new Map(), $e = /* @__PURE__ */ new Map(), ke = {};
-async function it(e, t, s, i) {
+async function rt(e, t, s, i) {
   const r = (function(o, l, p) {
     return `${o}-${l.toISOString()}-${p.toISOString()}`;
   })(t, s, i), n = Date.now(), a = be.get(r);
@@ -810,7 +816,7 @@ async function it(e, t, s, i) {
     ke[r] = n;
     const l = await e.callApi?.("GET", o), p = Array.isArray(l) ? l[0] : void 0;
     if (!p || !p.length) return be.set(r, { ts: n, value: null }), null;
-    const u = [...p].reverse().find((m) => b(m.state) !== null), h = u ? b(u.state) : null;
+    const u = [...p].reverse().find((g) => b(g.state) !== null), h = u ? b(u.state) : null;
     return be.set(r, { ts: n, value: h }), h;
   } catch {
     return be.set(r, { ts: n, value: null }), null;
@@ -822,25 +828,25 @@ async function He(e, t, s) {
     const u = /* @__PURE__ */ new Date(), h = /* @__PURE__ */ new Date();
     if (p === "today") {
       h.setHours(0, 0, 0, 0);
-      const g = new Date(h);
-      return g.setDate(g.getDate() - 1), { start: h, end: u, prevStart: g, prevEnd: new Date(h) };
+      const m = new Date(h);
+      return m.setDate(m.getDate() - 1), { start: h, end: u, prevStart: m, prevEnd: new Date(h) };
     }
     if (p === "7d") {
       h.setDate(h.getDate() - 7);
-      const g = new Date(h), f = new Date(h);
-      return f.setDate(f.getDate() - 7), { start: h, end: u, prevStart: f, prevEnd: g };
+      const m = new Date(h), f = new Date(h);
+      return f.setDate(f.getDate() - 7), { start: h, end: u, prevStart: f, prevEnd: m };
     }
     if (p === "30d") {
       h.setDate(h.getDate() - 30);
-      const g = new Date(h), f = new Date(h);
-      return f.setDate(f.getDate() - 30), { start: h, end: u, prevStart: f, prevEnd: g };
+      const m = new Date(h), f = new Date(h);
+      return f.setDate(f.getDate() - 30), { start: h, end: u, prevStart: f, prevEnd: m };
     }
-    const m = /* @__PURE__ */ new Date();
-    return { start: h, end: u, prevStart: new Date(m.getTime() - 18e5), prevEnd: m };
-  })(s), o = await it(e, t, i, r), l = await it(e, t, n, a);
+    const g = /* @__PURE__ */ new Date();
+    return { start: h, end: u, prevStart: new Date(g.getTime() - 18e5), prevEnd: g };
+  })(s), o = await rt(e, t, i, r), l = await rt(e, t, n, a);
   return { current: o, previous: l, diff: o !== null && l !== null ? o - l : null, label: s };
 }
-function q(e) {
+function K(e) {
   if (!e) return null;
   const t = [e.attributes?.previous_state, e.attributes?.previous, e.attributes?.last_value, e.attributes?.prior_value];
   for (const s of t) {
@@ -849,7 +855,7 @@ function q(e) {
   }
   return null;
 }
-async function je(e, t, s, i, r) {
+async function ze(e, t, s, i, r) {
   if (!e || !t) return [];
   const n = `${t}-${s.toISOString()}-${i.toISOString()}-${r}`, a = Date.now(), o = $e.get(n);
   if (o && a - o.ts < 3e4) return o.value;
@@ -857,22 +863,22 @@ async function je(e, t, s, i, r) {
     ke[n] = a;
     const l = `history/period/${s.toISOString()}?filter_entity_id=${t}&end_time=${i.toISOString()}&minimal_response`, p = await e.callApi?.("GET", l), u = Array.isArray(p) ? p[0] : void 0;
     if (!u || !u.length) return $e.set(n, { ts: a, value: [] }), [];
-    const h = [], m = (i.getTime() - s.getTime()) / r;
-    for (let g = 0; g < r; g++) {
-      const f = s.getTime() + g * m, ft = f + m, Le = [...u.filter((ze) => {
-        const Fe = new Date(ze.last_changed).getTime();
-        return Fe >= f && Fe < ft;
-      })].reverse().find((ze) => b(ze.state) !== null);
-      h.push(Le ? b(Le.state) : NaN);
+    const h = [], g = (i.getTime() - s.getTime()) / r;
+    for (let m = 0; m < r; m++) {
+      const f = s.getTime() + m * g, bt = f + g, Ie = [...u.filter((je) => {
+        const Be = new Date(je.last_changed).getTime();
+        return Be >= f && Be < bt;
+      })].reverse().find((je) => b(je.state) !== null);
+      h.push(Ie ? b(Ie.state) : NaN);
     }
     return $e.set(n, { ts: a, value: h }), h;
   } catch {
     return $e.set(n, { ts: a, value: [] }), [];
   }
 }
-var Jt = Object.defineProperty, Lt = Object.getOwnPropertyDescriptor, Q = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? Lt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && Jt(t, s, n), n;
+var Lt = Object.defineProperty, It = Object.getOwnPropertyDescriptor, Q = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? It(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && Lt(t, s, n), n;
 };
 let E = class extends y {
   constructor() {
@@ -898,7 +904,7 @@ let E = class extends y {
       const i = s.entity ?? "", r = i ? this.hass?.states?.[i] : void 0, n = s.trend_entity ?? i;
       if (!i) return void (t[i] = { current: null, previous: null, diff: null, label: e });
       if (e === "current") {
-        const o = r ? Number(r.state) : null, l = s.trend_entity ? q(this.hass?.states?.[s.trend_entity]) : q(r);
+        const o = r ? Number(r.state) : null, l = s.trend_entity ? K(this.hass?.states?.[s.trend_entity]) : K(r);
         return void (t[i] = { current: o, previous: l, diff: o !== null && l !== null ? o - l : null, label: e });
       }
       const a = await He(this.hass, n, e);
@@ -911,7 +917,7 @@ let E = class extends y {
     i.setDate(s.getDate() - e);
     const r = { ...this.historySeries };
     await Promise.all(this.config.metrics.filter((n) => n.entity).map(async (n) => {
-      const a = n.entity, o = await je(this.hass, a, i, s, t);
+      const a = n.entity, o = await ze(this.hass, a, i, s, t);
       r[a] = o;
     })), this.historySeries = r;
   }
@@ -930,7 +936,7 @@ let E = class extends y {
     return x(this.hass)(e, t);
   }
   renderMetric(e) {
-    const { value: t, text: s, entity: i } = me(this.hass, e), r = mt(e, this.hass, this.config?.goals), n = gt(t, r), a = ge(e, i), o = e.icon ?? i?.attributes?.icon;
+    const { value: t, text: s, entity: i } = ge(this.hass, e), r = yt(e, this.hass, this.config?.goals), n = ft(t, r), a = me(e, i), o = e.icon ?? i?.attributes?.icon;
     return c`
       <div class="metric ${this.config?.compact ? "compact" : ""}">
         <div class="label">
@@ -968,10 +974,10 @@ let E = class extends y {
       return c`
     <div style="display:flex; gap:6px; align-items:flex-end;">
       ${o.map((u, h) => {
-        const m = p > 0 && Number.isFinite(u) ? Math.max(u / p * 100, 4) : 4;
+        const g = p > 0 && Number.isFinite(u) ? Math.max(u / p * 100, 4) : 4;
         return c`<div style="text-align:center; flex:1;">
           <div
-            style="height:${m}px; background: var(--accent-color, var(--primary-color)); border-radius:6px;"
+            style="height:${g}px; background: var(--accent-color, var(--primary-color)); border-radius:6px;"
             title=${Number.isFinite(u) ? String(u) : "—"}
           ></div>
           ${l ? c`<div style="font-size:0.7rem; color:var(--secondary-text-color);">${l[h]}</div>` : ""}
@@ -998,7 +1004,7 @@ let E = class extends y {
     ` : d;
   }
 };
-E.styles = [K, M`
+E.styles = [G, M`
       .metric {
         position: relative;
       }
@@ -1013,15 +1019,15 @@ E.styles = [K, M`
         color: var(--secondary-text-color);
       }
     `], Q([w({ attribute: !1 })], E.prototype, "hass", 2), Q([_()], E.prototype, "config", 2), Q([_()], E.prototype, "trends", 2), Q([_()], E.prototype, "historySeries", 2), E = Q([k("fitness-activity-summary-card")], E);
-const nt = { heart_rate: { bands: [{ label: "Low", max: 50, severity: "low" }, { label: "Normal", min: 50, max: 100, severity: "normal" }, { label: "High", min: 100, severity: "high" }] }, resting_heart_rate: { bands: [{ label: "Low", max: 45, severity: "low" }, { label: "Normal", min: 45, max: 90, severity: "normal" }, { label: "High", min: 90, severity: "high" }] }, spo2: { bands: [{ label: "Low", max: 92, severity: "low" }, { label: "Normal", min: 95, max: 100, severity: "normal" }] }, respiratory_rate: { bands: [{ label: "Low", max: 10, severity: "low" }, { label: "Normal", min: 12, max: 20, severity: "normal" }, { label: "High", min: 24, severity: "high" }] }, glucose: { bands: [{ label: "Low", max: 70, severity: "low" }, { label: "Normal", min: 80, max: 140, severity: "normal" }, { label: "High", min: 180, severity: "high" }] }, weight: { bands: [] } };
+const at = { heart_rate: { bands: [{ label: "Low", max: 50, severity: "low" }, { label: "Normal", min: 50, max: 100, severity: "normal" }, { label: "High", min: 100, severity: "high" }] }, resting_heart_rate: { bands: [{ label: "Low", max: 45, severity: "low" }, { label: "Normal", min: 45, max: 90, severity: "normal" }, { label: "High", min: 90, severity: "high" }] }, spo2: { bands: [{ label: "Low", max: 92, severity: "low" }, { label: "Normal", min: 95, max: 100, severity: "normal" }] }, respiratory_rate: { bands: [{ label: "Low", max: 10, severity: "low" }, { label: "Normal", min: 12, max: 20, severity: "normal" }, { label: "High", min: 24, severity: "high" }] }, glucose: { bands: [{ label: "Low", max: 70, severity: "low" }, { label: "Normal", min: 80, max: 140, severity: "normal" }, { label: "High", min: 180, severity: "high" }] }, weight: { bands: [] } };
 function Ae(e, t = 120, s = 40) {
   const i = e.filter((l) => Number.isFinite(l));
-  if (!i.length) return et``;
+  if (!i.length) return st``;
   const r = Math.min(...i), n = Math.max(...i) - r || 1, a = t / Math.max(e.length - 1, 1), o = e.map((l, p) => {
     const u = Number.isFinite(l) ? (l - r) / n : 0.5;
     return `${p * a},${s - u * s}`;
   });
-  return et`<svg viewBox="0 0 ${t} ${s}" width="${t}" height="${s}">
+  return st`<svg viewBox="0 0 ${t} ${s}" width="${t}" height="${s}">
     <polyline
       fill="none"
       stroke="var(--accent-color, var(--primary-color))"
@@ -1032,9 +1038,9 @@ function Ae(e, t = 120, s = 40) {
     />
   </svg>`;
 }
-var Ft = Object.defineProperty, It = Object.getOwnPropertyDescriptor, ee = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? It(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && Ft(t, s, n), n;
+var Bt = Object.defineProperty, Vt = Object.getOwnPropertyDescriptor, ee = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? Vt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && Bt(t, s, n), n;
 };
 let C = class extends y {
   constructor() {
@@ -1059,7 +1065,7 @@ let C = class extends y {
     await Promise.all(this.config.metrics.map(async (s) => {
       const i = s.entity ?? "", r = i ? this.hass?.states?.[i] : void 0;
       if (e === "current") {
-        const a = r ? b(r.state) : null, o = q(r);
+        const a = r ? b(r.state) : null, o = K(r);
         return void (t[i] = { current: a, previous: o, diff: a !== null && o !== null ? a - o : null, label: e });
       }
       if (!i) return void (t[i] = { current: null, previous: null, diff: null, label: e });
@@ -1073,7 +1079,7 @@ let C = class extends y {
     i.setDate(s.getDate() - e);
     const r = { ...this.historySeries };
     await Promise.all(this.config.metrics.filter((n) => n.entity).map(async (n) => {
-      const a = n.entity, o = await je(this.hass, a, i, s, t);
+      const a = n.entity, o = await ze(this.hass, a, i, s, t);
       r[a] = o;
     })), this.historySeries = r;
   }
@@ -1094,13 +1100,13 @@ let C = class extends y {
     return s.includes("oxygen") || s.includes("spo2") ? { low: 92, normal: [95, 100] } : s.includes("respiratory") ? { low: 10, high: 24, normal: [12, 20] } : s.includes("resting") || s.includes("heart rate") ? { low: 45, high: 110, normal: [55, 95] } : s.includes("variability") || s.includes("hrv") ? { low: 15, normal: [20, 150] } : s.includes("glucose") ? { low: 70, high: 180, normal: [80, 140] } : e.ranges;
   }
   renderMetric(e) {
-    const { value: t, text: s, entity: i } = me(this.hass, e), r = ge(e, i), n = e.icon ?? i?.attributes?.icon, a = (function(u, h) {
+    const { value: t, text: s, entity: i } = ge(this.hass, e), r = me(e, i), n = e.icon ?? i?.attributes?.icon, a = (function(u, h) {
       if (u.zones_disabled) return;
-      const m = (function(g) {
-        return g.preset || g.entity;
+      const g = (function(m) {
+        return m.preset || m.entity;
       })(u);
-      return m ? u.ranges ? Array.isArray(u.ranges) ? { bands: u.ranges } : u.ranges : h && h[m] ? h[m] : u.preset && nt[u.preset] ? nt[u.preset] : void 0 : void 0;
-    })(e, this.config?.zones) ?? e.ranges ?? this.defaultRanges(e, r), { status: o, band: l } = Wt(t, a), p = l?.label ?? (o === "low" ? this.localize("label.low") : o === "high" ? this.localize("label.high") : o === "normal" ? this.localize("label.ok") : "");
+      return g ? u.ranges ? Array.isArray(u.ranges) ? { bands: u.ranges } : u.ranges : h && h[g] ? h[g] : u.preset && at[u.preset] ? at[u.preset] : void 0 : void 0;
+    })(e, this.config?.zones) ?? e.ranges ?? this.defaultRanges(e, r), { status: o, band: l } = Jt(t, a), p = l?.label ?? (o === "low" ? this.localize("label.low") : o === "high" ? this.localize("label.high") : o === "normal" ? this.localize("label.ok") : "");
     return c`
       <div class="metric ${this.config?.compact ? "compact" : ""}">
         <div class="label">
@@ -1131,7 +1137,7 @@ let C = class extends y {
     ` : d;
   }
 };
-C.styles = [K, M`
+C.styles = [G, M`
       .metric {
         position: relative;
       }
@@ -1139,11 +1145,11 @@ C.styles = [K, M`
         align-self: flex-start;
       }
     `], ee([w({ attribute: !1 })], C.prototype, "hass", 2), ee([_()], C.prototype, "config", 2), ee([_()], C.prototype, "trends", 2), ee([_()], C.prototype, "historySeries", 2), C = ee([k("fitness-vitals-card")], C);
-var Bt = Object.defineProperty, Vt = Object.getOwnPropertyDescriptor, De = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? Vt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && Bt(t, s, n), n;
+var Kt = Object.defineProperty, qt = Object.getOwnPropertyDescriptor, Oe = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? qt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && Kt(t, s, n), n;
 };
-const rt = { asleep: "var(--sleep-asleep-color, #4a90e2)", in_bed: "var(--sleep-in-bed-color, #9ea3aa)", core: "var(--sleep-core-color, #f5a623)", deep: "var(--sleep-deep-color, #2e9b4f)", rem: "var(--sleep-rem-color, #9b59b6)", unknown: "var(--sleep-unknown-color, #bfc2c6)" };
+const ot = { asleep: "var(--sleep-asleep-color, #4a90e2)", in_bed: "var(--sleep-in-bed-color, #9ea3aa)", core: "var(--sleep-core-color, #f5a623)", deep: "var(--sleep-deep-color, #2e9b4f)", rem: "var(--sleep-rem-color, #9b59b6)", unknown: "var(--sleep-unknown-color, #bfc2c6)" };
 let te = class extends y {
   static async getConfigElement() {
     return document.createElement("fitness-sleep-card-editor");
@@ -1196,7 +1202,7 @@ let te = class extends y {
       const a = e[n] ?? 0;
       return c`<div
                 class="stage-segment"
-                style="width: ${r > 0 ? a / r * 100 : 0}%; background: ${rt[n]}"
+                style="width: ${r > 0 ? a / r * 100 : 0}%; background: ${ot[n]}"
               ></div>`;
     })}
         </div>
@@ -1204,7 +1210,7 @@ let te = class extends y {
           ${t.map((n) => {
       const a = e[n], o = this.localize(`label.${n}`) || n.toUpperCase();
       return c`<div class="legend-item">
-              <span class="swatch" style="background:${rt[n]}"></span>
+              <span class="swatch" style="background:${ot[n]}"></span>
               <div>
                 <div class="label">${o}</div>
                 <div class="subtle">
@@ -1218,7 +1224,7 @@ let te = class extends y {
     `;
   }
 };
-te.styles = [K, M`
+te.styles = [G, M`
       .summary {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -1251,10 +1257,10 @@ te.styles = [K, M`
         height: 12px;
         border-radius: 3px;
       }
-    `], De([w({ attribute: !1 })], te.prototype, "hass", 2), De([_()], te.prototype, "config", 2), te = De([k("fitness-sleep-card")], te);
-var qt = Object.defineProperty, Gt = Object.getOwnPropertyDescriptor, se = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? Gt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && qt(t, s, n), n;
+    `], Oe([w({ attribute: !1 })], te.prototype, "hass", 2), Oe([_()], te.prototype, "config", 2), te = Oe([k("fitness-sleep-card")], te);
+var Gt = Object.defineProperty, Zt = Object.getOwnPropertyDescriptor, se = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? Zt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && Gt(t, s, n), n;
 };
 let H = class extends y {
   constructor() {
@@ -1279,7 +1285,7 @@ let H = class extends y {
     await Promise.all(this.config.metrics.map(async (s) => {
       const i = s.entity ?? "", r = i ? this.hass?.states?.[i] : void 0;
       if (e === "current") {
-        const a = r ? b(r.state) : null, o = q(r);
+        const a = r ? b(r.state) : null, o = K(r);
         return void (t[i] = { current: a, previous: o, diff: a !== null && o !== null ? a - o : null, label: e });
       }
       if (!i) return void (t[i] = { current: null, previous: null, diff: null, label: e });
@@ -1293,7 +1299,7 @@ let H = class extends y {
     i.setDate(s.getDate() - e);
     const r = { ...this.historySeries };
     await Promise.all(this.config.metrics.filter((n) => n.entity).map(async (n) => {
-      const a = n.entity, o = await je(this.hass, a, i, s, t);
+      const a = n.entity, o = await ze(this.hass, a, i, s, t);
       r[a] = o;
     })), this.historySeries = r;
   }
@@ -1301,13 +1307,13 @@ let H = class extends y {
     return x(this.hass)(e, t);
   }
   previousValue(e) {
-    return q(e);
+    return K(e);
   }
   trendIcon(e) {
     return e > 0 ? "mdi:arrow-up-bold" : e < 0 ? "mdi:arrow-down-bold" : "mdi:minus";
   }
   renderMetric(e) {
-    const { value: t, text: s, entity: i } = me(this.hass, e), r = ge(e, i), n = e.icon ?? i?.attributes?.icon, a = this.trends[e.entity ?? ""], o = this.previousValue(i), l = a?.diff !== void 0 ? a.diff : t !== null && o !== null ? t - o : null;
+    const { value: t, text: s, entity: i } = ge(this.hass, e), r = me(e, i), n = e.icon ?? i?.attributes?.icon, a = this.trends[e.entity ?? ""], o = this.previousValue(i), l = a?.diff !== void 0 ? a.diff : t !== null && o !== null ? t - o : null;
     return c`
       <div class="metric ${this.config?.compact ? "compact" : ""}">
         <div class="label">
@@ -1340,7 +1346,7 @@ let H = class extends y {
     ` : d;
   }
 };
-H.styles = [K, M`
+H.styles = [G, M`
       .trend {
         display: inline-flex;
         align-items: center;
@@ -1355,9 +1361,9 @@ H.styles = [K, M`
         color: var(--error-color, #ef5350);
       }
     `], se([w({ attribute: !1 })], H.prototype, "hass", 2), se([_()], H.prototype, "config", 2), se([_()], H.prototype, "trends", 2), se([_()], H.prototype, "historySeries", 2), H = se([k("fitness-body-metrics-card")], H);
-var Kt = Object.defineProperty, Zt = Object.getOwnPropertyDescriptor, Me = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? Zt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && Kt(t, s, n), n;
+var Xt = Object.defineProperty, Yt = Object.getOwnPropertyDescriptor, Me = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? Yt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && Xt(t, s, n), n;
 };
 let ie = class extends y {
   static async getConfigElement() {
@@ -1376,8 +1382,12 @@ let ie = class extends y {
   workoutValues(e) {
     return { duration: b(this.hass?.states?.[e.duration_entity ?? ""]?.state), energy: b(this.hass?.states?.[e.energy_entity ?? ""]?.state), distance: b(this.hass?.states?.[e.distance_entity ?? ""]?.state) };
   }
+  distanceUnit(e) {
+    const t = e?.distance_entity ?? this.activeWorkouts().find((s) => s.distance_entity)?.distance_entity;
+    return this.hass?.states?.[t ?? ""]?.attributes?.unit_of_measurement ?? "mi";
+  }
   renderValue(e, t) {
-    return t === "min" && e !== null ? he(e) : _t(e, t);
+    return t === "min" && e !== null ? he(e) : mt(e, t);
   }
   workoutMeta(e) {
     const t = e.preset;
@@ -1405,7 +1415,7 @@ let ie = class extends y {
         <div>${this.localize("label.total")}</div>
         <div class="value">${this.renderValue(t.duration, "min")}</div>
         <div class="value">${this.renderValue(t.energy, "kcal")}</div>
-        ${e.some((s) => s.distance_entity) ? c`<div class="value">${this.renderValue(t.distance, "mi")}</div>` : d}
+        ${e.some((s) => s.distance_entity) ? c`<div class="value">${this.renderValue(t.distance, this.distanceUnit())}</div>` : d}
       </div>
     `;
   }
@@ -1419,7 +1429,7 @@ let ie = class extends y {
         </div>
         <div class="value">${this.renderValue(t, "min")}</div>
         <div class="value">${this.renderValue(s, "kcal")}</div>
-        ${r ? c`<div class="value">${this.renderValue(i, "mi")}</div>` : d}
+        ${r ? c`<div class="value">${this.renderValue(i, this.distanceUnit(e))}</div>` : d}
       </div>
     `;
   }
@@ -1446,7 +1456,7 @@ let ie = class extends y {
     `;
   }
 };
-ie.styles = [K, M`
+ie.styles = [G, M`
       .workout-list {
         display: flex;
         flex-direction: column;
@@ -1472,11 +1482,11 @@ ie.styles = [K, M`
         grid-template-columns: 1fr repeat(2, minmax(60px, 80px));
       }
     `], Me([w({ attribute: !1 })], ie.prototype, "hass", 2), Me([_()], ie.prototype, "config", 2), ie = Me([k("fitness-workouts-card")], ie);
-var Xt = Object.defineProperty, Yt = Object.getOwnPropertyDescriptor, ne = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? Yt(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && Xt(t, s, n), n;
+var Qt = Object.defineProperty, es = Object.getOwnPropertyDescriptor, ne = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? es(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && Qt(t, s, n), n;
 };
-let j = class extends y {
+let z = class extends y {
   constructor() {
     super(...arguments), this.trends = {}, this.historySeries = {};
   }
@@ -1499,7 +1509,7 @@ let j = class extends y {
     await Promise.all(s.map(async (i) => {
       const r = i.entity ?? "", n = r ? this.hass?.states?.[r] : void 0;
       if (e === "current") {
-        const o = n ? Number(n.state) : null, l = q(n);
+        const o = n ? Number(n.state) : null, l = K(n);
         return void (t[r] = { current: o, previous: l, diff: o !== null && l !== null ? o - l : null, label: e });
       }
       if (!r) return void (t[r] = { current: null, previous: null, diff: null, label: e });
@@ -1513,7 +1523,7 @@ let j = class extends y {
     i.setDate(s.getDate() - e);
     const r = { ...this.historySeries }, n = [...this.config.primary_metrics, ...this.config.secondary_metrics ?? []];
     await Promise.all(n.filter((a) => a.entity).map(async (a) => {
-      const o = a.entity, l = await je(this.hass, o, i, s, t);
+      const o = a.entity, l = await ze(this.hass, o, i, s, t);
       r[o] = l;
     })), this.historySeries = r;
   }
@@ -1539,7 +1549,7 @@ let j = class extends y {
     `;
   }
   renderPrimary(e) {
-    const { value: t, text: s, entity: i } = me(this.hass, e), r = ge(e, i), n = e.icon ?? i?.attributes?.icon, a = mt(e, this.hass, this.config?.goals), o = gt(t, a), l = e.unit_override ?? i?.attributes?.unit_of_measurement;
+    const { value: t, text: s, entity: i } = ge(this.hass, e), r = me(e, i), n = e.icon ?? i?.attributes?.icon, a = yt(e, this.hass, this.config?.goals), o = ft(t, a), l = e.unit_override ?? i?.attributes?.unit_of_measurement;
     return c`
       <div class="metric">
         <div class="label">
@@ -1558,7 +1568,7 @@ let j = class extends y {
     `;
   }
   renderSecondary(e) {
-    const { text: t, entity: s } = me(this.hass, e), i = ge(e, s), r = e.icon ?? s?.attributes?.icon, n = this.renderTrend(e, e.unit_override ?? s?.attributes?.unit_of_measurement);
+    const { text: t, entity: s } = ge(this.hass, e), i = me(e, s), r = e.icon ?? s?.attributes?.icon, n = this.renderTrend(e, e.unit_override ?? s?.attributes?.unit_of_measurement);
     return c`
       <div class="chip">
         ${r ? c`<ha-icon .icon=${r}></ha-icon>` : d}
@@ -1589,7 +1599,7 @@ let j = class extends y {
 function $(e, t, s) {
   e.dispatchEvent(new CustomEvent(t, { detail: s, bubbles: !0, composed: !0 }));
 }
-j.styles = [K, M`
+z.styles = [G, M`
       .primary-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -1623,14 +1633,14 @@ j.styles = [K, M`
         inset: 0;
         border-radius: 50%;
       }
-    `], ne([w({ attribute: !1 })], j.prototype, "hass", 2), ne([_()], j.prototype, "config", 2), ne([_()], j.prototype, "trends", 2), ne([_()], j.prototype, "historySeries", 2), j = ne([k("fitness-overview-card")], j);
-const Z = [{ value: "current", label: "Current" }, { value: "today", label: "Today" }, { value: "7d", label: "7 days" }, { value: "30d", label: "30 days" }], G = [{ name: "entity", selector: { entity: {} } }, { name: "preset", selector: { select: { options: Object.values(A).map((e) => ({ value: e.id, label: e.name })) } } }, { name: "name", selector: { text: {} } }, { name: "icon", selector: { icon: {} } }, { name: "unit_override", selector: { text: {} } }, { name: "decimals", selector: { number: { min: 0, max: 4, mode: "box" } } }, { name: "goal", selector: { number: { min: 0, mode: "box" } } }, { name: "goal_entity", selector: { entity: {} } }, { name: "trend_entity", selector: { entity: {} } }, { name: "ranges", schema: [{ name: "low", selector: { number: { mode: "box" } } }, { name: "normal", selector: { text: {} } }, { name: "high", selector: { number: { mode: "box" } } }] }], fe = [{ name: "history", selector: { boolean: {} } }, { name: "history_window_days", selector: { number: { min: 1, max: 60, mode: "box" } } }, { name: "history_points", selector: { number: { min: 4, max: 120, mode: "box" } } }], at = { steps: "steps", heart_rate_variability: "hrv_sdnn", hrv: "hrv_sdnn", heart_rate: "heart_rate", resting_heart_rate: "resting_heart_rate", oxygen_saturation: "spo2", respiratory_rate: "respiratory_rate", sleep_asleep: "asleep", sleep_in_bed: "in_bed", sleep_core: "sleep_core", sleep_deep: "sleep_deep", sleep_rem: "sleep_rem", sleep_unknown: "sleep_unknown", weight: "weight", bmi: "bmi", body_fat: "body_fat_percentage", vo2: "vo2_max", hydration: "hydration", distance_walking_running: "distance_walk_run", distance_cycling: "distance_cycling", active_energy: "active_energy", basal_energy: "basal_energy", flights_climbed: "flights_climbed", workout_duration: "workout_generic", workout_energy: "workout_generic", workout_duration_walking: "workout_walking", workout_energy_walking: "workout_walking", workout_distance_walking: "workout_walking", workout_duration_cycling: "workout_cycling", workout_energy_cycling: "workout_cycling", workout_distance_cycling: "workout_cycling", workout_duration_strength_training: "workout_strength_training", workout_energy_strength_training: "workout_strength_training", workout_duration_functional_strength: "workout_functional_strength", workout_energy_functional_strength: "workout_functional_strength", workout_duration_hiit: "workout_hiit", workout_energy_hiit: "workout_hiit" };
+    `], ne([w({ attribute: !1 })], z.prototype, "hass", 2), ne([_()], z.prototype, "config", 2), ne([_()], z.prototype, "trends", 2), ne([_()], z.prototype, "historySeries", 2), z = ne([k("fitness-overview-card")], z);
+const Z = [{ value: "current", label: "Current" }, { value: "today", label: "Today" }, { value: "7d", label: "7 days" }, { value: "30d", label: "30 days" }], q = [{ name: "entity", selector: { entity: {} } }, { name: "preset", selector: { select: { options: Object.values(A).map((e) => ({ value: e.id, label: e.name })) } } }, { name: "name", selector: { text: {} } }, { name: "icon", selector: { icon: {} } }, { name: "unit_override", selector: { text: {} } }, { name: "decimals", selector: { number: { min: 0, max: 4, mode: "box" } } }, { name: "goal", selector: { number: { min: 0, mode: "box" } } }, { name: "goal_entity", selector: { entity: {} } }, { name: "trend_entity", selector: { entity: {} } }, { name: "ranges", schema: [{ name: "low", selector: { number: { mode: "box" } } }, { name: "normal", selector: { text: {} } }, { name: "high", selector: { number: { mode: "box" } } }] }], fe = [{ name: "history", selector: { boolean: {} } }, { name: "history_window_days", selector: { number: { min: 1, max: 60, mode: "box" } } }, { name: "history_points", selector: { number: { min: 4, max: 120, mode: "box" } } }], lt = { steps: "steps", heart_rate_variability: "hrv_sdnn", hrv: "hrv_sdnn", heart_rate: "heart_rate", resting_heart_rate: "resting_heart_rate", oxygen_saturation: "spo2", respiratory_rate: "respiratory_rate", sleep_asleep: "asleep", sleep_in_bed: "in_bed", sleep_core: "sleep_core", sleep_deep: "sleep_deep", sleep_rem: "sleep_rem", sleep_unknown: "sleep_unknown", weight: "weight", bmi: "bmi", body_fat: "body_fat_percentage", vo2: "vo2_max", hydration: "hydration", distance_walking_running: "distance_walk_run", distance_cycling: "distance_cycling", active_energy: "active_energy", basal_energy: "basal_energy", flights_climbed: "flights_climbed", workout_duration: "workout_generic", workout_energy: "workout_generic", workout_duration_walking: "workout_walking", workout_energy_walking: "workout_walking", workout_distance_walking: "workout_walking", workout_duration_cycling: "workout_cycling", workout_energy_cycling: "workout_cycling", workout_distance_cycling: "workout_cycling", workout_duration_strength_training: "workout_strength_training", workout_energy_strength_training: "workout_strength_training", workout_duration_functional_strength: "workout_functional_strength", workout_energy_functional_strength: "workout_functional_strength", workout_duration_hiit: "workout_hiit", workout_energy_hiit: "workout_hiit" };
 function X(e) {
   if (!e?.states) return [];
   const t = [];
   Object.entries(e.states).forEach(([i, r]) => {
     const n = i.toLowerCase();
-    for (const o of Object.keys(at)) if (n.includes(o)) return void t.push({ preset: at[o], entity: i });
+    for (const o of Object.keys(lt)) if (n.includes(o)) return void t.push({ preset: lt[o], entity: i });
     const a = r.attributes?.unit_of_measurement;
     a === "bpm" && t.push({ preset: "heart_rate", entity: i }), a === "%" && t.push({ preset: "spo2", entity: i }), a === "kcal" && t.push({ preset: "active_energy", entity: i }), a !== "mi" && a !== "km" || t.push({ preset: "distance_walk_run", entity: i }), a === "ms" && t.push({ preset: "hrv_sdnn", entity: i }), a === "mg/dL" && t.push({ preset: "glucose", entity: i });
   });
@@ -1639,9 +1649,9 @@ function X(e) {
     s[i.preset] || (s[i.preset] = { preset: i.preset, entity: i.entity, name: A[i.preset]?.name });
   }), Object.values(s);
 }
-var Qt = Object.defineProperty, es = Object.getOwnPropertyDescriptor, re = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? es(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && Qt(t, s, n), n;
+var ts = Object.defineProperty, ss = Object.getOwnPropertyDescriptor, re = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? ss(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && ts(t, s, n), n;
 };
 let T = class extends y {
   constructor() {
@@ -1671,7 +1681,7 @@ let T = class extends y {
   }
   render() {
     if (!this.hass) return null;
-    const e = this._config ?? { type: "custom:fitness-activity-summary-card", metrics: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["activity", "vitals", "sleep", "body"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, { name: "show_trends", selector: { boolean: {} } }, ...fe, { name: "metrics", type: "array", schema: G }];
+    const e = this._config ?? { type: "custom:fitness-activity-summary-card", metrics: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["activity", "vitals", "sleep", "body"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, { name: "show_trends", selector: { boolean: {} } }, ...fe, { name: "metrics", type: "array", schema: q }];
     return c`
       <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
         <button @click=${this._detect}>${this.localize("action.auto_detect")}</button>
@@ -1700,9 +1710,9 @@ let T = class extends y {
   }
 };
 re([w({ attribute: !1 })], T.prototype, "hass", 2), re([_()], T.prototype, "_config", 2), re([_()], T.prototype, "_suggestions", 2), re([_()], T.prototype, "_selected", 2), T = re([k("fitness-activity-summary-card-editor")], T);
-var ts = Object.defineProperty, ss = Object.getOwnPropertyDescriptor, ae = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? ss(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && ts(t, s, n), n;
+var is = Object.defineProperty, ns = Object.getOwnPropertyDescriptor, ae = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? ns(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && is(t, s, n), n;
 };
 let N = class extends y {
   constructor() {
@@ -1732,7 +1742,7 @@ let N = class extends y {
   }
   render() {
     if (!this.hass) return null;
-    const e = this._config ?? { type: "custom:fitness-vitals-card", metrics: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["vitals"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, { name: "show_trends", selector: { boolean: {} } }, ...fe, { name: "metrics", type: "array", schema: G }];
+    const e = this._config ?? { type: "custom:fitness-vitals-card", metrics: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["vitals"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, { name: "show_trends", selector: { boolean: {} } }, ...fe, { name: "metrics", type: "array", schema: q }];
     return c`
       <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
         <button @click=${this._detect}>${this.localize("action.auto_detect")}</button>
@@ -1761,9 +1771,9 @@ let N = class extends y {
   }
 };
 ae([w({ attribute: !1 })], N.prototype, "hass", 2), ae([_()], N.prototype, "_config", 2), ae([_()], N.prototype, "_suggestions", 2), ae([_()], N.prototype, "_selected", 2), N = ae([k("fitness-vitals-card-editor")], N);
-var is = Object.defineProperty, ns = Object.getOwnPropertyDescriptor, oe = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? ns(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && is(t, s, n), n;
+var rs = Object.defineProperty, as = Object.getOwnPropertyDescriptor, oe = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? as(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && rs(t, s, n), n;
 };
 let R = class extends y {
   constructor() {
@@ -1793,7 +1803,7 @@ let R = class extends y {
   }
   render() {
     if (!this.hass) return null;
-    const e = this._config ?? { type: "custom:fitness-sleep-card", metrics: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["sleep"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, ...fe, { name: "metrics", type: "array", schema: G }];
+    const e = this._config ?? { type: "custom:fitness-sleep-card", metrics: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["sleep"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, ...fe, { name: "metrics", type: "array", schema: q }];
     return c`
       <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
         <button @click=${this._detect}>${this.localize("action.auto_detect")}</button>
@@ -1822,9 +1832,9 @@ let R = class extends y {
   }
 };
 oe([w({ attribute: !1 })], R.prototype, "hass", 2), oe([_()], R.prototype, "_config", 2), oe([_()], R.prototype, "_suggestions", 2), oe([_()], R.prototype, "_selected", 2), R = oe([k("fitness-sleep-card-editor")], R);
-var rs = Object.defineProperty, as = Object.getOwnPropertyDescriptor, le = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? as(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && rs(t, s, n), n;
+var os = Object.defineProperty, ls = Object.getOwnPropertyDescriptor, le = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? ls(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && os(t, s, n), n;
 };
 let W = class extends y {
   constructor() {
@@ -1854,7 +1864,7 @@ let W = class extends y {
   }
   render() {
     if (!this.hass) return null;
-    const e = this._config ?? { type: "custom:fitness-body-metrics-card", metrics: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["body"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, { name: "show_trends", selector: { boolean: {} } }, ...fe, { name: "metrics", type: "array", schema: G }];
+    const e = this._config ?? { type: "custom:fitness-body-metrics-card", metrics: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["body"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, { name: "show_trends", selector: { boolean: {} } }, ...fe, { name: "metrics", type: "array", schema: q }];
     return c`
       <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
         <button @click=${this._detect}>${this.localize("action.auto_detect")}</button>
@@ -1883,12 +1893,12 @@ let W = class extends y {
   }
 };
 le([w({ attribute: !1 })], W.prototype, "hass", 2), le([_()], W.prototype, "_config", 2), le([_()], W.prototype, "_suggestions", 2), le([_()], W.prototype, "_selected", 2), W = le([k("fitness-body-metrics-card-editor")], W);
-var os = Object.defineProperty, ls = Object.getOwnPropertyDescriptor, U = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? ls(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && os(t, s, n), n;
+var cs = Object.defineProperty, ds = Object.getOwnPropertyDescriptor, U = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? ds(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && cs(t, s, n), n;
 };
-const cs = [{ name: "name", selector: { text: {} } }, { name: "icon", selector: { icon: {} } }, { name: "enabled", selector: { boolean: {} } }, { name: "duration_entity", selector: { entity: {} } }, { name: "energy_entity", selector: { entity: {} } }, { name: "distance_entity", selector: { entity: {} } }];
-let z = class extends y {
+const hs = [{ name: "name", selector: { text: {} } }, { name: "icon", selector: { icon: {} } }, { name: "enabled", selector: { boolean: {} } }, { name: "duration_entity", selector: { entity: {} } }, { name: "energy_entity", selector: { entity: {} } }, { name: "distance_entity", selector: { entity: {} } }];
+let j = class extends y {
   constructor() {
     super(...arguments), this._suggestions = [], this._selected = {}, this._presetSelection = {};
   }
@@ -1961,7 +1971,7 @@ let z = class extends y {
   }
   render() {
     if (!this.hass) return null;
-    const e = this._config ?? { type: "custom:fitness-workouts-card", workouts: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["workouts"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, { name: "workouts", type: "array", schema: cs }];
+    const e = this._config ?? { type: "custom:fitness-workouts-card", workouts: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["workouts"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, { name: "workouts", type: "array", schema: hs }];
     return c`
       <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
         <button @click=${this._detect}>${this.localize("action.auto_detect")}</button>
@@ -2032,10 +2042,10 @@ let z = class extends y {
     `;
   }
 };
-U([w({ attribute: !1 })], z.prototype, "hass", 2), U([_()], z.prototype, "_config", 2), U([_()], z.prototype, "_suggestions", 2), U([_()], z.prototype, "_selected", 2), U([_()], z.prototype, "_presetSelection", 2), z = U([k("fitness-workouts-card-editor")], z);
-var ds = Object.defineProperty, hs = Object.getOwnPropertyDescriptor, ce = (e, t, s, i) => {
-  for (var r, n = i > 1 ? void 0 : i ? hs(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
-  return i && n && ds(t, s, n), n;
+U([w({ attribute: !1 })], j.prototype, "hass", 2), U([_()], j.prototype, "_config", 2), U([_()], j.prototype, "_suggestions", 2), U([_()], j.prototype, "_selected", 2), U([_()], j.prototype, "_presetSelection", 2), j = U([k("fitness-workouts-card-editor")], j);
+var us = Object.defineProperty, ps = Object.getOwnPropertyDescriptor, ce = (e, t, s, i) => {
+  for (var r, n = i > 1 ? void 0 : i ? ps(t, s) : t, a = e.length - 1; a >= 0; a--) (r = e[a]) && (n = (i ? r(t, s, n) : r(n)) || n);
+  return i && n && us(t, s, n), n;
 };
 let J = class extends y {
   constructor() {
@@ -2065,7 +2075,7 @@ let J = class extends y {
   }
   render() {
     if (!this.hass) return null;
-    const e = this._config ?? { type: "custom:fitness-overview-card", primary_metrics: [], secondary_metrics: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["overview"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, { name: "show_trends", selector: { boolean: {} } }, ...fe, { name: "primary_metrics", type: "array", schema: G }, { name: "secondary_metrics", type: "array", schema: G }];
+    const e = this._config ?? { type: "custom:fitness-overview-card", primary_metrics: [], secondary_metrics: [] }, t = [{ name: "title", selector: { text: {} } }, { name: "preset", selector: { select: { options: ["overview"] } } }, { name: "period", selector: { select: { options: Z } } }, { name: "compact", selector: { boolean: {} } }, { name: "show_trends", selector: { boolean: {} } }, ...fe, { name: "primary_metrics", type: "array", schema: q }, { name: "secondary_metrics", type: "array", schema: q }];
     return c`
       <div style="display:flex; gap:8px; align-items:center; margin-bottom:8px;">
         <button @click=${this._detect}>${this.localize("action.auto_detect")}</button>
@@ -2094,20 +2104,20 @@ let J = class extends y {
   }
 };
 ce([w({ attribute: !1 })], J.prototype, "hass", 2), ce([_()], J.prototype, "_config", 2), ce([_()], J.prototype, "_suggestions", 2), ce([_()], J.prototype, "_selected", 2), J = ce([k("fitness-overview-card-editor")], J);
-const yt = JSON.parse('[{"entity_id":"sensor.jasons_iphone_health_oxygen_saturation","state":"97","unit_of_measurement":"%","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Oxygen Saturation","icon":"mdi:water-percent","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_steps","state":"10","unit_of_measurement":"count","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Steps","icon":"mdi:shoe-print","category":"steps"},{"entity_id":"sensor.jasons_iphone_health_resting_heart_rate","state":"75","unit_of_measurement":"bpm","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Resting Heart Rate","icon":"mdi:heart","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_respiratory_rate","state":"17","unit_of_measurement":"breaths/min","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Respiratory Rate","icon":"mdi:lungs","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_heart_rate_variability_sdnn","state":"19.0986089955471","unit_of_measurement":"ms","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Heart Rate Variability Sdnn","icon":"mdi:heart-flash","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_flights_climbed","state":"1","unit_of_measurement":"count","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Flights Climbed","icon":"mdi:stairs-up","category":"flights"},{"entity_id":"sensor.jasons_iphone_health_connectivity_test","state":"unavailable","unit_of_measurement":"count","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Connectivity Test","icon":null,"category":"other"},{"entity_id":"sensor.jasons_iphone_health_heart_rate","state":"84","unit_of_measurement":"bpm","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Heart Rate","icon":"mdi:heart-pulse","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_distance_cycling","state":"0.0673205280488492","unit_of_measurement":"mi","device_class":"distance","state_class":"measurement","friendly_name":"Jasons iPhone Health Distance Cycling","icon":"mdi:bike","category":"distance"},{"entity_id":"sensor.jasons_iphone_health_distance_walking_running","state":"0.00497096953789867","unit_of_measurement":"mi","device_class":"distance","state_class":"measurement","friendly_name":"Jasons iPhone Health Distance Walking Running","icon":"mdi:walk","category":"distance"},{"entity_id":"sensor.jasons_iphone_health_active_energy_burned","state":"0.45","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Active Energy Burned","icon":"mdi:fire","category":"energy"},{"entity_id":"sensor.jasons_iphone_health_environmental_sound_exposure","state":"71.6872025924761","unit_of_measurement":"dB","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Environmental Sound Exposure","icon":"mdi:volume-high","category":"other"},{"entity_id":"sensor.jasons_iphone_health_basal_energy_burned","state":"26.309","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Basal Energy Burned","icon":"mdi:fire-circle","category":"energy"},{"entity_id":"sensor.jasons_iphone_health_weight","state":"359.022793968073","unit_of_measurement":"lb","device_class":"weight","state_class":"measurement","friendly_name":"Jasons iPhone Health Weight","icon":"mdi:scale-bathroom","category":"body"},{"entity_id":"sensor.jasons_iphone_health_vo2_max","state":"24.81","unit_of_measurement":"mL/(kg*min)","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Vo2 Max","icon":"mdi:run","category":"body"},{"entity_id":"sensor.jasons_iphone_health_body_fat_percentage","state":"49.2","unit_of_measurement":"%","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Body Fat Percentage","icon":"mdi:percent","category":"body"},{"entity_id":"sensor.jasons_iphone_health_blood_glucose","state":"113","unit_of_measurement":"mg/dL","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Blood Glucose","icon":"mdi:diabetes","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_bmi","state":"44.6","unit_of_measurement":"count","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Bmi","icon":"mdi:human-male-height","category":"body"},{"entity_id":"sensor.jasons_iphone_health_lean_body_mass","state":"182.190013469583","unit_of_measurement":"lb","device_class":"weight","state_class":"measurement","friendly_name":"Jasons iPhone Health Lean Body Mass","icon":"mdi:human","category":"body"},{"entity_id":"sensor.jasons_iphone_health_hydration","state":"29.9254100911311","unit_of_measurement":"fl oz US","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Hydration","icon":"mdi:cup-water","category":"other"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_walking","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Walking","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_walking","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Walking","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_workout_distance_walking","state":"unavailable","unit_of_measurement":"mi","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Distance Walking","icon":null,"category":"distance"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_workout_44","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Workout 44","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_workout_44","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Workout 44","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_cycling","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Cycling","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_cycling","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Cycling","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_workout_distance_cycling","state":"unavailable","unit_of_measurement":"mi","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Distance Cycling","icon":null,"category":"distance"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_hiit","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Hiit","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_hiit","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Hiit","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_sleep_in_bed","state":"398.612829041481","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep In Bed","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_functional_strength","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Functional Strength","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_functional_strength","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Functional Strength","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_sleep_core","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Core","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_deep","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Deep","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_rem","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Rem","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_unknown","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Unknown","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_asleep","state":"14.0041869501273","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Asleep","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_steps_daily_total","state":"493","unit_of_measurement":"count","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Steps Daily Total","icon":null,"category":"steps"},{"entity_id":"sensor.jasons_iphone_health_active_energy_burned_daily_total","state":"485.150999999998","unit_of_measurement":"kcal","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Active Energy Burned Daily Total","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_flights_climbed_daily_total","state":"3","unit_of_measurement":"count","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Flights Climbed Daily Total","icon":null,"category":"flights"},{"entity_id":"sensor.jasons_iphone_health_basal_energy_burned_daily_total","state":"1841.22300000003","unit_of_measurement":"kcal","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Basal Energy Burned Daily Total","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_distance_walking_running_daily_total","state":"0.21617157233949","unit_of_measurement":"mi","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Distance Walking Running Daily Total","icon":null,"category":"distance"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_strength_training","state":"1494.09190797806","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Strength Training","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_strength_training","state":"283.444680942575","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Strength Training","icon":null,"category":"energy"}]').map((e) => ({ ...e, category: e.category ?? "other" }));
-function us(e) {
-  return yt.filter((t) => t.category === e);
+const vt = JSON.parse('[{"entity_id":"sensor.jasons_iphone_health_oxygen_saturation","state":"97","unit_of_measurement":"%","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Oxygen Saturation","icon":"mdi:water-percent","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_steps","state":"10","unit_of_measurement":"count","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Steps","icon":"mdi:shoe-print","category":"steps"},{"entity_id":"sensor.jasons_iphone_health_resting_heart_rate","state":"75","unit_of_measurement":"bpm","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Resting Heart Rate","icon":"mdi:heart","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_respiratory_rate","state":"17","unit_of_measurement":"breaths/min","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Respiratory Rate","icon":"mdi:lungs","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_heart_rate_variability_sdnn","state":"19.0986089955471","unit_of_measurement":"ms","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Heart Rate Variability Sdnn","icon":"mdi:heart-flash","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_flights_climbed","state":"1","unit_of_measurement":"count","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Flights Climbed","icon":"mdi:stairs-up","category":"flights"},{"entity_id":"sensor.jasons_iphone_health_connectivity_test","state":"unavailable","unit_of_measurement":"count","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Connectivity Test","icon":null,"category":"other"},{"entity_id":"sensor.jasons_iphone_health_heart_rate","state":"84","unit_of_measurement":"bpm","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Heart Rate","icon":"mdi:heart-pulse","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_distance_cycling","state":"0.0673205280488492","unit_of_measurement":"mi","device_class":"distance","state_class":"measurement","friendly_name":"Jasons iPhone Health Distance Cycling","icon":"mdi:bike","category":"distance"},{"entity_id":"sensor.jasons_iphone_health_distance_walking_running","state":"0.00497096953789867","unit_of_measurement":"mi","device_class":"distance","state_class":"measurement","friendly_name":"Jasons iPhone Health Distance Walking Running","icon":"mdi:walk","category":"distance"},{"entity_id":"sensor.jasons_iphone_health_active_energy_burned","state":"0.45","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Active Energy Burned","icon":"mdi:fire","category":"energy"},{"entity_id":"sensor.jasons_iphone_health_environmental_sound_exposure","state":"71.6872025924761","unit_of_measurement":"dB","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Environmental Sound Exposure","icon":"mdi:volume-high","category":"other"},{"entity_id":"sensor.jasons_iphone_health_basal_energy_burned","state":"26.309","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Basal Energy Burned","icon":"mdi:fire-circle","category":"energy"},{"entity_id":"sensor.jasons_iphone_health_weight","state":"359.022793968073","unit_of_measurement":"lb","device_class":"weight","state_class":"measurement","friendly_name":"Jasons iPhone Health Weight","icon":"mdi:scale-bathroom","category":"body"},{"entity_id":"sensor.jasons_iphone_health_vo2_max","state":"24.81","unit_of_measurement":"mL/(kg*min)","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Vo2 Max","icon":"mdi:run","category":"body"},{"entity_id":"sensor.jasons_iphone_health_body_fat_percentage","state":"49.2","unit_of_measurement":"%","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Body Fat Percentage","icon":"mdi:percent","category":"body"},{"entity_id":"sensor.jasons_iphone_health_blood_glucose","state":"113","unit_of_measurement":"mg/dL","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Blood Glucose","icon":"mdi:diabetes","category":"vitals"},{"entity_id":"sensor.jasons_iphone_health_bmi","state":"44.6","unit_of_measurement":"count","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Bmi","icon":"mdi:human-male-height","category":"body"},{"entity_id":"sensor.jasons_iphone_health_lean_body_mass","state":"182.190013469583","unit_of_measurement":"lb","device_class":"weight","state_class":"measurement","friendly_name":"Jasons iPhone Health Lean Body Mass","icon":"mdi:human","category":"body"},{"entity_id":"sensor.jasons_iphone_health_hydration","state":"29.9254100911311","unit_of_measurement":"fl oz US","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Hydration","icon":"mdi:cup-water","category":"other"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_walking","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Walking","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_walking","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Walking","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_workout_distance_walking","state":"unavailable","unit_of_measurement":"mi","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Distance Walking","icon":null,"category":"distance"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_workout_44","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Workout 44","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_workout_44","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Workout 44","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_cycling","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Cycling","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_cycling","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Cycling","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_workout_distance_cycling","state":"unavailable","unit_of_measurement":"mi","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Distance Cycling","icon":null,"category":"distance"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_hiit","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Hiit","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_hiit","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Hiit","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_sleep_in_bed","state":"398.612829041481","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep In Bed","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_functional_strength","state":"unavailable","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Functional Strength","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_functional_strength","state":"unavailable","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Functional Strength","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_sleep_core","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Core","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_deep","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Deep","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_rem","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Rem","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_unknown","state":"unavailable","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Unknown","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_sleep_asleep","state":"14.0041869501273","unit_of_measurement":"min","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Sleep Asleep","icon":null,"category":"sleep"},{"entity_id":"sensor.jasons_iphone_health_steps_daily_total","state":"493","unit_of_measurement":"count","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Steps Daily Total","icon":null,"category":"steps"},{"entity_id":"sensor.jasons_iphone_health_active_energy_burned_daily_total","state":"485.150999999998","unit_of_measurement":"kcal","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Active Energy Burned Daily Total","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_flights_climbed_daily_total","state":"3","unit_of_measurement":"count","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Flights Climbed Daily Total","icon":null,"category":"flights"},{"entity_id":"sensor.jasons_iphone_health_basal_energy_burned_daily_total","state":"1841.22300000003","unit_of_measurement":"kcal","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Basal Energy Burned Daily Total","icon":null,"category":"energy"},{"entity_id":"sensor.jasons_iphone_health_distance_walking_running_daily_total","state":"0.21617157233949","unit_of_measurement":"mi","device_class":null,"state_class":null,"friendly_name":"Jasons iPhone Health Distance Walking Running Daily Total","icon":null,"category":"distance"},{"entity_id":"sensor.jasons_iphone_health_workout_duration_strength_training","state":"1494.09190797806","unit_of_measurement":"s","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Duration Strength Training","icon":null,"category":"workout"},{"entity_id":"sensor.jasons_iphone_health_workout_energy_strength_training","state":"283.444680942575","unit_of_measurement":"kcal","device_class":null,"state_class":"measurement","friendly_name":"Jasons iPhone Health Workout Energy Strength Training","icon":null,"category":"energy"}]').map((e) => ({ ...e, category: e.category ?? "other" }));
+function _s(e) {
+  return vt.filter((t) => t.category === e);
 }
-function ps(e) {
-  return yt.find((t) => t.entity_id === e);
+function gs(e) {
+  return vt.find((t) => t.entity_id === e);
 }
-function L(e, t, s) {
+function F(e, t, s) {
   window.customCards || (window.customCards = []), window.customCards.some((i) => i.type === e) || window.customCards.push({ type: e, name: t, description: s });
 }
-L("fitness-activity-summary-card", "Fitness Activity Summary", "Shows configurable activity totals with goals."), L("fitness-vitals-card", "Fitness Vitals", "Displays heart metrics with optional thresholds."), L("fitness-sleep-card", "Fitness Sleep", "Summarises sleep totals and stage breakdown."), L("fitness-body-metrics-card", "Fitness Body Metrics", "Shows body metrics with trend indicators."), L("fitness-workouts-card", "Fitness Workouts", "Summarises workout energy/duration."), L("fitness-overview-card", "Fitness Overview", "Highlights primary and secondary metrics.");
+F("fitness-activity-summary-card", "Fitness Activity Summary", "Shows configurable activity totals with goals."), F("fitness-vitals-card", "Fitness Vitals", "Displays heart metrics with optional thresholds."), F("fitness-sleep-card", "Fitness Sleep", "Summarises sleep totals and stage breakdown."), F("fitness-body-metrics-card", "Fitness Body Metrics", "Shows body metrics with trend indicators."), F("fitness-workouts-card", "Fitness Workouts", "Summarises workout energy/duration."), F("fitness-overview-card", "Fitness Overview", "Highlights primary and secondary metrics.");
 export {
-  us as byCategory,
-  ps as findMetric,
-  yt as metricCatalog
+  _s as byCategory,
+  gs as findMetric,
+  vt as metricCatalog
 };
 //# sourceMappingURL=fitness-cards.js.map

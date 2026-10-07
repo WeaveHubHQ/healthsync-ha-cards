@@ -9,6 +9,26 @@ const UNAVAILABLE_STATES = new Set([
   ""
 ]);
 
+let numberLocale: string | undefined;
+
+/** Set the locale numbers are formatted in; undefined keeps plain toFixed. */
+export function setNumberLocale(locale?: string): void {
+  numberLocale = locale || undefined;
+}
+
+/** Fixed decimals, with the decimal separator of the active locale. */
+export function formatNumber(value: number, decimals: number): string {
+  if (!numberLocale) return value.toFixed(decimals);
+  try {
+    return new Intl.NumberFormat(numberLocale, {
+      minimumFractionDigits: decimals,
+      maximumFractionDigits: decimals
+    }).format(value);
+  } catch {
+    return value.toFixed(decimals);
+  }
+}
+
 export function parseNumber(value?: string | number | null): number | null {
   if (value === null || value === undefined) return null;
   const asString = String(value).trim();
@@ -62,7 +82,7 @@ export function formatMinutes(value: number): string {
     return `${hours}h ${minutes}m`;
   }
   const decimals = value >= 10 ? 0 : 1;
-  return `${value.toFixed(decimals)} min`;
+  return `${formatNumber(value, decimals)} min`;
 }
 
 export function formatValue(
@@ -84,7 +104,7 @@ export function formatValue(
   }
 
   const precision = decimals ?? defaultDecimals(unit);
-  const rounded = value.toFixed(precision);
+  const rounded = formatNumber(value, precision);
   return displayUnit ? `${rounded} ${displayUnit}` : rounded;
 }
 
@@ -92,7 +112,7 @@ export function formatTrend(diff: number | null, unit?: string, decimals?: numbe
   if (diff === null || Number.isNaN(diff)) return "—";
   const prefix = diff > 0 ? "+" : "";
   const precision = decimals ?? defaultDecimals(unit);
-  const rounded = diff.toFixed(precision);
+  const rounded = formatNumber(diff, precision);
   return unit ? `${prefix}${rounded} ${unit}` : `${prefix}${rounded}`;
 }
 

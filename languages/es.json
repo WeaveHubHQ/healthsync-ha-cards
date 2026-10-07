@@ -11,5 +11,7 @@
   "label.ok": "OK",
   "action.auto_detect": "Detectar métricas",
   "action.apply_suggestions": "Aplicar sugerencias",
-  "label.history": "Historial"
+  "label.history": "Historial",
+  "label.workout": "Entrenamiento",
+  "label.workouts": "Entrenamientos"
 }
